@@ -6,6 +6,8 @@ import { caricaDati } from './dati.js';
 import * as Stato from './stato.js';
 import { montaSettimana } from './settimana.js';
 import { montaSpesa } from './spesa.js';
+import { montaRicette } from './ricette.js';
+import { impostaTabellaEmoji } from './emoji.js';
 import { Sincronizzatore } from './sync.js';
 import { apriImpostazioni } from './impostazioni.js';
 import { foglioAperto } from './foglio.js';
@@ -25,6 +27,7 @@ async function avvia() {
     return;
   }
 
+  impostaTabellaEmoji(dati.emoji);
   const stato = Stato.carica();
   let schedaAttiva = 'settimana';
   const viste = {};
@@ -78,6 +81,7 @@ async function avvia() {
 
   viste.settimana = montaSettimana(document.getElementById('scheda-settimana'), ctx);
   viste.spesa = montaSpesa(document.getElementById('scheda-spesa'), ctx);
+  viste.ricette = montaRicette(document.getElementById('scheda-ricette'), ctx);
 
   const ui = Stato.caricaUi();
   mostraScheda(SCHEDE.includes(ui.scheda) ? ui.scheda : 'settimana');

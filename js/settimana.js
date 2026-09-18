@@ -9,7 +9,7 @@ import {
 import { trovaOpzione, trovaCarbo, trovaSecondo } from './dati.js';
 import {
   motivoBlocco, riepilogoLimiti, riepilogoSecondi, fruttaDelGiorno,
-  quantitaCarbo, giornoCompleto, formattaQuantita, haTag, maiuscola
+  quantitaCarbo, giornoCompleto, formattaQuantita, haTag, maiuscola, varianteScelta, chiaveVariante
 } from './vincoli.js';
 import { apriFoglio, chiudiFoglio, aggiornaFoglio } from './foglio.js';
 
@@ -155,15 +155,19 @@ export function montaSettimana(contenitore, ctx) {
         carta.appendChild(el('span', 'dettaglio', `${dieta[slotDef.id].verdura} · olio EVO ${dieta[slotDef.id].olio.q} g`));
       } else {
         const parti = [];
+        const vc = varianteScelta(carbo, extra, 'carbo');
+        const vs = varianteScelta(secondo, extra, 'secondo');
         if (carbo) {
           const q = quantitaCarbo(carbo, secondo);
-          parti.push(`${nomeBreve(carbo)} ${formattaQuantita(q.q, q.u)}`);
+          parti.push(`${vc ? vc.nome : nomeBreve(carbo)} ${formattaQuantita(q.q, q.u)}`);
         } else parti.push('carboidrato da scegliere');
-        parti.push(secondo ? secondo.nome : 'secondo da scegliere');
+        if (secondo) parti.push(vs ? `${secondo.nome}: ${vs.nome.toLowerCase()}` : secondo.nome);
+        else parti.push('secondo da scegliere');
         carta.appendChild(el('span', 'valore', parti.join(' + ')));
 
         const pezzi = [];
-        if (secondo) pezzi.push(secondo.descrizione);
+        if (secondo) pezzi.push(vs ? descrizioneVariante(vs, secondo) : secondo.descrizione);
+        if (secondo && secondo.varianti && !vs) pezzi.push('tocca per scegliere quale');
         const q = quantitaCarbo(carbo, secondo);
         if (q && q.ridotta) pezzi.push('carboidrato ridotto perché il secondo è legumi');
         pezzi.push(`olio EVO ${dieta[slotDef.id].olio.q} g`);
@@ -174,8 +178,10 @@ export function montaSettimana(contenitore, ctx) {
       }
     } else {
       const opz = trovaOpzione(dieta, slotDef.id, scelta);
-      carta.appendChild(el('span', opz ? 'valore' : 'valore vuoto', opz ? opz.nome : 'Scegli…'));
+      const vo = varianteScelta(opz, extra, null);
+      carta.appendChild(el('span', opz ? 'valore' : 'valore vuoto', opz ? (vo ? `${opz.nome}: ${vo.nome.toLowerCase()}` : opz.nome) : 'Scegli…'));
       if (opz && opz.descrizione) carta.appendChild(el('span', 'dettaglio', opz.descrizione));
+      if (opz && opz.varianti && !vo) carta.appendChild(el('span', 'dettaglio-extra', 'Quale? tocca per scegliere'));
       if (opz && haTag(opz, 'frutta')) {
         carta.appendChild(el('span', 'dettaglio-extra', `Frutto: ${extra.frutta ? extra.frutta : 'di stagione (tocca per scegliere)'}`));
       }
@@ -231,10 +237,13 @@ export function montaSettimana(contenitore, ctx) {
     const principale = SLOT_PRINCIPALI.includes(slotDef.id);
 
     if (principale) {
-      corpo.appendChild(sezioneScelta(p, giorno, slotDef, 'secondo', 'Secondo', dieta[slotDef.id].secondi));
       const secondo = trovaSecondo(dieta, slotDef.id, p.scelte[giorno][slotDef.id].secondo);
+      const carbo = trovaCarbo(dieta, slotDef.id, p.scelte[giorno][slotDef.id].carbo);
+      corpo.appendChild(sezioneScelta(p, giorno, slotDef, 'secondo', 'Secondo', dieta[slotDef.id].secondi));
+      if (secondo && secondo.varianti) corpo.appendChild(sezioneVariante(p, giorno, slotDef, secondo, 'secondo'));
       if (!(secondo && secondo.categoria === 'libero')) {
         corpo.appendChild(sezioneScelta(p, giorno, slotDef, 'carbo', 'Carboidrato', dieta[slotDef.id].carboidrati));
+        if (carbo && carbo.varianti) corpo.appendChild(sezioneVariante(p, giorno, slotDef, carbo, 'carbo'));
         corpo.appendChild(sezioneVerdura(p, giorno, slotDef));
         corpo.appendChild(el('p', 'nota', `+ olio EVO ${dieta[slotDef.id].olio.q} g (${dieta[slotDef.id].olio.descrizione})`));
       }
@@ -250,6 +259,7 @@ export function montaSettimana(contenitore, ctx) {
         }
       }
       const opz = trovaOpzione(dieta, slotDef.id, p.scelte[giorno][slotDef.id]);
+      if (opz && opz.varianti) corpo.appendChild(sezioneVariante(p, giorno, slotDef, opz, null));
       if (opz && haTag(opz, 'frutta')) corpo.appendChild(sezioneFrutta(p, giorno, slotDef));
       corpo.appendChild(sezioneScelta(p, giorno, slotDef, null, opz ? 'Cambia scelta' : null, dieta[slotDef.id].opzioni));
     }
@@ -270,13 +280,14 @@ export function montaSettimana(contenitore, ctx) {
     const dopoScelta = (opzScelta) => {
       ctx.salva();
       disegna();
-      const resta = SLOT_PRINCIPALI.includes(slot) || (opzScelta && haTag(opzScelta, 'frutta'));
+      const resta = SLOT_PRINCIPALI.includes(slot) || (opzScelta && (haTag(opzScelta, 'frutta') || opzScelta.varianti));
       if (resta) rinfrescaFoglio(giorno, slotDef);
       else chiudiFoglio();
     };
 
     box.appendChild(vocePulsante('— Nessuna scelta —', '', null, sceltaAttuale === null, () => {
       impostaScelta(p, giorno, slot, null, ruolo);
+      impostaExtra(p, giorno, slot, chiaveVariante(ruolo), null);
       if (!ruolo) impostaExtra(p, giorno, slot, 'frutta', null);
       dopoScelta(null);
     }));
@@ -290,12 +301,43 @@ export function montaSettimana(contenitore, ctx) {
       }
       const nota = mostraNotaFrutta && haTag(opz, 'frutta') ? 'contiene frutta' : '';
       box.appendChild(vocePulsante(opz.nome, descrizione, motivo, opz.id === sceltaAttuale, () => {
+        if (opz.id !== sceltaAttuale) impostaExtra(p, giorno, slot, chiaveVariante(ruolo), null);
         impostaScelta(p, giorno, slot, opz.id, ruolo);
         if (!ruolo && !haTag(opz, 'frutta')) impostaExtra(p, giorno, slot, 'frutta', null);
         dopoScelta(opz);
       }, nota));
     }
     return box;
+  }
+
+  /** Chips per la sotto-scelta di un'opzione (es. formaggio → ricotta / primo sale / …). */
+  function sezioneVariante(p, giorno, slotDef, opz, ruolo) {
+    const extra = leggiExtra(p, giorno, slotDef.id);
+    const attuale = extra[chiaveVariante(ruolo)] || null;
+    const box = document.createElement('div');
+    box.appendChild(titoletto(`${opz.nome}: quale?`));
+    const chips = document.createElement('div');
+    chips.className = 'chips';
+    chips.appendChild(chip('Non specificato', !attuale, () => {
+      impostaExtra(p, giorno, slotDef.id, chiaveVariante(ruolo), null);
+      ctx.salva(); disegna(); rinfrescaFoglio(giorno, slotDef);
+    }));
+    for (const v of opz.varianti) {
+      const q = v.ingredienti && v.ingredienti[0] ? ` ${formattaQuantita(v.ingredienti[0].q, v.ingredienti[0].u)}` : '';
+      chips.appendChild(chip(`${v.nome}${q}`, attuale === v.id, () => {
+        impostaExtra(p, giorno, slotDef.id, chiaveVariante(ruolo), v.id);
+        ctx.salva(); disegna(); rinfrescaFoglio(giorno, slotDef);
+      }));
+    }
+    box.appendChild(chips);
+    return box;
+  }
+
+  function descrizioneVariante(v, opz) {
+    if (v.ingredienti && v.ingredienti.length) {
+      return v.ingredienti.map(i => `${i.nome} ${formattaQuantita(i.q, i.u)}`).join(' + ');
+    }
+    return opz.descrizione || v.nome;
   }
 
   /** Chips per scegliere il frutto di stagione. */

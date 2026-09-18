@@ -4,7 +4,8 @@
 
 import { GIORNI, SLOT_PRINCIPALI, leggiExtra, impostaSpuntata, azzeraSpuntate, meseDellaSettimana } from './stato.js';
 import { trovaOpzione, trovaCarbo, trovaSecondo } from './dati.js';
-import { quantitaCarbo, formattaQuantita, maiuscola } from './vincoli.js';
+import { quantitaCarbo, formattaQuantita, maiuscola, varianteScelta, ingredientiEffettivi } from './vincoli.js';
+import { conEmoji } from './emoji.js';
 
 /**
  * Calcola la lista della spesa sommando i piani di tutte le persone.
@@ -49,15 +50,20 @@ export function calcolaSpesa(dieta, stato) {
           }
           if (carbo) {
             const qc = quantitaCarbo(carbo, secondo);
-            aggiungi({ nome: carbo.nome.replace(/ \(.*\)$/, ''), u: carbo.u, reparto: carbo.reparto }, persona.id, qc.q);
+            const vc = varianteScelta(carbo, extra, 'carbo');
+            aggiungi({ nome: (vc ? vc.nome : carbo.nome).replace(/ \(.*\)$/, ''), u: carbo.u, reparto: carbo.reparto }, persona.id, qc.q);
           }
-          if (secondo) for (const ing of secondo.ingredienti) aggiungi(ing, persona.id);
+          if (secondo) {
+            const vs = varianteScelta(secondo, extra, 'secondo');
+            for (const ing of ingredientiEffettivi(secondo, vs)) aggiungi(ing, persona.id);
+          }
           aggiungi(dieta[s.id].olio, persona.id);
         } else {
           const opz = trovaOpzione(dieta, s.id, scelta);
           if (!opz) continue;
           pastiTotali++;
-          for (const ing of opz.ingredienti) {
+          const vo = varianteScelta(opz, extra, null);
+          for (const ing of ingredientiEffettivi(opz, vo)) {
             if (ing.tipo === 'frutta' && extra.frutta) {
               // frutto specifico al posto di "frutta di stagione"
               aggiungi({ nome: maiuscola(extra.frutta), u: ing.u, reparto: ing.reparto }, persona.id, ing.q);
@@ -175,7 +181,7 @@ export function montaSpesa(contenitore, ctx) {
     });
     const testo = document.createElement('span');
     testo.className = 'voce-testo';
-    testo.appendChild(el('span', 'voce-nome', nome));
+    testo.appendChild(el('span', 'voce-nome', conEmoji(nome)));
     testo.appendChild(el('span', 'voce-q', testoQ));
     label.appendChild(cb);
     label.appendChild(testo);

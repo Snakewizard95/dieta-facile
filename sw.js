@@ -11,7 +11,7 @@
 // Quando si pubblica una nuova versione, aumentare VERSIONE: le cache vecchie
 // vengono cancellate.
 
-const VERSIONE = 'dieta-facile-v1';
+const VERSIONE = 'dieta-facile-v3';
 
 const FILE_APP = [
   './',
@@ -28,9 +28,12 @@ const FILE_APP = [
   './js/foglio.js',
   './js/settimana.js',
   './js/spesa.js',
+  './js/ricette.js',
+  './js/emoji.js',
   './dati/dieta.json',
   './dati/ricette.json',
   './dati/stagioni.json',
+  './dati/emoji.json',
   './icone/icona-192.png',
   './icone/icona-512.png',
   './icone/icona-180.png'

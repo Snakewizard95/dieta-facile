@@ -156,7 +156,34 @@ Verdura a volontà + carboidrato + secondo + 15 g olio EVO.
 6. **Difficoltà delle ricette** (facile/media): è una mia valutazione per ordinare i
    suggerimenti, non è nel PDF.
 
+## Sotto-scelte (varianti) — aggiunte il 18/09/2026
+
+Quando un secondo prevede più alternative, l'app chiede "quale?" e la spesa usa quella scelta:
+
+| Opzione | Varianti |
+|---|---|
+| Legumi (pranzo 50 g / cena 60 g secchi) | ceci, fagioli, lenticchie, piselli, fave |
+| Formaggio light pranzo | ricotta 100, primo sale 100, fiocchi di latte 170, mozzarella 125 |
+| Formaggio light cena | ricotta 120, primo sale 120, fiocchi di latte 170, mozzarella light 150 |
+| Pesce conservato | tonno al naturale 80, salmone affumicato 80 |
+| Carne bianca (pranzo 120 / cena 250) | pollo, tacchino, coniglio |
+| Pesce bianco 250 | spigola, orata, merluzzo |
+| Pesce azzurro / salmone 200 | acciughe, aringhe, tonno fresco, salmone fresco, sgombro, sarde |
+| Molluschi 300 | calamaro, polpo, seppia |
+| Carne rossa 250 | vitella, vitellone, manzo |
+| Pane (pranzo e cena) | integrale, di segale, bianco |
+| Colazione salata | bresaola, fesa di tacchino, prosciutto cotto sgrassato |
+
+Nota: sgombro e sarde non sono nella tabella della cena ma sono citati nei consigli
+("preferire i pesci azzurri: sarde, acciughe, sgombro…"); li ho aggiunti con la stessa
+grammatura del pesce azzurro. Da confermare.
+
+**Uova e carboidrato**: verificato sul PDF, pranzo e cena sono sempre carboidrato + proteina
++ verdura + grassi, anche con le uova (esempi: "uova sode con patate lesse", "pasta al pomodoro
++ uova al purgatorio", "frittata + pane integrale"). L'unica eccezione è il pasto libero.
+
 ## Modifiche concordate con Davide
 
 - 18/09/2026: rimossi i prodotti Revolution 03 (pranzo e cena) e le proteine Herbalife
   (merenda) perché non utilizzati. Dati confermati per il resto: Fase 1 chiusa.
+- 18/09/2026: aggiunte le varianti (sotto-scelte) su richiesta di Davide, vedi tabella sopra.

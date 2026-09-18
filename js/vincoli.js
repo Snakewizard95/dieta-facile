@@ -128,6 +128,27 @@ export function formattaQuantita(q, u) {
   return `${q} ${u}`;
 }
 
+/**
+ * Variante (sotto-scelta) selezionata per un'opzione, letta dagli extra del pasto.
+ * `ruolo` è "carbo" o "secondo" per pranzo/cena, null per gli slot semplici.
+ * Restituisce l'oggetto variante oppure null.
+ */
+export function varianteScelta(opz, extra, ruolo = null) {
+  if (!opz || !Array.isArray(opz.varianti) || !extra) return null;
+  const id = extra[chiaveVariante(ruolo)];
+  return id ? opz.varianti.find(v => v.id === id) || null : null;
+}
+
+export function chiaveVariante(ruolo = null) {
+  return ruolo ? `variante.${ruolo}` : 'variante';
+}
+
+/** Ingredienti effettivi di un'opzione: quelli della variante, se ne ha di propri. */
+export function ingredientiEffettivi(opz, variante) {
+  if (variante && Array.isArray(variante.ingredienti)) return variante.ingredienti;
+  return opz.ingredienti || [];
+}
+
 /** Prima lettera maiuscola. */
 export function maiuscola(testo) {
   return testo ? testo.charAt(0).toUpperCase() + testo.slice(1) : '';
