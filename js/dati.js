@@ -4,6 +4,10 @@
 
 let cache = null;
 
+// Versione dei dati: deve coincidere con ?v= in index.html e con VERSIONE in sw.js.
+// Serve a scavalcare le cache (GitHub Pages, browser) quando si pubblica un aggiornamento.
+export const VERSIONE_DATI = '8';
+
 /** Carica i tre JSON (una sola volta). In caso di errore lancia un messaggio in italiano. */
 export async function caricaDati() {
   if (cache) return cache;
@@ -19,7 +23,7 @@ export async function caricaDati() {
 }
 
 async function caricaJson(percorso) {
-  const risposta = await fetch(percorso);
+  const risposta = await fetch(`${percorso}?v=${VERSIONE_DATI}`);
   if (!risposta.ok) throw new Error(`Impossibile caricare ${percorso} (errore ${risposta.status})`);
   try {
     return await risposta.json();

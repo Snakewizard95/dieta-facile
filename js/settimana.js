@@ -12,7 +12,7 @@ import {
   quantitaCarbo, giornoCompleto, formattaQuantita, haTag, maiuscola, varianteScelta, chiaveVariante
 } from './vincoli.js';
 import { apriFoglio, chiudiFoglio, aggiornaFoglio } from './foglio.js';
-import { kcalPasto, kcalGiorno, kcalMediaSettimana, formattaKcal } from './calorie.js';
+import { kcalPasto, kcalGiorno, kcalMediaSettimana, formattaKcal, calorieDisponibili } from './calorie.js';
 
 /** ctx = { dieta, stagioni, stato, salva(), aggiornaIntestazione(), apriImpostazioni() } */
 export function montaSettimana(contenitore, ctx) {
@@ -48,7 +48,7 @@ export function montaSettimana(contenitore, ctx) {
   }
 
   function mostraCalorie() {
-    return caricaUi().calorie !== false;
+    return calorieDisponibili() && caricaUi().calorie !== false;
   }
 
   function salvaEDisegna() {
@@ -226,9 +226,9 @@ export function montaSettimana(contenitore, ctx) {
     box.className = 'azioni';
     const nome = persona().nome;
 
-    box.appendChild(pulsante(`Compila con lo schema tipo`, 'primario', () => {
-      if (!confirm(`Compilo tutta la settimana di ${nome} con lo schema proposto dal piano? Le scelte attuali verranno sostituite.`)) return;
-      compilaSchemaTipo(piano());
+    box.appendChild(pulsante(`Compila la settimana a caso`, 'primario', () => {
+      if (!confirm(`Compilo tutta la settimana di ${nome} con scelte casuali che rispettano il piano? Le scelte attuali verranno sostituite. Puoi premere di nuovo per una combinazione diversa.`)) return;
+      compilaCasuale(piano());
       salvaEDisegna();
     }));
 
@@ -426,24 +426,102 @@ export function montaSettimana(contenitore, ctx) {
     return b;
   }
 
-  // ----- Schema tipo -----------------------------------------------------
+  // ----- Compilazione casuale (rispettando la dieta) -------------------------
 
-  function compilaSchemaTipo(p) {
+  function mescola(lista) {
+    const a = [...lista];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+
+  function aCaso(lista) {
+    return lista[Math.floor(Math.random() * lista.length)];
+  }
+
+  /** Prima opzione, in ordine casuale, che non viola un limite settimanale. */
+  function scegliCasuale(p, giorno, slot, ruolo, candidati) {
+    for (const opz of mescola(candidati)) {
+      if (!motivoBlocco(ctx.dieta, p, giorno, slot, ruolo, opz)) return opz;
+    }
+    return null;
+  }
+
+  /**
+   * Compila la settimana in modo casuale ma coerente con il piano:
+   *  - i secondi seguono lo schema tipo (stesse frequenze), ma i giorni vengono mescolati
+   *    e la categoria "formaggio" a cena può diventare "uova" (il piano lo consente);
+   *  - per ogni categoria si estrae a caso un secondo e la sua variante;
+   *  - colazione, carboidrato, merenda e dopo cena sono estratti tra le opzioni permesse,
+   *    rispettando i limiti settimanali; la merenda evita la frutta se il giorno ne ha già 2;
+   *  - frutto e verdure vengono scelti tra quelli di stagione.
+   */
+  function compilaCasuale(p) {
     const { dieta } = ctx;
     const schema = dieta.schemaTipo;
-    const merendaSenzaFrutta = dieta.merenda.opzioni.find(o => !haTag(o, 'frutta')) || dieta.merenda.opzioni[0];
+    const st = stagione();
+    svuotaPiano(p);
+
+    // 1) secondi: permuta i giorni dello schema tipo, separatamente per pranzo e cena
+    const giorniMescolati = { pranzo: mescola(GIORNI), cena: mescola(GIORNI) };
+    const secondoPer = { pranzo: {}, cena: {} };
+    for (const slot of SLOT_PRINCIPALI) {
+      GIORNI.forEach((g, i) => {
+        const idSchema = schema[slot][giorniMescolati[slot][i]];
+        const base = trovaSecondo(dieta, slot, idSchema);
+        if (!base) return;
+        let categoria = base.categoria;
+        if (slot === 'cena' && categoria === 'formaggio' && Math.random() < 0.5) categoria = 'uova';
+        const candidati = dieta[slot].secondi.filter(s => s.categoria === categoria);
+        secondoPer[slot][g] = candidati.length ? aCaso(candidati) : base;
+      });
+    }
+
     for (const g of GIORNI) {
       const giorno = p.scelte[g];
-      giorno.colazione = dieta.colazione.opzioni[0].id;
+
+      // 2) colazione e spuntino
+      const col = scegliCasuale(p, g, 'colazione', null, dieta.colazione.opzioni);
+      giorno.colazione = col ? col.id : dieta.colazione.opzioni[0].id;
       giorno.spuntino = dieta.spuntino.opzioni[0].id;
-      giorno.pranzo = { carbo: dieta.pranzo.carboidrati[0].id, secondo: schema.pranzo[g] || null };
-      giorno.merenda = merendaSenzaFrutta.id;
-      giorno.cena = { carbo: dieta.cena.carboidrati[0].id, secondo: schema.cena[g] || null };
-      giorno.dopocena = dieta.dopocena.opzioni[0].id;
-      if ((trovaSecondo(dieta, 'pranzo', giorno.pranzo.secondo) || {}).categoria === 'libero') giorno.pranzo.carbo = null;
-      if ((trovaSecondo(dieta, 'cena', giorno.cena.secondo) || {}).categoria === 'libero') giorno.cena.carbo = null;
+
+      // 3) pranzo e cena: secondo (con variante), carboidrato (con variante), verdure
+      for (const slot of SLOT_PRINCIPALI) {
+        const secondo = secondoPer[slot][g] || null;
+        giorno[slot] = { carbo: null, secondo: secondo ? secondo.id : null };
+        if (!secondo || secondo.categoria === 'libero') continue;
+        if (secondo.varianti) impostaExtra(p, g, slot, chiaveVariante('secondo'), aCaso(secondo.varianti).id);
+        const carbo = scegliCasuale(p, g, slot, 'carbo', dieta[slot].carboidrati);
+        if (carbo) {
+          giorno[slot].carbo = carbo.id;
+          if (carbo.varianti) impostaExtra(p, g, slot, chiaveVariante('carbo'), aCaso(carbo.varianti).id);
+        }
+        const nVerdure = 1 + Math.floor(Math.random() * 2);
+        impostaExtra(p, g, slot, 'verdura', mescola(st.verdura).slice(0, nVerdure));
+      }
+
+      // 4) merenda: senza frutta se il giorno ne ha già abbastanza
+      const fruttiOggi = fruttaDelGiorno(dieta, p, g, 'merenda');
+      const merende = fruttiOggi >= dieta.fruttaAlGiorno.consigliata
+        ? dieta.merenda.opzioni.filter(o => !haTag(o, 'frutta'))
+        : dieta.merenda.opzioni;
+      const mer = scegliCasuale(p, g, 'merenda', null, merende) || scegliCasuale(p, g, 'merenda', null, dieta.merenda.opzioni);
+      giorno.merenda = mer ? mer.id : null;
+
+      // 5) dopo cena
+      giorno.dopocena = aCaso(dieta.dopocena.opzioni.filter(o => o.ingredienti.length)).id;
+
+      // 6) frutto di stagione e varianti per gli slot semplici
+      for (const s of dieta.slot) {
+        if (SLOT_PRINCIPALI.includes(s.id)) continue;
+        const opz = trovaOpzione(dieta, s.id, giorno[s.id]);
+        if (!opz) continue;
+        if (haTag(opz, 'frutta')) impostaExtra(p, g, s.id, 'frutta', aCaso(st.frutta));
+        if (opz.varianti) impostaExtra(p, g, s.id, chiaveVariante(null), aCaso(opz.varianti).id);
+      }
     }
-    p.extra = {};
     p.aggiornatoIl = new Date().toISOString();
   }
 

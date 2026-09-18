@@ -20,7 +20,7 @@ Il modo più semplice, senza Terminale:
 2. Apri il Finder nella cartella `Dieta Facile`.
 3. Trascina nella finestra del browser **questi elementi**:
    - i file `index.html`, `manifest.webmanifest`, `sw.js`, `README.md`, `CLAUDE.md`
-   - le cartelle `css`, `js`, `dati`, `icone`, `docs`
+   - le cartelle `css`, `js`, `dati`, `icone`, `fonts`, `docs`
    Puoi trascinare le cartelle intere: GitHub carica anche il contenuto.
    Il file `.gitignore` è nascosto nel Finder e non serve per il caricamento manuale:
    puoi ignorarlo (se vuoi vederlo, premi Cmd + Shift + . nel Finder).
@@ -54,5 +54,11 @@ Il modo più semplice, senza Terminale:
 4. Sull'iPhone chiudi e riapri l'app: la nuova versione viene scaricata da sola.
    Se non la vedi, aprila due volte (la prima scarica, la seconda usa la nuova).
 
-Nota per chi modifica il codice: ad ogni pubblicazione aumentare `VERSIONE` in `sw.js`
-(es. `dieta-facile-v2`), così la cache vecchia viene eliminata.
+Nota per chi modifica il codice: ad ogni pubblicazione aumentare lo stesso numero in tre punti,
+così le cache (GitHub Pages, Safari, service worker) scaricano i file nuovi:
+- `index.html`: `css/stile.css?v=N`, `manifest.webmanifest?v=N` e `js/app.js?v=N`
+- `js/dati.js`: `VERSIONE_DATI = 'N'`
+- `sw.js`: `VERSIONE = 'dieta-facile-vN'`
+
+Se dopo un caricamento l'app online sembra "a metà" (alcune parti nuove, altre vecchie),
+è la cache di GitHub Pages: dura circa 10 minuti, basta aspettare e ricaricare.

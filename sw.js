@@ -11,7 +11,7 @@
 // Quando si pubblica una nuova versione, aumentare VERSIONE: le cache vecchie
 // vengono cancellate.
 
-const VERSIONE = 'dieta-facile-v4';
+const VERSIONE = 'dieta-facile-v8';
 
 const FILE_APP = [
   './',
@@ -38,7 +38,9 @@ const FILE_APP = [
   './dati/calorie.json',
   './icone/icona-192.png',
   './icone/icona-512.png',
-  './icone/icona-180.png'
+  './icone/icona-180.png',
+  './fonts/caprasimo-400.woff2',
+  './fonts/figtree-variabile.woff2'
 ];
 
 self.addEventListener('install', evento => {

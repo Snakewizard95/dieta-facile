@@ -17,6 +17,11 @@ export function impostaTabellaCalorie(dati) {
   tabella = (dati && dati.voci) || [];
 }
 
+/** Vero se la tabella dei valori è stata caricata. */
+export function calorieDisponibili() {
+  return tabella.length > 0;
+}
+
 function vocePer(nome) {
   const testo = String(nome || '').toLowerCase();
   return tabella.find(v => v.parole.some(p => testo.includes(p))) || null;
