@@ -1,49 +1,79 @@
 /* ==========================================================================
-   Dieta Facile — foglio di stile
-   Pensato prima per il telefono (schermo stretto, uso con le dita).
+   Dieta Facile — foglio di stile (restyling "Organic")
+   Caldo, arrotondato, allegro: crema + terracotta + salvia.
+   Stesse classi di prima: nessuna modifica al JS necessaria.
+   Pensato prima per il telefono (iPhone, touch).
    ========================================================================== */
 
+/* Font: Caprasimo per i titoli, Figtree per il testo. File inclusi nell'app (cartella fonts/,
+   licenza SIL Open Font License): funzionano anche offline e senza richieste a Google.
+   Finché non sono caricati si usano i font di sistema (font-display: swap). */
+@font-face {
+  font-family: 'Caprasimo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/caprasimo-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Figtree';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('../fonts/figtree-variabile.woff2') format('woff2');
+}
+
 :root {
-  --colore-primario: #2f7d4f;
-  --colore-primario-chiaro: #e3f2e8;
-  --colore-sfondo: #f5f6f4;
-  --colore-carta: #ffffff;
-  --colore-testo: #1f2a24;
-  --colore-testo-debole: #6b7570;
-  --colore-bordo: #dfe4e0;
-  --colore-ok: #2f7d4f;
-  --colore-attenzione: #c98a00;
-  --colore-errore: #c0392b;
-  --colore-ok-sfondo: #e3f2e8;
-  --colore-attenzione-sfondo: #fff4d6;
-  --colore-errore-sfondo: #fde3e0;
-  --raggio: 14px;
-  --ombra: 0 1px 3px rgba(0, 0, 0, 0.08);
+  --colore-primario: #c67139;          /* terracotta */
+  --colore-primario-scuro: #9c5628;    /* per testo piccolo su fondo chiaro */
+  --colore-primario-chiaro: #f3ddc4;
+  --colore-secondario: #7a8a5e;        /* salvia */
+  --colore-secondario-chiaro: #e3e7d2;
+  --colore-secondario-scuro: #4e5a3a;
+  --colore-sfondo: #f5ead8;            /* crema */
+  --colore-carta: #fdf6ea;
+  --colore-testo: #201e1d;
+  --colore-testo-debole: #7b7266;
+  --colore-bordo: #e4d6bd;
+  --colore-ok: #5f6e47;
+  --colore-attenzione: #9c6f1d;
+  --colore-errore: #b3402e;
+  --colore-ok-sfondo: #e3e7d2;
+  --colore-attenzione-sfondo: #f4e5bd;
+  --colore-errore-sfondo: #f4d9d0;
+  --raggio: 18px;
+  --raggio-pieno: 999px;               /* pillole */
+  --ombra: 0 1px 3px rgba(90, 62, 30, 0.10);
   --altezza-nav: 64px;
+  --font-titoli: 'Caprasimo', 'Georgia', serif;
+  --font-testo: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --colore-primario: #5cbf84;
-    --colore-primario-chiaro: #1d3327;
-    --colore-sfondo: #121513;
-    --colore-carta: #1c201d;
-    --colore-testo: #eef2ef;
-    --colore-testo-debole: #9aa39e;
-    --colore-bordo: #2e3531;
-    --colore-ok: #5cbf84;
-    --colore-attenzione: #e6b34a;
-    --colore-errore: #ef7a6d;
-    --colore-ok-sfondo: #1d3327;
-    --colore-attenzione-sfondo: #3a2f12;
-    --colore-errore-sfondo: #3d1d19;
-    --ombra: 0 1px 3px rgba(0, 0, 0, 0.4);
+    --colore-primario: #d98c55;
+    --colore-primario-scuro: #e8ab7e;
+    --colore-primario-chiaro: #4a3120;
+    --colore-secondario: #97a97c;
+    --colore-secondario-chiaro: #333b26;
+    --colore-secondario-scuro: #c3d0ab;
+    --colore-sfondo: #211c15;
+    --colore-carta: #2b251b;
+    --colore-testo: #f2ead9;
+    --colore-testo-debole: #a89c8a;
+    --colore-bordo: #443b2d;
+    --colore-ok: #a4b587;
+    --colore-attenzione: #dcb15e;
+    --colore-errore: #e8836f;
+    --colore-ok-sfondo: #333b26;
+    --colore-attenzione-sfondo: #3e3316;
+    --colore-errore-sfondo: #43241c;
+    --ombra: 0 1px 3px rgba(0, 0, 0, 0.45);
   }
 }
 
 * { box-sizing: border-box; }
 
-/* L'attributo hidden deve vincere su qualsiasi display impostato dal CSS */
 [hidden] { display: none !important; }
 
 html, body {
@@ -51,7 +81,7 @@ html, body {
   padding: 0;
   background: var(--colore-sfondo);
   color: var(--colore-testo);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--font-testo);
   font-size: 16px;
   line-height: 1.4;
   -webkit-text-size-adjust: 100%;
@@ -63,6 +93,14 @@ button {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
+
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--colore-primario);
+  outline-offset: 2px;
+}
+
+::selection { background: var(--colore-primario-chiaro); }
 
 /* --- Intestazione ------------------------------------------------------- */
 
@@ -87,13 +125,15 @@ button {
 
 .intestazione h1 {
   margin: 0;
-  font-size: 1.2rem;
-  font-weight: 700;
+  font-family: var(--font-titoli);
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
 }
 
 .sottotitolo {
   font-size: 0.8rem;
-  opacity: 0.9;
+  opacity: 0.92;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -102,14 +142,14 @@ button {
 .intestazione-azioni {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   flex: 0 0 auto;
 }
 
 .pulsante-icona,
 .stato-sync {
   border: none;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.18);
   color: #fff;
   width: 38px;
   height: 38px;
@@ -119,37 +159,40 @@ button {
   align-items: center;
   justify-content: center;
 }
+.pulsante-icona:active { background: rgba(255, 255, 255, 0.32); }
 .stato-sync.off { display: none; }
-.stato-sync.errore { background: rgba(192, 57, 43, 0.6); }
+.stato-sync.errore { background: rgba(179, 64, 46, 0.75); }
 .stato-sync.offline { background: rgba(0, 0, 0, 0.25); }
 .stato-sync.attesa { animation: gira 1s linear infinite; }
 @keyframes gira { to { transform: rotate(360deg); } }
 
-/* --- Persone --------------------------------------------------------------- */
+/* --- Persone: segmentato a pillola -------------------------------------- */
 
 .persone {
   display: flex;
   background: var(--colore-carta);
   border: 1px solid var(--colore-bordo);
-  border-radius: 12px;
-  padding: 3px;
-  margin-bottom: 8px;
+  border-radius: var(--raggio-pieno);
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 10px;
 }
 .persona-btn {
   flex: 1;
   border: none;
   background: none;
-  border-radius: 9px;
-  padding: 8px;
+  border-radius: var(--raggio-pieno);
+  padding: 9px;
   font-weight: 600;
   color: var(--colore-testo-debole);
 }
 .persona-btn.attivo {
   background: var(--colore-primario);
   color: #fff;
+  font-weight: 700;
 }
 
-/* --- Chips selezionabili (frutta / verdura di stagione) ---------------------- */
+/* --- Chips selezionabili (frutta / verdura di stagione) ------------------ */
 
 .chips {
   display: flex;
@@ -159,14 +202,15 @@ button {
 }
 .chip-btn { cursor: pointer; }
 .chip-btn.attiva {
-  background: var(--colore-primario);
+  background: var(--colore-secondario);
   color: #fff;
-  border-color: var(--colore-primario);
+  border-color: var(--colore-secondario);
+  font-weight: 600;
 }
 
 .dettaglio-extra {
   font-size: 0.85rem;
-  color: var(--colore-primario);
+  color: var(--colore-secondario-scuro);
 }
 
 .nota {
@@ -175,7 +219,7 @@ button {
   margin: 4px 0 8px;
 }
 
-/* --- Campi delle impostazioni ---------------------------------------------- */
+/* --- Campi delle impostazioni -------------------------------------------- */
 
 .campo {
   display: flex;
@@ -190,10 +234,10 @@ button {
   font: inherit;
   font-size: 1rem;
   color: var(--colore-testo);
-  background: var(--colore-sfondo);
+  background: var(--colore-carta);
   border: 1px solid var(--colore-bordo);
-  border-radius: 10px;
-  padding: 10px 12px;
+  border-radius: var(--raggio-pieno);
+  padding: 10px 16px;
   width: 100%;
 }
 .riga-campo {
@@ -205,7 +249,7 @@ button {
 
 .stagione { margin-top: 20px; }
 
-/* --- Calorie stimate ----------------------------------------------------- */
+/* --- Calorie stimate ------------------------------------------------------ */
 
 .kcal-giorno {
   display: flex;
@@ -213,7 +257,7 @@ button {
   gap: 2px;
   margin: -4px 0 10px;
 }
-.kcal-valore { font-size: 0.9rem; font-weight: 600; color: var(--colore-primario); }
+.kcal-valore { font-size: 0.9rem; font-weight: 700; color: var(--colore-primario-scuro); }
 .kcal-nota { font-size: 0.75rem; color: var(--colore-testo-debole); }
 .carta-slot .kcal { font-size: 0.8rem; color: var(--colore-testo-debole); }
 
@@ -226,12 +270,12 @@ button {
 }
 .riga-interruttore input { width: 22px; height: 22px; accent-color: var(--colore-primario); }
 
-/* --- Ricette ----------------------------------------------------------------- */
+/* --- Ricette --------------------------------------------------------------- */
 
 .blocco-pasto { margin: 10px 0 14px; }
 .blocco-titolo {
   font-size: 0.85rem;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0 0 6px;
 }
 
@@ -240,15 +284,26 @@ button {
   text-align: left;
   background: var(--colore-carta);
   border: 1px solid var(--colore-bordo);
-  border-radius: 12px;
+  border-radius: var(--raggio);
+  box-shadow: var(--ombra);
   padding: 10px 12px;
   margin: 6px 0;
 }
 .carta-ricetta:active { background: var(--colore-primario-chiaro); }
 .carta-ricetta-riga { display: flex; align-items: center; gap: 12px; }
-.carta-ricetta-emoji { font-size: 1.6rem; flex: 0 0 auto; }
+.carta-ricetta-emoji {
+  font-size: 1.35rem;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--colore-secondario-chiaro);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .carta-ricetta-testo { min-width: 0; }
-.carta-ricetta-nome { font-weight: 600; }
+.carta-ricetta-nome { font-weight: 700; }
 .carta-ricetta-dettaglio { font-size: 0.8rem; color: var(--colore-testo-debole); }
 
 .cerca {
@@ -258,17 +313,17 @@ button {
   color: var(--colore-testo);
   background: var(--colore-carta);
   border: 1px solid var(--colore-bordo);
-  border-radius: 10px;
-  padding: 10px 12px;
+  border-radius: var(--raggio-pieno);
+  padding: 10px 16px;
   margin: 4px 0 8px;
   -webkit-appearance: none;
 }
 
 .lista-ingredienti { margin: 4px 0 8px; padding-left: 20px; }
 .lista-ingredienti li { margin: 3px 0; }
-.procedimento { line-height: 1.5; margin: 4px 0 8px; }
+.procedimento { line-height: 1.55; margin: 4px 0 8px; }
 
-/* --- Contenuto principale ---------------------------------------------- */
+/* --- Contenuto principale ------------------------------------------------- */
 
 #contenuto {
   padding: 12px 16px calc(var(--altezza-nav) + 24px + env(safe-area-inset-bottom));
@@ -292,7 +347,7 @@ button {
   border-radius: var(--raggio);
 }
 
-/* --- Riepilogo contatori ----------------------------------------------- */
+/* --- Riepilogo contatori --------------------------------------------------- */
 
 .riepilogo {
   display: flex;
@@ -307,50 +362,51 @@ button {
 
 .chip {
   flex: 0 0 auto;
-  padding: 6px 10px;
-  border-radius: 999px;
+  padding: 6px 12px;
+  border-radius: var(--raggio-pieno);
   font-size: 0.8rem;
   white-space: nowrap;
   border: 1px solid var(--colore-bordo);
   background: var(--colore-carta);
 }
-.chip.ok { background: var(--colore-ok-sfondo); color: var(--colore-ok); border-color: transparent; }
-.chip.sotto { background: var(--colore-attenzione-sfondo); color: var(--colore-attenzione); border-color: transparent; }
-.chip.sopra { background: var(--colore-errore-sfondo); color: var(--colore-errore); border-color: transparent; }
-.chip.pieno { background: var(--colore-errore-sfondo); color: var(--colore-errore); border-color: transparent; }
+.chip.ok { background: var(--colore-ok-sfondo); color: var(--colore-ok); border-color: transparent; font-weight: 600; }
+.chip.sotto { background: var(--colore-attenzione-sfondo); color: var(--colore-attenzione); border-color: transparent; font-weight: 600; }
+.chip.sopra { background: var(--colore-errore-sfondo); color: var(--colore-errore); border-color: transparent; font-weight: 700; }
+.chip.pieno { background: var(--colore-errore-sfondo); color: var(--colore-errore); border-color: transparent; font-weight: 700; }
 
 .riepilogo-titolo {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.07em;
   color: var(--colore-testo-debole);
   margin: 10px 0 4px;
 }
 
-/* --- Selettore dei giorni ---------------------------------------------- */
+/* --- Selettore dei giorni --------------------------------------------------- */
 
 .giorni {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 4px;
+  gap: 5px;
   margin: 12px 0;
 }
 
 .giorno-btn {
   border: 1px solid var(--colore-bordo);
   background: var(--colore-carta);
-  border-radius: 10px;
+  border-radius: 14px;
   padding: 8px 0;
   font-size: 0.85rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 3px;
 }
 .giorno-btn.attivo {
   background: var(--colore-primario);
   color: #fff;
   border-color: var(--colore-primario);
+  font-weight: 700;
 }
 .giorno-btn .puntino {
   width: 6px;
@@ -358,15 +414,17 @@ button {
   border-radius: 50%;
   background: var(--colore-bordo);
 }
-.giorno-btn.completo .puntino { background: var(--colore-ok); }
+.giorno-btn.completo .puntino { background: var(--colore-secondario); }
 .giorno-btn.attivo .puntino { background: #fff; }
 
 .titolo-giorno {
   margin: 8px 0 8px;
-  font-size: 1.1rem;
+  font-family: var(--font-titoli);
+  font-weight: 400;
+  font-size: 1.25rem;
 }
 
-/* --- Carte degli slot -------------------------------------------------- */
+/* --- Carte degli slot -------------------------------------------------------- */
 
 .slot {
   display: flex;
@@ -381,7 +439,7 @@ button {
   border: 1px solid var(--colore-bordo);
   border-radius: var(--raggio);
   box-shadow: var(--ombra);
-  padding: 12px 14px;
+  padding: 12px 15px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -389,13 +447,13 @@ button {
 .carta-slot:active { background: var(--colore-primario-chiaro); }
 
 .carta-slot .etichetta {
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.07em;
   color: var(--colore-testo-debole);
 }
 .carta-slot .valore {
-  font-weight: 600;
+  font-weight: 700;
 }
 .carta-slot .valore.vuoto {
   color: var(--colore-testo-debole);
@@ -406,7 +464,7 @@ button {
   color: var(--colore-testo-debole);
 }
 
-/* --- Lista della spesa ------------------------------------------------- */
+/* --- Lista della spesa ----------------------------------------------------- */
 
 .spesa-intro {
   color: var(--colore-testo-debole);
@@ -415,10 +473,10 @@ button {
 }
 
 .reparto-titolo {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--colore-primario);
+  letter-spacing: 0.07em;
+  color: var(--colore-secondario-scuro);
   margin: 18px 0 6px;
 }
 
@@ -439,19 +497,19 @@ button {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 14px;
+  padding: 11px 14px;
   cursor: pointer;
 }
 
 .voce-spesa input[type="checkbox"] {
-  width: 22px;
-  height: 22px;
+  width: 24px;
+  height: 24px;
   flex: 0 0 auto;
-  accent-color: var(--colore-primario);
+  accent-color: var(--colore-secondario);
 }
 
 .voce-testo { display: flex; flex-direction: column; }
-.voce-nome { font-weight: 500; }
+.voce-nome { font-weight: 600; }
 .voce-q { font-size: 0.85rem; color: var(--colore-testo-debole); }
 
 .voce-spesa.presa .voce-nome {
@@ -459,7 +517,7 @@ button {
   color: var(--colore-testo-debole);
 }
 
-/* --- Azioni ------------------------------------------------------------- */
+/* --- Azioni ------------------------------------------------------------------ */
 
 .azioni {
   display: flex;
@@ -471,18 +529,22 @@ button {
 .pulsante {
   border: 1px solid var(--colore-bordo);
   background: var(--colore-carta);
-  border-radius: 10px;
-  padding: 10px 14px;
+  border-radius: var(--raggio-pieno);
+  padding: 10px 18px;
   font-size: 0.9rem;
+  font-weight: 600;
 }
+.pulsante:active { background: var(--colore-primario-chiaro); }
 .pulsante.primario {
   background: var(--colore-primario);
   color: #fff;
   border-color: var(--colore-primario);
+  font-weight: 700;
 }
+.pulsante.primario:active { filter: brightness(0.92); }
 .pulsante.pericolo { color: var(--colore-errore); }
 
-/* --- Navigazione in basso --------------------------------------------- */
+/* --- Navigazione in basso ---------------------------------------------------- */
 
 .nav-basso {
   position: fixed;
@@ -509,15 +571,15 @@ button {
   justify-content: center;
   gap: 2px;
 }
-.nav-voce.attiva { color: var(--colore-primario); font-weight: 600; }
+.nav-voce.attiva { color: var(--colore-primario-scuro); font-weight: 700; }
 .nav-icona { font-size: 1.4rem; }
 
-/* --- Foglio a comparsa ------------------------------------------------- */
+/* --- Foglio a comparsa -------------------------------------------------------- */
 
 .sfondo-foglio {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(32, 30, 29, 0.45);
   z-index: 10;
 }
 
@@ -527,27 +589,44 @@ button {
   right: 0;
   bottom: 0;
   max-height: 85vh;
-  background: var(--colore-carta);
-  border-radius: var(--raggio) var(--raggio) 0 0;
+  background: var(--colore-sfondo);
+  border-radius: 28px 28px 0 0;
   z-index: 11;
   display: flex;
   flex-direction: column;
   padding-bottom: env(safe-area-inset-bottom);
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 -6px 24px rgba(0, 0, 0, 0.18);
+}
+
+/* maniglia in alto, solo decorativa */
+.foglio::before {
+  content: '';
+  width: 40px;
+  height: 5px;
+  border-radius: var(--raggio-pieno);
+  background: var(--colore-bordo);
+  margin: 10px auto 0;
+  flex: 0 0 auto;
 }
 
 .foglio-testa {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px 8px;
+  padding: 8px 16px 8px;
   border-bottom: 1px solid var(--colore-bordo);
 }
-.foglio-testa h2 { margin: 0; font-size: 1.05rem; }
+.foglio-testa h2 {
+  margin: 0;
+  font-family: var(--font-titoli);
+  font-weight: 400;
+  font-size: 1.1rem;
+}
 
 .pulsante-chiudi {
   border: none;
-  background: var(--colore-sfondo);
+  background: var(--colore-primario-chiaro);
+  color: var(--colore-primario-scuro);
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -560,13 +639,19 @@ button {
   -webkit-overflow-scrolling: touch;
 }
 
-.foglio-sezione { margin: 12px 0 6px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--colore-testo-debole); }
+.foglio-sezione {
+  margin: 12px 0 6px;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--colore-testo-debole);
+}
 
 .avviso {
   background: var(--colore-attenzione-sfondo);
   color: var(--colore-attenzione);
-  border-radius: 10px;
-  padding: 8px 12px;
+  border-radius: 14px;
+  padding: 8px 13px;
   font-size: 0.85rem;
   margin: 8px 0;
 }
@@ -576,22 +661,24 @@ button {
   text-align: left;
   background: var(--colore-carta);
   border: 1px solid var(--colore-bordo);
-  border-radius: 12px;
-  padding: 10px 12px;
+  border-radius: var(--raggio);
+  padding: 10px 14px;
   margin: 6px 0;
   display: flex;
   flex-direction: column;
   gap: 2px;
 }
 .opzione.selezionata {
-  border-color: var(--colore-primario);
+  border: 2px solid var(--colore-primario);
   background: var(--colore-primario-chiaro);
+  padding: 9px 13px; /* compensa il bordo più spesso */
 }
 .opzione:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
-.opzione .nome { font-weight: 600; }
+.opzione .nome { font-weight: 700; }
 .opzione .descrizione { font-size: 0.82rem; color: var(--colore-testo-debole); }
+.opzione.selezionata .descrizione { color: var(--colore-primario-scuro); }
 .opzione .motivo { font-size: 0.8rem; color: var(--colore-errore); }
 .opzione .nota-frutta { font-size: 0.78rem; color: var(--colore-attenzione); }
