@@ -8,6 +8,7 @@ import { montaSettimana } from './settimana.js';
 import { montaSpesa } from './spesa.js';
 import { montaRicette } from './ricette.js';
 import { impostaTabellaEmoji } from './emoji.js';
+import { impostaTabellaCalorie } from './calorie.js';
 import { Sincronizzatore } from './sync.js';
 import { apriImpostazioni } from './impostazioni.js';
 import { foglioAperto } from './foglio.js';
@@ -28,6 +29,7 @@ async function avvia() {
   }
 
   impostaTabellaEmoji(dati.emoji);
+  impostaTabellaCalorie(dati.calorie);
   const stato = Stato.carica();
   let schedaAttiva = 'settimana';
   const viste = {};

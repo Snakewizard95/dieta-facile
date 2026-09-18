@@ -205,6 +205,69 @@ button {
 
 .stagione { margin-top: 20px; }
 
+/* --- Calorie stimate ----------------------------------------------------- */
+
+.kcal-giorno {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: -4px 0 10px;
+}
+.kcal-valore { font-size: 0.9rem; font-weight: 600; color: var(--colore-primario); }
+.kcal-nota { font-size: 0.75rem; color: var(--colore-testo-debole); }
+.carta-slot .kcal { font-size: 0.8rem; color: var(--colore-testo-debole); }
+
+.riga-interruttore {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 0;
+  cursor: pointer;
+}
+.riga-interruttore input { width: 22px; height: 22px; accent-color: var(--colore-primario); }
+
+/* --- Ricette ----------------------------------------------------------------- */
+
+.blocco-pasto { margin: 10px 0 14px; }
+.blocco-titolo {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.carta-ricetta {
+  width: 100%;
+  text-align: left;
+  background: var(--colore-carta);
+  border: 1px solid var(--colore-bordo);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin: 6px 0;
+}
+.carta-ricetta:active { background: var(--colore-primario-chiaro); }
+.carta-ricetta-riga { display: flex; align-items: center; gap: 12px; }
+.carta-ricetta-emoji { font-size: 1.6rem; flex: 0 0 auto; }
+.carta-ricetta-testo { min-width: 0; }
+.carta-ricetta-nome { font-weight: 600; }
+.carta-ricetta-dettaglio { font-size: 0.8rem; color: var(--colore-testo-debole); }
+
+.cerca {
+  width: 100%;
+  font: inherit;
+  font-size: 1rem;
+  color: var(--colore-testo);
+  background: var(--colore-carta);
+  border: 1px solid var(--colore-bordo);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin: 4px 0 8px;
+  -webkit-appearance: none;
+}
+
+.lista-ingredienti { margin: 4px 0 8px; padding-left: 20px; }
+.lista-ingredienti li { margin: 3px 0; }
+.procedimento { line-height: 1.5; margin: 4px 0 8px; }
+
 /* --- Contenuto principale ---------------------------------------------- */
 
 #contenuto {

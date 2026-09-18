@@ -7,13 +7,14 @@ let cache = null;
 /** Carica i tre JSON (una sola volta). In caso di errore lancia un messaggio in italiano. */
 export async function caricaDati() {
   if (cache) return cache;
-  const [dieta, ricette, stagioni, emoji] = await Promise.all([
+  const [dieta, ricette, stagioni, emoji, calorie] = await Promise.all([
     caricaJson('dati/dieta.json'),
     caricaJson('dati/ricette.json'),
     caricaJson('dati/stagioni.json'),
-    caricaJson('dati/emoji.json')
+    caricaJson('dati/emoji.json'),
+    caricaJson('dati/calorie.json')
   ]);
-  cache = { dieta, ricette, stagioni, emoji };
+  cache = { dieta, ricette, stagioni, emoji, calorie };
   return cache;
 }
 

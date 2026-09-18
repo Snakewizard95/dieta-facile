@@ -1,0 +1,732 @@
+{
+  "note": "Valori energetici INDICATIVI per 100 g (o 100 ml) di alimento crudo, oppure per pezzo (kcalPz). Fonte: tabelle pubbliche CREA/USDA, arrotondati. Si cerca la prima voce le cui parole compaiono nel nome dell'ingrediente: le voci più specifiche stanno prima. Errore tipico ±15% per porzione: servono solo come curiosità, non per decidere i pasti.",
+  "voci": [
+    {
+      "parole": [
+        "crackers di riso scotti"
+      ],
+      "kcalPz": 120
+    },
+    {
+      "parole": [
+        "weetabix"
+      ],
+      "kcalPz": 65,
+      "kcal100": 360
+    },
+    {
+      "parole": [
+        "fette biscottate"
+      ],
+      "kcalPz": 32,
+      "kcal100": 385
+    },
+    {
+      "parole": [
+        "fette galbusera"
+      ],
+      "kcalPz": 130
+    },
+    {
+      "parole": [
+        "gallette",
+        "wasa"
+      ],
+      "kcalPz": 30,
+      "kcal100": 380
+    },
+    {
+      "parole": [
+        "snack e vai"
+      ],
+      "kcalPz": 150
+    },
+    {
+      "parole": [
+        "barretta"
+      ],
+      "kcalPz": 150
+    },
+    {
+      "parole": [
+        "biscott"
+      ],
+      "kcalPz": 25,
+      "kcal100": 430
+    },
+    {
+      "parole": [
+        "crackers"
+      ],
+      "kcal100": 420
+    },
+    {
+      "parole": [
+        "farina di riso"
+      ],
+      "kcal100": 360
+    },
+    {
+      "parole": [
+        "farina di cocco"
+      ],
+      "kcal100": 400
+    },
+    {
+      "parole": [
+        "farina integrale"
+      ],
+      "kcal100": 320
+    },
+    {
+      "parole": [
+        "fiocchi d'avena",
+        "farina d'avena"
+      ],
+      "kcal100": 375
+    },
+    {
+      "parole": [
+        "farina per polenta"
+      ],
+      "kcal100": 360
+    },
+    {
+      "parole": [
+        "gnocchi"
+      ],
+      "kcal100": 150
+    },
+    {
+      "parole": [
+        "pesce bianco"
+      ],
+      "kcal100": 95
+    },
+    {
+      "parole": [
+        "acciughe / aringhe"
+      ],
+      "kcal100": 150
+    },
+    {
+      "parole": [
+        "tonno al naturale"
+      ],
+      "kcal100": 100
+    },
+    {
+      "parole": [
+        "ricotta"
+      ],
+      "kcal100": 150
+    },
+    {
+      "parole": [
+        "fiocchi di latte"
+      ],
+      "kcal100": 100
+    },
+    {
+      "parole": [
+        "yogurt greco intero"
+      ],
+      "kcal100": 100
+    },
+    {
+      "parole": [
+        "yogurt greco bianco"
+      ],
+      "kcal100": 75
+    },
+    {
+      "parole": [
+        "yogurt bianco magro"
+      ],
+      "kcal100": 45
+    },
+    {
+      "parole": [
+        "trublend"
+      ],
+      "kcalPz": 100
+    },
+    {
+      "parole": [
+        "yogurt bianco (125 g)"
+      ],
+      "kcalPz": 80
+    },
+    {
+      "parole": [
+        "bresaola / fesa"
+      ],
+      "kcal100": 130
+    },
+    {
+      "parole": [
+        "bresaola"
+      ],
+      "kcal100": 150
+    },
+    {
+      "parole": [
+        "fesa di tacchino"
+      ],
+      "kcal100": 105
+    },
+    {
+      "parole": [
+        "prosciutto cotto"
+      ],
+      "kcal100": 130
+    },
+    {
+      "parole": [
+        "vitella / vitellone"
+      ],
+      "kcal100": 125
+    },
+    {
+      "parole": [
+        "legumi secchi"
+      ],
+      "kcal100": 320
+    },
+    {
+      "parole": [
+        "frutta di stagione"
+      ],
+      "kcal100": 50
+    },
+    {
+      "parole": [
+        "frutta surgelata"
+      ],
+      "kcal100": 40
+    },
+    {
+      "parole": [
+        "frutta secca"
+      ],
+      "kcal100": 620
+    },
+    {
+      "parole": [
+        "finocchi o carote"
+      ],
+      "kcal100": 25
+    },
+    {
+      "parole": [
+        "pane integrale",
+        "pane di segale"
+      ],
+      "kcal100": 240
+    },
+    {
+      "parole": [
+        "pane bianco"
+      ],
+      "kcal100": 275
+    },
+    {
+      "parole": [
+        "riso venere"
+      ],
+      "kcal100": 340
+    },
+    {
+      "parole": [
+        "riso integrale"
+      ],
+      "kcal100": 340
+    },
+    {
+      "parole": [
+        "riso"
+      ],
+      "kcal100": 335
+    },
+    {
+      "parole": [
+        "pasta integrale"
+      ],
+      "kcal100": 335
+    },
+    {
+      "parole": [
+        "pasta"
+      ],
+      "kcal100": 350
+    },
+    {
+      "parole": [
+        "quinoa"
+      ],
+      "kcal100": 370
+    },
+    {
+      "parole": [
+        "farro"
+      ],
+      "kcal100": 335
+    },
+    {
+      "parole": [
+        "orzo"
+      ],
+      "kcal100": 320
+    },
+    {
+      "parole": [
+        "cous cous",
+        "couscous"
+      ],
+      "kcal100": 360
+    },
+    {
+      "parole": [
+        "patate"
+      ],
+      "kcal100": 80
+    },
+    {
+      "parole": [
+        "pane"
+      ],
+      "kcal100": 260
+    },
+    {
+      "parole": [
+        "cereali senza zucchero"
+      ],
+      "kcal100": 370
+    },
+    {
+      "parole": [
+        "ceci"
+      ],
+      "kcal100": 340
+    },
+    {
+      "parole": [
+        "lenticchie"
+      ],
+      "kcal100": 325
+    },
+    {
+      "parole": [
+        "fagioli"
+      ],
+      "kcal100": 300
+    },
+    {
+      "parole": [
+        "piselli"
+      ],
+      "kcal100": 310
+    },
+    {
+      "parole": [
+        "fave"
+      ],
+      "kcal100": 340
+    },
+    {
+      "parole": [
+        "albume"
+      ],
+      "kcal100": 50
+    },
+    {
+      "parole": [
+        "uova",
+        "uovo"
+      ],
+      "kcalPz": 78,
+      "kcal100": 130
+    },
+    {
+      "parole": [
+        "primo sale"
+      ],
+      "kcal100": 260
+    },
+    {
+      "parole": [
+        "mozzarella light"
+      ],
+      "kcal100": 170
+    },
+    {
+      "parole": [
+        "mozzarella"
+      ],
+      "kcal100": 250
+    },
+    {
+      "parole": [
+        "parmigiano"
+      ],
+      "kcal100": 390
+    },
+    {
+      "parole": [
+        "yogurt"
+      ],
+      "kcal100": 65,
+      "kcalPz": 80
+    },
+    {
+      "parole": [
+        "kefir"
+      ],
+      "kcal100": 55
+    },
+    {
+      "parole": [
+        "latte scremato"
+      ],
+      "kcal100": 35
+    },
+    {
+      "parole": [
+        "latte"
+      ],
+      "kcal100": 46
+    },
+    {
+      "parole": [
+        "salmone affumicato"
+      ],
+      "kcal100": 180
+    },
+    {
+      "parole": [
+        "tonno fresco"
+      ],
+      "kcal100": 160
+    },
+    {
+      "parole": [
+        "salmone fresco"
+      ],
+      "kcal100": 190
+    },
+    {
+      "parole": [
+        "acciughe",
+        "alici"
+      ],
+      "kcal100": 100
+    },
+    {
+      "parole": [
+        "aringhe"
+      ],
+      "kcal100": 200
+    },
+    {
+      "parole": [
+        "sgombro"
+      ],
+      "kcal100": 170
+    },
+    {
+      "parole": [
+        "sarde"
+      ],
+      "kcal100": 130
+    },
+    {
+      "parole": [
+        "spigola"
+      ],
+      "kcal100": 100
+    },
+    {
+      "parole": [
+        "orata"
+      ],
+      "kcal100": 120
+    },
+    {
+      "parole": [
+        "merluzzo"
+      ],
+      "kcal100": 80
+    },
+    {
+      "parole": [
+        "calamaro"
+      ],
+      "kcal100": 70
+    },
+    {
+      "parole": [
+        "polpo"
+      ],
+      "kcal100": 60
+    },
+    {
+      "parole": [
+        "seppia"
+      ],
+      "kcal100": 70
+    },
+    {
+      "parole": [
+        "gamber"
+      ],
+      "kcal100": 80
+    },
+    {
+      "parole": [
+        "pollo",
+        "tacchino"
+      ],
+      "kcal100": 110
+    },
+    {
+      "parole": [
+        "coniglio"
+      ],
+      "kcal100": 120
+    },
+    {
+      "parole": [
+        "vitellone"
+      ],
+      "kcal100": 130
+    },
+    {
+      "parole": [
+        "vitella"
+      ],
+      "kcal100": 110
+    },
+    {
+      "parole": [
+        "manzo"
+      ],
+      "kcal100": 140
+    },
+    {
+      "parole": [
+        "banan"
+      ],
+      "kcalPz": 105,
+      "kcal100": 90
+    },
+    {
+      "parole": [
+        "mele",
+        "mela"
+      ],
+      "kcalPz": 95,
+      "kcal100": 55
+    },
+    {
+      "parole": [
+        "aranc"
+      ],
+      "kcal100": 40
+    },
+    {
+      "parole": [
+        "mandarin"
+      ],
+      "kcal100": 50
+    },
+    {
+      "parole": [
+        "clementin"
+      ],
+      "kcal100": 45
+    },
+    {
+      "parole": [
+        "kiwi"
+      ],
+      "kcal100": 55
+    },
+    {
+      "parole": [
+        "pere",
+        "pera"
+      ],
+      "kcal100": 55
+    },
+    {
+      "parole": [
+        "pompelm"
+      ],
+      "kcal100": 30
+    },
+    {
+      "parole": [
+        "limon"
+      ],
+      "kcal100": 25
+    },
+    {
+      "parole": [
+        "fragol"
+      ],
+      "kcal100": 30
+    },
+    {
+      "parole": [
+        "nespol"
+      ],
+      "kcal100": 40
+    },
+    {
+      "parole": [
+        "ciliegi"
+      ],
+      "kcal100": 55
+    },
+    {
+      "parole": [
+        "albicocc"
+      ],
+      "kcal100": 40
+    },
+    {
+      "parole": [
+        "pesch"
+      ],
+      "kcal100": 40
+    },
+    {
+      "parole": [
+        "susin"
+      ],
+      "kcal100": 45
+    },
+    {
+      "parole": [
+        "melon"
+      ],
+      "kcal100": 35
+    },
+    {
+      "parole": [
+        "anguri"
+      ],
+      "kcal100": 25
+    },
+    {
+      "parole": [
+        "lampon",
+        "more"
+      ],
+      "kcal100": 40
+    },
+    {
+      "parole": [
+        "fichi"
+      ],
+      "kcal100": 65
+    },
+    {
+      "parole": [
+        "mirtill"
+      ],
+      "kcal100": 50
+    },
+    {
+      "parole": [
+        "uva"
+      ],
+      "kcal100": 65
+    },
+    {
+      "parole": [
+        "melogran",
+        "cachi"
+      ],
+      "kcal100": 70
+    },
+    {
+      "parole": [
+        "castagn"
+      ],
+      "kcal100": 190
+    },
+    {
+      "parole": [
+        "avocado"
+      ],
+      "kcal100": 160
+    },
+    {
+      "parole": [
+        "crema spalmabile"
+      ],
+      "kcal100": 600
+    },
+    {
+      "parole": [
+        "semi di chia"
+      ],
+      "kcal100": 480
+    },
+    {
+      "parole": [
+        "cocco rapè"
+      ],
+      "kcal100": 620
+    },
+    {
+      "parole": [
+        "gocce di cioccolato"
+      ],
+      "kcal100": 500
+    },
+    {
+      "parole": [
+        "cioccolato fondente"
+      ],
+      "kcal100": 560
+    },
+    {
+      "parole": [
+        "cacao amaro"
+      ],
+      "kcal100": 300
+    },
+    {
+      "parole": [
+        "miele"
+      ],
+      "kcal100": 300
+    },
+    {
+      "parole": [
+        "marmellata"
+      ],
+      "kcal100": 150
+    },
+    {
+      "parole": [
+        "olio"
+      ],
+      "kcal100": 900
+    },
+    {
+      "parole": [
+        "finocchi"
+      ],
+      "kcal100": 15
+    },
+    {
+      "parole": [
+        "carote"
+      ],
+      "kcal100": 35
+    }
+  ]
+}

@@ -64,10 +64,14 @@ js/backup.js          esporta/importa file JSON
 js/foglio.js          pannello a comparsa dal basso
 js/settimana.js       scheda Settimana
 js/spesa.js           scheda Spesa
-js/ricette.js         scheda Ricette (Fase 5)
+js/ricette.js         scheda Ricette: suggerimenti per pasto + ricettario con ricerca
+js/emoji.js           emoji per alimenti e piatti (da dati/emoji.json)
+js/calorie.js         stima indicativa delle calorie (da dati/calorie.json), disattivabile
 dati/dieta.json       piano nutrizionale strutturato
 dati/ricette.json     ricettario
 dati/stagioni.json    frutta e verdura di stagione per mese
+dati/emoji.json       parole chiave → emoji (l'ordine conta: specifiche prima)
+dati/calorie.json     parole chiave → kcal per 100 g o per pezzo (stime, specifiche prima)
 docs/VERIFICA_DATI.md tabella leggibile dei dati, per controllo contro il PDF
 docs/SINCRONIZZAZIONE.md guida per repository privato e token
 icone/                icone PNG per la PWA
@@ -88,6 +92,10 @@ icone/                icone PNG per la PWA
 
 Non passare alla fase successiva senza la conferma dell'utente.
 
+Stato al 18/09/2026: Fasi 1-5 completate. L'app è pubblicata su GitHub Pages e installata
+sull'iPhone; la sincronizzazione GitHub è attiva. Ad ogni pubblicazione aumentare `VERSIONE`
+in `sw.js` e ricaricare i file cambiati su GitHub (guida in `docs/PUBBLICAZIONE.md`).
+
 ## 7. Regole operative
 
 1. Ogni modifica ai JSON della dieta va riportata anche in `docs/VERIFICA_DATI.md`.
@@ -96,3 +104,5 @@ Non passare alla fase successiva senza la conferma dell'utente.
    si segnala il punto in VERIFICA_DATI.md nella sezione "Punti da chiarire".
 4. Questo strumento aiuta a organizzare un piano prescritto da una professionista; non
    dà consigli nutrizionali propri e non modifica le grammature di sua iniziativa.
+5. Le calorie sono una stima dichiarata come tale, per curiosità: mai presentarle come
+   dato preciso né usarle per suggerire modifiche ai pasti.

@@ -12,6 +12,7 @@ import {
   quantitaCarbo, giornoCompleto, formattaQuantita, haTag, maiuscola, varianteScelta, chiaveVariante
 } from './vincoli.js';
 import { apriFoglio, chiudiFoglio, aggiornaFoglio } from './foglio.js';
+import { kcalPasto, kcalGiorno, kcalMediaSettimana, formattaKcal } from './calorie.js';
 
 /** ctx = { dieta, stagioni, stato, salva(), aggiornaIntestazione(), apriImpostazioni() } */
 export function montaSettimana(contenitore, ctx) {
@@ -46,6 +47,10 @@ export function montaSettimana(contenitore, ctx) {
     disegna();
   }
 
+  function mostraCalorie() {
+    return caricaUi().calorie !== false;
+  }
+
   function salvaEDisegna() {
     ctx.salva();
     disegna();
@@ -66,6 +71,7 @@ export function montaSettimana(contenitore, ctx) {
     titolo.className = 'titolo-giorno';
     titolo.textContent = dieta.giorni.find(g => g.id === giornoAttivo).nome;
     contenitore.appendChild(titolo);
+    if (mostraCalorie()) contenitore.appendChild(disegnaCalorieGiorno(dieta, p, giornoAttivo));
 
     const listaSlot = document.createElement('div');
     listaSlot.className = 'slot';
@@ -115,6 +121,25 @@ export function montaSettimana(contenitore, ctx) {
     }
     blocco.appendChild(r2);
     return blocco;
+  }
+
+  function disegnaCalorieGiorno(dieta, p, giorno) {
+    const k = kcalGiorno(dieta, p, giorno);
+    const box = el('div', 'kcal-giorno');
+    if (k.pasti === 0) {
+      box.textContent = 'Calorie: compila i pasti per vedere la stima.';
+      return box;
+    }
+    const note = [];
+    if (k.libero) note.push('senza il pasto libero');
+    if (k.incompleto) note.push('alcuni alimenti senza valore');
+    if (k.pasti < dieta.slot.length) note.push(`${k.pasti} pasti su ${dieta.slot.length}`);
+    let testo = `≈ ${formattaKcal(k.kcal)} kcal oggi`;
+    const media = kcalMediaSettimana(dieta, p);
+    if (media && media.giorni > 1) testo += ` · media ≈ ${formattaKcal(media.media)} kcal/giorno`;
+    box.appendChild(el('span', 'kcal-valore', testo));
+    box.appendChild(el('span', 'kcal-nota', `stima indicativa (±15%), verdura esclusa${note.length ? ' · ' + note.join(' · ') : ''}`));
+    return box;
   }
 
   function disegnaGiorni(dieta, p) {
@@ -185,6 +210,11 @@ export function montaSettimana(contenitore, ctx) {
       if (opz && haTag(opz, 'frutta')) {
         carta.appendChild(el('span', 'dettaglio-extra', `Frutto: ${extra.frutta ? extra.frutta : 'di stagione (tocca per scegliere)'}`));
       }
+    }
+
+    if (mostraCalorie()) {
+      const k = kcalPasto(dieta, p, giorno, slotDef.id);
+      if (!k.vuoto && !k.libero) carta.appendChild(el('span', 'kcal', `≈ ${formattaKcal(k.kcal)} kcal${k.incompleto ? ' (parziale)' : ''}`));
     }
 
     carta.addEventListener('click', () => apriScelta(giorno, slotDef));

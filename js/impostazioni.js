@@ -2,7 +2,7 @@
 // impostazioni.js — pannello Impostazioni: persone, sincronizzazione GitHub, backup
 // ==========================================================================
 
-import { impostaPersone, nuovoIdPersona } from './stato.js';
+import { impostaPersone, nuovoIdPersona, caricaUi, salvaUi } from './stato.js';
 import { apriFoglio, chiudiFoglio } from './foglio.js';
 import { leggiConfig, salvaConfig, configurato, provaConnessione } from './sync.js';
 import { scaricaBackup, scegliFileBackup } from './backup.js';
@@ -124,6 +124,25 @@ export function apriImpostazioni(ctx) {
     esito.textContent = 'Non configurato: i dati restano solo su questo dispositivo.';
   }));
   corpo.appendChild(azioniSync);
+
+  // --- Calorie stimate --------------------------------------------------------
+  corpo.appendChild(titolo('Calorie stimate'));
+  const rigaCal = document.createElement('label');
+  rigaCal.className = 'riga-interruttore';
+  const cbCal = document.createElement('input');
+  cbCal.type = 'checkbox';
+  cbCal.checked = caricaUi().calorie !== false;
+  cbCal.addEventListener('change', () => {
+    salvaUi({ ...caricaUi(), calorie: cbCal.checked });
+    ctx.ridisegna();
+  });
+  rigaCal.appendChild(cbCal);
+  rigaCal.appendChild(document.createTextNode(' Mostra le calorie stimate nella scheda Settimana'));
+  corpo.appendChild(rigaCal);
+  const notaCal = document.createElement('p');
+  notaCal.className = 'nota';
+  notaCal.textContent = 'È una stima da tabelle pubbliche (CREA/USDA), con un errore tipico del 15% per porzione. Non tiene conto della verdura, del pasto libero né delle sostituzioni fatte a tavola. Serve solo come curiosità: il piano è già bilanciato dalla nutrizionista, non usare i numeri per decidere cosa mangiare.';
+  corpo.appendChild(notaCal);
 
   // --- Backup ---------------------------------------------------------------
   corpo.appendChild(titolo('Backup su file'));
