@@ -50,7 +50,12 @@ Il modo più semplice, senza Terminale:
 
 1. Su GitHub apri il repository `dieta-facile` → **Add file** → **Upload files**.
 2. Trascina di nuovo i file o le cartelle cambiati (quelli con lo stesso nome vengono sostituiti).
+   **Prima di confermare, controlla la lista dei file** che compare sotto l'area di trascinamento:
+   se manca una cartella, trascinala di nuovo. Con molte cartelle insieme può perdersene qualcuna;
+   in caso di dubbio fai due caricamenti separati.
 3. **Commit changes**. Dopo 1-2 minuti l'app online è aggiornata.
+   Per controllare cosa è davvero online: nel repository apri le cartelle e guarda dimensione e
+   data dei file, oppure apri `https://TUO-UTENTE.github.io/dieta-facile/css/stile.css` nel browser.
 4. Sull'iPhone chiudi e riapri l'app: la nuova versione viene scaricata da sola.
    Se non la vedi, aprila due volte (la prima scarica, la seconda usa la nuova).
 

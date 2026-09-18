@@ -467,33 +467,45 @@ export function montaSettimana(contenitore, ctx) {
     // 1) secondi: permuta i giorni dello schema tipo, separatamente per pranzo e cena
     const giorniMescolati = { pranzo: mescola(GIORNI), cena: mescola(GIORNI) };
     const secondoPer = { pranzo: {}, cena: {} };
+    const carboPer = { pranzo: {}, cena: {} }; // carboidrato fissato dallo schema, se la dieta lo indica
     for (const slot of SLOT_PRINCIPALI) {
       GIORNI.forEach((g, i) => {
-        const idSchema = schema[slot][giorniMescolati[slot][i]];
+        const giornoSchema = giorniMescolati[slot][i];
+        const idSchema = schema[slot][giornoSchema];
+        if (schema.carboidrati && schema.carboidrati[slot]) {
+          carboPer[slot][g] = trovaCarbo(dieta, slot, schema.carboidrati[slot][giornoSchema]);
+        }
         const base = trovaSecondo(dieta, slot, idSchema);
         if (!base) return;
         let categoria = base.categoria;
         if (slot === 'cena' && categoria === 'formaggio' && Math.random() < 0.5) categoria = 'uova';
         const candidati = dieta[slot].secondi.filter(s => s.categoria === categoria);
-        secondoPer[slot][g] = candidati.length ? aCaso(candidati) : base;
+        secondoPer[slot][g] = { base, candidati };
       });
     }
 
     for (const g of GIORNI) {
       const giorno = p.scelte[g];
 
-      // 2) colazione e spuntino
-      const col = scegliCasuale(p, g, 'colazione', null, dieta.colazione.opzioni);
-      giorno.colazione = col ? col.id : dieta.colazione.opzioni[0].id;
-      giorno.spuntino = dieta.spuntino.opzioni[0].id;
+      // 2) colazione e spuntino (solo se la dieta li prevede)
+      if (dieta.colazione) {
+        const col = scegliCasuale(p, g, 'colazione', null, dieta.colazione.opzioni);
+        giorno.colazione = col ? col.id : dieta.colazione.opzioni[0].id;
+      }
+      if (dieta.spuntino) {
+        const spu = scegliCasuale(p, g, 'spuntino', null, dieta.spuntino.opzioni);
+        giorno.spuntino = spu ? spu.id : dieta.spuntino.opzioni[0].id;
+      }
 
       // 3) pranzo e cena: secondo (con variante), carboidrato (con variante), verdure
       for (const slot of SLOT_PRINCIPALI) {
-        const secondo = secondoPer[slot][g] || null;
+        const scelta = secondoPer[slot][g];
+        // tra i secondi della categoria prevista, uno a caso che non superi i limiti (es. affettato max 1)
+        const secondo = scelta ? (scegliCasuale(p, g, slot, 'secondo', scelta.candidati) || scelta.base) : null;
         giorno[slot] = { carbo: null, secondo: secondo ? secondo.id : null };
         if (!secondo || secondo.categoria === 'libero') continue;
         if (secondo.varianti) impostaExtra(p, g, slot, chiaveVariante('secondo'), aCaso(secondo.varianti).id);
-        const carbo = scegliCasuale(p, g, slot, 'carbo', dieta[slot].carboidrati);
+        const carbo = carboPer[slot][g] || scegliCasuale(p, g, slot, 'carbo', dieta[slot].carboidrati);
         if (carbo) {
           giorno[slot].carbo = carbo.id;
           if (carbo.varianti) impostaExtra(p, g, slot, chiaveVariante('carbo'), aCaso(carbo.varianti).id);
@@ -502,16 +514,20 @@ export function montaSettimana(contenitore, ctx) {
         impostaExtra(p, g, slot, 'verdura', mescola(st.verdura).slice(0, nVerdure));
       }
 
-      // 4) merenda: senza frutta se il giorno ne ha già abbastanza
-      const fruttiOggi = fruttaDelGiorno(dieta, p, g, 'merenda');
-      const merende = fruttiOggi >= dieta.fruttaAlGiorno.consigliata
-        ? dieta.merenda.opzioni.filter(o => !haTag(o, 'frutta'))
-        : dieta.merenda.opzioni;
-      const mer = scegliCasuale(p, g, 'merenda', null, merende) || scegliCasuale(p, g, 'merenda', null, dieta.merenda.opzioni);
-      giorno.merenda = mer ? mer.id : null;
+      // 4) merenda: senza frutta se il giorno ne ha già abbastanza (e se esistono alternative)
+      if (dieta.merenda) {
+        const fruttiOggi = fruttaDelGiorno(dieta, p, g, 'merenda');
+        const senzaFrutta = dieta.merenda.opzioni.filter(o => !haTag(o, 'frutta'));
+        const merende = fruttiOggi >= dieta.fruttaAlGiorno.consigliata && senzaFrutta.length ? senzaFrutta : dieta.merenda.opzioni;
+        const mer = scegliCasuale(p, g, 'merenda', null, merende) || scegliCasuale(p, g, 'merenda', null, dieta.merenda.opzioni);
+        giorno.merenda = mer ? mer.id : null;
+      }
 
       // 5) dopo cena
-      giorno.dopocena = aCaso(dieta.dopocena.opzioni.filter(o => o.ingredienti.length)).id;
+      if (dieta.dopocena) {
+        const conIngredienti = dieta.dopocena.opzioni.filter(o => o.ingredienti.length);
+        giorno.dopocena = aCaso(conIngredienti.length ? conIngredienti : dieta.dopocena.opzioni).id;
+      }
 
       // 6) frutto di stagione e varianti per gli slot semplici
       for (const s of dieta.slot) {

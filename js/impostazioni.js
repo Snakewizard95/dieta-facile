@@ -6,10 +6,38 @@ import { impostaPersone, nuovoIdPersona, caricaUi, salvaUi } from './stato.js';
 import { apriFoglio, chiudiFoglio } from './foglio.js';
 import { leggiConfig, salvaConfig, configurato, provaConnessione } from './sync.js';
 import { scaricaBackup, scegliFileBackup } from './backup.js';
+import { caricaRegistro } from './dati.js';
 
-/** ctx = { stato, salva(), applicaStato(nuovo), sync, ridisegna() } */
-export function apriImpostazioni(ctx) {
+/** ctx = { dietaId, dietaInfo, stato, salva(), applicaStato(nuovo), sync, ridisegna(), cambiaDieta(id) } */
+export async function apriImpostazioni(ctx) {
   const corpo = document.createElement('div');
+
+  // --- Dieta ----------------------------------------------------------------
+  corpo.appendChild(titolo('Dieta'));
+  const registro = await caricaRegistro();
+  const spiegaDieta = document.createElement('p');
+  spiegaDieta.className = 'nota';
+  spiegaDieta.textContent = `Dieta in uso su questo dispositivo: ${ctx.dietaInfo.nome}.` +
+    (registro.length > 1 ? ' Ogni famiglia usa la propria dieta e il proprio repository di sincronizzazione: cambiando dieta le scelte della settimana vengono azzerate.' : '');
+  corpo.appendChild(spiegaDieta);
+  if (registro.length > 1) {
+    const chips = document.createElement('div');
+    chips.className = 'chips';
+    for (const d of registro) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip chip-btn' + (d.id === ctx.dietaId ? ' attiva' : '');
+      b.textContent = d.nome;
+      if (d.id !== ctx.dietaId) {
+        b.addEventListener('click', () => {
+          if (!confirm(`Passo alla dieta "${d.nome}"? Le scelte della settimana attuale restano salvate per la dieta "${ctx.dietaInfo.nome}", ma ricordati di cambiare anche il repository di sincronizzazione (sezione sotto), altrimenti l'app tornerà alla dieta di quel repository.`)) return;
+          ctx.cambiaDieta(d.id);
+        });
+      }
+      chips.appendChild(b);
+    }
+    corpo.appendChild(chips);
+  }
 
   // --- Persone --------------------------------------------------------------
   corpo.appendChild(titolo('Persone'));
@@ -157,7 +185,7 @@ export function apriImpostazioni(ctx) {
       ctx.ridisegna();
       chiudiFoglio();
       alert('Backup importato.');
-    });
+    }, ctx.dietaId);
   }));
   corpo.appendChild(azioniBackup);
 

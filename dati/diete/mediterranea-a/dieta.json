@@ -1,0 +1,2627 @@
+{
+  "versione": "1.1",
+  "note": "Trascrizione strutturata del piano nutrizionale. Pesi a crudo e al netto degli scarti. Unità: g = grammi, ml = millilitri, pz = pezzi.",
+  "giorni": [
+    {
+      "id": "lun",
+      "nome": "Lunedì"
+    },
+    {
+      "id": "mar",
+      "nome": "Martedì"
+    },
+    {
+      "id": "mer",
+      "nome": "Mercoledì"
+    },
+    {
+      "id": "gio",
+      "nome": "Giovedì"
+    },
+    {
+      "id": "ven",
+      "nome": "Venerdì"
+    },
+    {
+      "id": "sab",
+      "nome": "Sabato"
+    },
+    {
+      "id": "dom",
+      "nome": "Domenica"
+    }
+  ],
+  "slot": [
+    {
+      "id": "colazione",
+      "nome": "Colazione",
+      "tipo": "scelta-singola"
+    },
+    {
+      "id": "spuntino",
+      "nome": "Spuntino",
+      "tipo": "scelta-singola"
+    },
+    {
+      "id": "pranzo",
+      "nome": "Pranzo",
+      "tipo": "pasto-principale"
+    },
+    {
+      "id": "merenda",
+      "nome": "Merenda",
+      "tipo": "scelta-singola"
+    },
+    {
+      "id": "cena",
+      "nome": "Cena",
+      "tipo": "pasto-principale"
+    },
+    {
+      "id": "dopocena",
+      "nome": "Dopo cena",
+      "tipo": "scelta-singola"
+    }
+  ],
+  "reparti": [
+    {
+      "id": "cereali",
+      "nome": "Cereali e derivati"
+    },
+    {
+      "id": "confezionati",
+      "nome": "Prodotti confezionati"
+    },
+    {
+      "id": "frigo",
+      "nome": "Banco frigo"
+    },
+    {
+      "id": "secondi",
+      "nome": "Secondi (carne, pesce, uova)"
+    },
+    {
+      "id": "ortofrutta",
+      "nome": "Frutta e verdura"
+    },
+    {
+      "id": "altro",
+      "nome": "Altro"
+    }
+  ],
+  "limitiSettimanali": [
+    {
+      "id": "biscotti",
+      "nome": "Biscotti",
+      "tag": "biscotti",
+      "max": 2,
+      "slot": [
+        "colazione"
+      ],
+      "descrizione": "Colazione con biscotti max 2 volte a settimana"
+    },
+    {
+      "id": "ricotta-colazione",
+      "nome": "Ricotta a colazione",
+      "tag": "ricotta-colazione",
+      "max": 2,
+      "slot": [
+        "colazione"
+      ],
+      "descrizione": "Colazione con ricotta max 2 volte a settimana"
+    },
+    {
+      "id": "colazione-salata",
+      "nome": "Colazione salata",
+      "tag": "colazione-salata",
+      "max": 2,
+      "slot": [
+        "colazione"
+      ],
+      "descrizione": "Colazione salata max 2 volte a settimana"
+    },
+    {
+      "id": "mugcake",
+      "nome": "Mugcake",
+      "tag": "mugcake",
+      "max": 1,
+      "slot": [
+        "colazione"
+      ],
+      "descrizione": "Mugcake max 1 volta a settimana"
+    },
+    {
+      "id": "patate",
+      "nome": "Patate",
+      "tag": "patate",
+      "max": 2,
+      "slot": [
+        "pranzo",
+        "cena"
+      ],
+      "descrizione": "Patate al posto di pasta/pane max 1-2 volte a settimana"
+    },
+    {
+      "id": "barretta",
+      "nome": "Barretta",
+      "tag": "barretta",
+      "max": 1,
+      "slot": [
+        "merenda"
+      ],
+      "descrizione": "Barretta max 1 volta a settimana"
+    },
+    {
+      "id": "pasto-libero",
+      "nome": "Pasto libero",
+      "tag": "libero",
+      "max": 1,
+      "slot": [
+        "pranzo",
+        "cena"
+      ],
+      "descrizione": "Un solo pasto libero a settimana (domenica a pranzo o sabato a cena)"
+    }
+  ],
+  "fruttaAlGiorno": {
+    "consigliata": 2,
+    "descrizione": "Consigliati 2 frutti al giorno. Se colazione e spuntino contengono già frutta, per la merenda preferire le alternative senza frutta."
+  },
+  "frequenzeSecondi": {
+    "descrizione": "Conteggiate su pranzo + cena dell'intera settimana. Il pasto libero non conta.",
+    "categorie": [
+      {
+        "id": "legumi",
+        "nome": "Legumi",
+        "min": 3,
+        "max": 4
+      },
+      {
+        "id": "carne_bianca",
+        "nome": "Carne bianca",
+        "min": 2,
+        "max": 2
+      },
+      {
+        "id": "carne_rossa",
+        "nome": "Carne rossa",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "id": "pesce",
+        "nome": "Pesce (fresco + conservato)",
+        "min": 3,
+        "max": 3,
+        "somma": [
+          "pesce_fresco",
+          "pesce_conservato"
+        ]
+      },
+      {
+        "id": "pesce_conservato",
+        "nome": "di cui pesce conservato",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "id": "uova",
+        "nome": "Uova",
+        "min": 1,
+        "max": 2
+      },
+      {
+        "id": "formaggio",
+        "nome": "Formaggi",
+        "min": 1,
+        "max": 2
+      }
+    ]
+  },
+  "colazione": {
+    "opzioni": [
+      {
+        "id": "col-yogurt-fruttasecca",
+        "nome": "Yogurt greco + frutta secca + frutto",
+        "descrizione": "1 vasetto yogurt greco bianco 2% + 15 g frutta secca (o crema 100% frutta secca) + 1 frutto (oppure 1 cucchiaino di marmellata al posto del frutto)",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Yogurt greco bianco 2%",
+            "q": 170,
+            "u": "g",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Frutta secca",
+            "q": 15,
+            "u": "g",
+            "reparto": "altro"
+          },
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ]
+      },
+      {
+        "id": "col-biscotti",
+        "nome": "Latte o yogurt + biscotti + frutto",
+        "descrizione": "200 ml latte p.s. (o 1 vasetto yogurt greco 2%) + 30 g biscotti concessi + 1 frutto. MAX 2 VOLTE A SETTIMANA",
+        "tag": [
+          "biscotti",
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Latte parzialmente scremato",
+            "q": 200,
+            "u": "ml",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Biscotti concessi (Privolat, Megliocosì, Orosaiwa, Magretti…)",
+            "q": 30,
+            "u": "g",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ]
+      },
+      {
+        "id": "col-cereali",
+        "nome": "Latte o yogurt + cereali + frutto",
+        "descrizione": "200 ml latte p.s. (o 1 vasetto yogurt greco 2%) + 40 g cereali senza zucchero (farro/orzo/riso soffiato, fiocchi d'avena, cornflakes 100% mais) + 1 frutto",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Latte parzialmente scremato",
+            "q": 200,
+            "u": "ml",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Cereali senza zucchero",
+            "q": 40,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ]
+      },
+      {
+        "id": "col-pane-yogurt",
+        "nome": "Pane integrale + yogurt greco + frutto + frutta secca",
+        "descrizione": "1 vasetto yogurt greco 2% spalmato su 40 g pane integrale tostato + 1 frutto (es. banana a rondelle) + 15 g frutta secca o crema 100% frutta secca",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Yogurt greco bianco 2%",
+            "q": 170,
+            "u": "g",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Pane integrale",
+            "q": 40,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Frutta secca",
+            "q": 15,
+            "u": "g",
+            "reparto": "altro"
+          }
+        ]
+      },
+      {
+        "id": "col-pane-marmellata",
+        "nome": "Pane integrale + marmellata + yogurt magro",
+        "descrizione": "1 vasetto yogurt bianco magro (o 200 ml latte scremato) + 40 g pane integrale tostato + 15 g marmellata senza zuccheri (Hero light)",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Yogurt bianco magro (Vipiteno 0,1%)",
+            "q": 125,
+            "u": "g",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Pane integrale",
+            "q": 40,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Marmellata senza zuccheri (Hero light)",
+            "q": 15,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "col-fettamisu",
+        "nome": "Fettamisù",
+        "descrizione": "3 fette biscottate integrali bagnate nel caffè, intervallate con 1 vasetto di yogurt (normale o greco) + 1 cucchiaino di miele + spolverata di cacao amaro",
+        "tag": [],
+        "ricetta": "fettamisu",
+        "ingredienti": [
+          {
+            "nome": "Fette biscottate integrali",
+            "q": 3,
+            "u": "pz",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Yogurt bianco (125 g) o greco (170 g)",
+            "q": 1,
+            "u": "pz",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Miele",
+            "q": 5,
+            "u": "g",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Cacao amaro",
+            "q": 5,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "col-weetabix",
+        "nome": "Latte + Weetabix + crema frutta secca",
+        "descrizione": "200 ml latte + 3 Weetabix + 15 g crema spalmabile 100% frutta secca + 1 cucchiaino di marmellata",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Latte parzialmente scremato",
+            "q": 200,
+            "u": "ml",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Weetabix",
+            "q": 3,
+            "u": "pz",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Crema spalmabile 100% frutta secca",
+            "q": 15,
+            "u": "g",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Marmellata senza zuccheri (Hero light)",
+            "q": 5,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "col-chia",
+        "nome": "Chia pudding con kefir",
+        "descrizione": "200 ml kefir + 15 g semi di chia, in frigo tutta la notte; la mattina aggiungere 1 frutto",
+        "tag": [
+          "frutta"
+        ],
+        "ricetta": "chia-pudding",
+        "ingredienti": [
+          {
+            "nome": "Kefir",
+            "q": 200,
+            "u": "ml",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Semi di chia",
+            "q": 15,
+            "u": "g",
+            "reparto": "altro"
+          },
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ]
+      },
+      {
+        "id": "col-ricotta",
+        "nome": "Pane + ricotta + marmellata + frutta secca",
+        "descrizione": "40 g pane integrale + 50 g ricotta di mucca + marmellata Hero light + 15 g frutta secca. MAX 2 VOLTE A SETTIMANA",
+        "tag": [
+          "ricotta-colazione"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Pane integrale",
+            "q": 40,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Ricotta di mucca",
+            "q": 50,
+            "u": "g",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Marmellata senza zuccheri (Hero light)",
+            "q": 15,
+            "u": "g",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Frutta secca",
+            "q": 15,
+            "u": "g",
+            "reparto": "altro"
+          }
+        ]
+      },
+      {
+        "id": "col-avocado",
+        "nome": "Pane + avocado + frutto",
+        "descrizione": "40 g pane integrale + 40 g avocado + 1 frutto o 1 spremuta d'arancia",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Pane integrale",
+            "q": 40,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Avocado",
+            "q": 40,
+            "u": "g",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Frutta di stagione (o arance per spremuta)",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ]
+      },
+      {
+        "id": "col-salata",
+        "nome": "Colazione salata: pane + affettato magro + frutto",
+        "descrizione": "40 g pane integrale + 60 g bresaola / fesa di tacchino / prosciutto cotto sgrassato + 1 frutto o 1 spremuta. MAX 2 VOLTE A SETTIMANA",
+        "tag": [
+          "colazione-salata",
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Pane integrale",
+            "q": 40,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Bresaola / fesa di tacchino / prosciutto cotto sgrassato",
+            "q": 60,
+            "u": "g",
+            "reparto": "secondi"
+          },
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "bresaola",
+            "nome": "Bresaola",
+            "ingredienti": [
+              {
+                "nome": "Bresaola",
+                "q": 60,
+                "u": "g",
+                "reparto": "secondi"
+              },
+              {
+                "nome": "Pane integrale",
+                "q": 40,
+                "u": "g",
+                "reparto": "cereali"
+              },
+              {
+                "nome": "Frutta di stagione",
+                "tipo": "frutta",
+                "q": 200,
+                "u": "g",
+                "reparto": "ortofrutta"
+              }
+            ]
+          },
+          {
+            "id": "tacchino",
+            "nome": "Fesa di tacchino",
+            "ingredienti": [
+              {
+                "nome": "Fesa di tacchino",
+                "q": 60,
+                "u": "g",
+                "reparto": "secondi"
+              },
+              {
+                "nome": "Pane integrale",
+                "q": 40,
+                "u": "g",
+                "reparto": "cereali"
+              },
+              {
+                "nome": "Frutta di stagione",
+                "tipo": "frutta",
+                "q": 200,
+                "u": "g",
+                "reparto": "ortofrutta"
+              }
+            ]
+          },
+          {
+            "id": "cotto",
+            "nome": "Prosciutto cotto sgrassato",
+            "ingredienti": [
+              {
+                "nome": "Prosciutto cotto sgrassato",
+                "q": 60,
+                "u": "g",
+                "reparto": "secondi"
+              },
+              {
+                "nome": "Pane integrale",
+                "q": 40,
+                "u": "g",
+                "reparto": "cereali"
+              },
+              {
+                "nome": "Frutta di stagione",
+                "tipo": "frutta",
+                "q": 200,
+                "u": "g",
+                "reparto": "ortofrutta"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "col-porridge",
+        "nome": "Porridge",
+        "descrizione": "30 g fiocchi d'avena cotti in 150 ml latte p.s. + 15 g frutta secca (o 1 cucchiaino crema frutta secca o 1 quadratino cioccolato fondente) + 1 piccolo frutto",
+        "tag": [
+          "frutta"
+        ],
+        "ricetta": "porridge",
+        "ingredienti": [
+          {
+            "nome": "Fiocchi d'avena",
+            "q": 30,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Latte parzialmente scremato",
+            "q": 150,
+            "u": "ml",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Frutta secca",
+            "q": 15,
+            "u": "g",
+            "reparto": "altro"
+          },
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 150,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ]
+      },
+      {
+        "id": "col-banana-pancakes",
+        "nome": "Banana pancakes",
+        "descrizione": "Metà della ricetta (che è per 2 colazioni): banana, uovo, farina d'avena o integrale, latte, lievito. Guarnire con 1 cucchiaino di marmellata Hero light + 15 g frutta secca",
+        "tag": [
+          "frutta"
+        ],
+        "ricetta": "banana-pancakes",
+        "ingredienti": [
+          {
+            "nome": "Banana",
+            "q": 0.5,
+            "u": "pz",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Uova",
+            "q": 0.5,
+            "u": "pz",
+            "reparto": "secondi"
+          },
+          {
+            "nome": "Farina d'avena o integrale",
+            "q": 25,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Marmellata senza zuccheri (Hero light)",
+            "q": 5,
+            "u": "g",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Frutta secca",
+            "q": 15,
+            "u": "g",
+            "reparto": "altro"
+          }
+        ]
+      },
+      {
+        "id": "col-pancake-cacao",
+        "nome": "Pancake al cacao",
+        "descrizione": "1 uovo + 10 g farina di cocco + cacao amaro + cannella. Guarnire con 1 cucchiaino di miele o 1 frutto",
+        "tag": [],
+        "ricetta": "pancake-cacao",
+        "ingredienti": [
+          {
+            "nome": "Uova",
+            "q": 1,
+            "u": "pz",
+            "reparto": "secondi"
+          },
+          {
+            "nome": "Farina di cocco",
+            "q": 10,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Cacao amaro",
+            "q": 5,
+            "u": "g",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Miele",
+            "q": 5,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "col-pancakes-cocco",
+        "nome": "Pancakes al cocco",
+        "descrizione": "Metà della ricetta (per 2 colazioni): albume, yogurt greco, cocco rapè, farina d'avena, lievito. Condire con frutta di stagione",
+        "tag": [
+          "frutta"
+        ],
+        "ricetta": "pancakes-cocco",
+        "ingredienti": [
+          {
+            "nome": "Albume",
+            "q": 50,
+            "u": "g",
+            "reparto": "secondi"
+          },
+          {
+            "nome": "Yogurt greco bianco 2%",
+            "q": 50,
+            "u": "g",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Cocco rapè",
+            "q": 15,
+            "u": "g",
+            "reparto": "altro"
+          },
+          {
+            "nome": "Farina d'avena o integrale",
+            "q": 15,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ]
+      },
+      {
+        "id": "col-pancakes-classici",
+        "nome": "Pancakes classici",
+        "descrizione": "Metà della ricetta (per 2 porzioni): uova, farina integrale o 0, latte, lievito. Guarnire con frutta o miele e/o frutta secca",
+        "tag": [
+          "frutta"
+        ],
+        "ricetta": "pancakes-classici",
+        "ingredienti": [
+          {
+            "nome": "Uova",
+            "q": 1,
+            "u": "pz",
+            "reparto": "secondi"
+          },
+          {
+            "nome": "Farina integrale",
+            "q": 45,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Latte parzialmente scremato",
+            "q": 35,
+            "u": "ml",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ]
+      },
+      {
+        "id": "col-banana-bread",
+        "nome": "Mini banana bread",
+        "descrizione": "1 banana + 3 cucchiai farina + 1 uovo + 30 ml latte + lievito + cannella (facoltative 15 g noci)",
+        "tag": [
+          "frutta"
+        ],
+        "ricetta": "mini-banana-bread",
+        "ingredienti": [
+          {
+            "nome": "Banana",
+            "q": 1.5,
+            "u": "pz",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Farina integrale",
+            "q": 45,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Uova",
+            "q": 1,
+            "u": "pz",
+            "reparto": "secondi"
+          },
+          {
+            "nome": "Latte parzialmente scremato",
+            "q": 30,
+            "u": "ml",
+            "reparto": "frigo"
+          }
+        ]
+      },
+      {
+        "id": "col-mugcake",
+        "nome": "Mugcake",
+        "descrizione": "30 g farina d'avena + 50 ml latte + 10 g cacao + 5 g zucchero di canna o miele + lievito + 1 quadratino cioccolato fondente (o variante con mezza mela). MAX 1 VOLTA A SETTIMANA",
+        "tag": [
+          "mugcake"
+        ],
+        "ricetta": "mugcake",
+        "ingredienti": [
+          {
+            "nome": "Farina d'avena",
+            "q": 30,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Latte parzialmente scremato",
+            "q": 50,
+            "u": "ml",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Cacao amaro",
+            "q": 10,
+            "u": "g",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Miele",
+            "q": 5,
+            "u": "g",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Cioccolato fondente >70%",
+            "q": 10,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "col-tortino-yogurt",
+        "nome": "Tortino allo yogurt",
+        "descrizione": "80 g yogurt greco + 1 uovo + 10 g cocco rapè + 10 g miele, cotto in friggitrice ad aria, forno o microonde",
+        "tag": [],
+        "ricetta": "tortino-yogurt",
+        "ingredienti": [
+          {
+            "nome": "Yogurt greco bianco 2%",
+            "q": 80,
+            "u": "g",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Uova",
+            "q": 1,
+            "u": "pz",
+            "reparto": "secondi"
+          },
+          {
+            "nome": "Cocco rapè",
+            "q": 10,
+            "u": "g",
+            "reparto": "altro"
+          },
+          {
+            "nome": "Miele",
+            "q": 10,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "col-tortino-banana-cacao",
+        "nome": "Tortino banana e cacao",
+        "descrizione": "1 banana + 1 uovo + 20 g farina integrale + 15 g cacao amaro + lievito",
+        "tag": [
+          "frutta"
+        ],
+        "ricetta": "tortino-banana-cacao",
+        "ingredienti": [
+          {
+            "nome": "Banana",
+            "q": 1,
+            "u": "pz",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Uova",
+            "q": 1,
+            "u": "pz",
+            "reparto": "secondi"
+          },
+          {
+            "nome": "Farina integrale",
+            "q": 20,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Cacao amaro",
+            "q": 15,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "col-torta-ricotta",
+        "nome": "Torta veloce con ricotta (1/4 di torta)",
+        "descrizione": "Un quarto della torta (400 g ricotta, 40 g farina di riso, 110 ml latte, gocce di cioccolato) + eventuale frutto. Conta come colazione con ricotta",
+        "tag": [
+          "ricotta-colazione"
+        ],
+        "ricetta": "torta-ricotta",
+        "ingredienti": [
+          {
+            "nome": "Ricotta di mucca",
+            "q": 100,
+            "u": "g",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Farina di riso",
+            "q": 10,
+            "u": "g",
+            "reparto": "cereali"
+          },
+          {
+            "nome": "Latte parzialmente scremato",
+            "q": 30,
+            "u": "ml",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Gocce di cioccolato fondente",
+            "q": 5,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      }
+    ],
+    "sostituzioni": [
+      "Yogurt greco bianco 2% (170 g) = 1 vasetto yogurt bianco Vipiteno 0,1% (125 g) = 200 ml kefir = 200 ml latte parzialmente scremato = 50 g ricotta di mucca",
+      "40 g pane integrale = 3 fette biscottate = 40 g cereali naturali senza zuccheri aggiunti",
+      "15 g frutta secca = 15 g cocco rapè = 15 g semi di chia/lino = 1 quadratino cioccolato fondente = 15 g crema 100% frutta secca (1 cucchiaino)",
+      "Marmellata senza zuccheri = 1 cucchiaino di miele = 200 g frutta fresca"
+    ],
+    "note": [
+      "Preferire il pane alle fette biscottate.",
+      "Marmellata senza zuccheri: Hero light.",
+      "15 g di frutta secca = 8/9 mandorle o 3 noci, non tostata e non salata.",
+      "Biscotti concessi: Privolat e Privolat cacao e riso soffiato (Misura), Megliocosì, Buonicosì, ColCuore integrali, Orosaiwa, Magretti (Galbusera).",
+      "Cornflakes 100% mais: Stella (Carrefour), Viologic, Misura Classici, All Bran prebiotics con avena (Kellogg's)."
+    ]
+  },
+  "spuntino": {
+    "opzioni": [
+      {
+        "id": "spu-frutto",
+        "nome": "1 frutto di stagione (200 g)",
+        "descrizione": "200 g = 1 frutto grande (banana, mela, pera, arancia) o 2 piccoli (kiwi, mandarini)",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ]
+      },
+      {
+        "id": "spu-salto",
+        "nome": "Salto lo spuntino (frutto spostato a pranzo o cena)",
+        "descrizione": "Se salti lo spuntino puoi mangiare il frutto al pranzo o alla cena",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ]
+      }
+    ]
+  },
+  "pranzo": {
+    "verdura": "Verdura cotta e/o cruda a volontà (iniziare il pasto con la verdura)",
+    "olio": {
+      "nome": "Olio extravergine d'oliva",
+      "q": 15,
+      "u": "g",
+      "reparto": "altro",
+      "descrizione": "1 cucchiaio e mezzo"
+    },
+    "regolaLegumi": "Quando il secondo è legumi, il carboidrato scende alla quantità ridotta indicata",
+    "carboidrati": [
+      {
+        "id": "pasta-integrale",
+        "nome": "Pasta integrale",
+        "q": 80,
+        "qConLegumi": 50,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "pasta"
+        ]
+      },
+      {
+        "id": "pasta",
+        "nome": "Pasta normale",
+        "q": 80,
+        "qConLegumi": 50,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "pasta"
+        ]
+      },
+      {
+        "id": "quinoa",
+        "nome": "Quinoa",
+        "q": 80,
+        "qConLegumi": 50,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "cereale-chicco"
+        ]
+      },
+      {
+        "id": "farro",
+        "nome": "Farro",
+        "q": 80,
+        "qConLegumi": 50,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "cereale-chicco"
+        ]
+      },
+      {
+        "id": "riso-integrale",
+        "nome": "Riso integrale",
+        "q": 80,
+        "qConLegumi": 50,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "riso"
+        ]
+      },
+      {
+        "id": "riso-venere",
+        "nome": "Riso venere",
+        "q": 80,
+        "qConLegumi": 50,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "riso"
+        ]
+      },
+      {
+        "id": "couscous",
+        "nome": "Cous cous",
+        "q": 80,
+        "qConLegumi": 50,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "couscous"
+        ]
+      },
+      {
+        "id": "orzo",
+        "nome": "Orzo",
+        "q": 80,
+        "qConLegumi": 50,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "cereale-chicco"
+        ]
+      },
+      {
+        "id": "pane",
+        "nome": "Pane (bianco, di segale o integrale)",
+        "q": 80,
+        "qConLegumi": 50,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "pane"
+        ],
+        "varianti": [
+          {
+            "id": "integrale",
+            "nome": "Pane integrale"
+          },
+          {
+            "id": "segale",
+            "nome": "Pane di segale"
+          },
+          {
+            "id": "bianco",
+            "nome": "Pane bianco"
+          }
+        ]
+      },
+      {
+        "id": "gnocchi",
+        "nome": "Gnocchi di patate freschi",
+        "q": 200,
+        "qConLegumi": 125,
+        "u": "g",
+        "reparto": "frigo",
+        "tag": [
+          "gnocchi"
+        ]
+      },
+      {
+        "id": "polenta",
+        "nome": "Farina per polenta",
+        "q": 80,
+        "qConLegumi": 50,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "polenta"
+        ]
+      },
+      {
+        "id": "patate",
+        "nome": "Patate (max 1-2 volte a settimana)",
+        "q": 280,
+        "qConLegumi": 175,
+        "u": "g",
+        "reparto": "ortofrutta",
+        "tag": [
+          "patate"
+        ]
+      }
+    ],
+    "secondi": [
+      {
+        "id": "pr-legumi",
+        "nome": "Legumi",
+        "categoria": "legumi",
+        "descrizione": "50 g legumi secchi (fagioli, ceci, lenticchie, piselli, fave) oppure 150 g freschi/in barattolo",
+        "ingredienti": [
+          {
+            "nome": "Legumi secchi (o 150 g in barattolo)",
+            "q": 50,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "ceci",
+            "nome": "Ceci",
+            "ingredienti": [
+              {
+                "nome": "Ceci (secchi, oppure 150 g in barattolo)",
+                "q": 50,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "fagioli",
+            "nome": "Fagioli",
+            "ingredienti": [
+              {
+                "nome": "Fagioli (secchi, oppure 150 g in barattolo)",
+                "q": 50,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "lenticchie",
+            "nome": "Lenticchie",
+            "ingredienti": [
+              {
+                "nome": "Lenticchie (secchi, oppure 150 g in barattolo)",
+                "q": 50,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "piselli",
+            "nome": "Piselli",
+            "ingredienti": [
+              {
+                "nome": "Piselli (secchi, oppure 150 g in barattolo)",
+                "q": 50,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "fave",
+            "nome": "Fave",
+            "ingredienti": [
+              {
+                "nome": "Fave (secchi, oppure 150 g in barattolo)",
+                "q": 50,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pr-uova",
+        "nome": "Uova",
+        "categoria": "uova",
+        "descrizione": "2 uova biologiche (120 g)",
+        "ingredienti": [
+          {
+            "nome": "Uova",
+            "q": 2,
+            "u": "pz",
+            "reparto": "secondi"
+          }
+        ]
+      },
+      {
+        "id": "pr-formaggio",
+        "nome": "Formaggio light",
+        "categoria": "formaggio",
+        "descrizione": "100 g ricotta o primo sale, oppure 170 g fiocchi di latte, oppure 125 g mozzarella",
+        "ingredienti": [
+          {
+            "nome": "Ricotta / primo sale (o 170 g fiocchi di latte, o 125 g mozzarella)",
+            "q": 100,
+            "u": "g",
+            "reparto": "frigo"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "ricotta",
+            "nome": "Ricotta",
+            "ingredienti": [
+              {
+                "nome": "Ricotta",
+                "q": 100,
+                "u": "g",
+                "reparto": "frigo"
+              }
+            ]
+          },
+          {
+            "id": "primo-sale",
+            "nome": "Primo sale",
+            "ingredienti": [
+              {
+                "nome": "Primo sale",
+                "q": 100,
+                "u": "g",
+                "reparto": "frigo"
+              }
+            ]
+          },
+          {
+            "id": "fiocchi",
+            "nome": "Fiocchi di latte",
+            "ingredienti": [
+              {
+                "nome": "Fiocchi di latte",
+                "q": 170,
+                "u": "g",
+                "reparto": "frigo"
+              }
+            ]
+          },
+          {
+            "id": "mozzarella",
+            "nome": "Mozzarella",
+            "ingredienti": [
+              {
+                "nome": "Mozzarella",
+                "q": 125,
+                "u": "g",
+                "reparto": "frigo"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pr-pesce-conservato",
+        "nome": "Pesce conservato",
+        "categoria": "pesce_conservato",
+        "descrizione": "80 g salmone affumicato oppure 80 g tonno sgocciolato al naturale",
+        "ingredienti": [
+          {
+            "nome": "Tonno al naturale sgocciolato / salmone affumicato",
+            "q": 80,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "tonno",
+            "nome": "Tonno al naturale",
+            "ingredienti": [
+              {
+                "nome": "Tonno al naturale sgocciolato",
+                "q": 80,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "salmone-affumicato",
+            "nome": "Salmone affumicato",
+            "ingredienti": [
+              {
+                "nome": "Salmone affumicato",
+                "q": 80,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pr-carne-bianca",
+        "nome": "Carne bianca",
+        "categoria": "carne_bianca",
+        "descrizione": "120 g pollo, tacchino o coniglio (alternare petto con coscia e sovracoscia)",
+        "ingredienti": [
+          {
+            "nome": "Pollo / tacchino / coniglio",
+            "q": 120,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "pollo",
+            "nome": "Pollo",
+            "ingredienti": [
+              {
+                "nome": "Pollo",
+                "q": 120,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "tacchino",
+            "nome": "Tacchino",
+            "ingredienti": [
+              {
+                "nome": "Tacchino",
+                "q": 120,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "coniglio",
+            "nome": "Coniglio",
+            "ingredienti": [
+              {
+                "nome": "Coniglio",
+                "q": 120,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pr-libero",
+        "nome": "Pasto libero",
+        "categoria": "libero",
+        "tag": [
+          "libero"
+        ],
+        "descrizione": "Concesso la domenica a pranzo oppure il sabato a cena (uno solo a settimana)",
+        "ingredienti": []
+      }
+    ]
+  },
+  "merenda": {
+    "opzioni": [
+      {
+        "id": "m-frutto-kefir",
+        "nome": "Frutto + kefir da bere",
+        "descrizione": "1 frutto (200 g) + 150 g kefir bianco (anche frullato)",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Kefir",
+            "q": 150,
+            "u": "ml",
+            "reparto": "frigo"
+          }
+        ]
+      },
+      {
+        "id": "m-frutto-yogurt",
+        "nome": "Frutto + yogurt",
+        "descrizione": "1 frutto (200 g) + 1 vasetto yogurt bianco (125 g) o greco (anche frullato con frutta congelata, tipo gelato)",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Yogurt bianco (125 g) o greco",
+            "q": 1,
+            "u": "pz",
+            "reparto": "frigo"
+          }
+        ]
+      },
+      {
+        "id": "m-frutto-fruttasecca",
+        "nome": "Frutto + frutta secca",
+        "descrizione": "1 frutto (200 g) + 15 g frutta secca (noci, nocciole, mandorle, anacardi)",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Frutta secca",
+            "q": 15,
+            "u": "g",
+            "reparto": "altro"
+          }
+        ]
+      },
+      {
+        "id": "m-frutto-parmigiano",
+        "nome": "Frutto + parmigiano",
+        "descrizione": "1 frutto (200 g) + 30 g parmigiano",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Parmigiano",
+            "q": 30,
+            "u": "g",
+            "reparto": "frigo"
+          }
+        ]
+      },
+      {
+        "id": "m-frutto-cioccolato",
+        "nome": "Frutto + cioccolato fondente",
+        "descrizione": "1 frutto (200 g) + 15 g cioccolato fondente >70%",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Frutta di stagione",
+            "tipo": "frutta",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Cioccolato fondente >70%",
+            "q": 15,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "m-yogurt-cioccolato",
+        "nome": "Yogurt + cioccolato fondente",
+        "descrizione": "1 vasetto yogurt bianco (125 g) o greco + 15 g cioccolato fondente (1 quadratino)",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Yogurt bianco (125 g) o greco",
+            "q": 1,
+            "u": "pz",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Cioccolato fondente >70%",
+            "q": 15,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "m-trublend",
+        "nome": "Yogurt greco aromatizzato Fage Trublend",
+        "descrizione": "1 vasetto",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Yogurt Fage Trublend",
+            "q": 1,
+            "u": "pz",
+            "reparto": "frigo"
+          }
+        ]
+      },
+      {
+        "id": "m-yogurt-fruttasecca",
+        "nome": "Yogurt + frutta secca",
+        "descrizione": "1 vasetto yogurt bianco + 15 g frutta secca, o crema 100% frutta secca, o 15 g cocco rapè",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Yogurt bianco (125 g) o greco",
+            "q": 1,
+            "u": "pz",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Frutta secca",
+            "q": 15,
+            "u": "g",
+            "reparto": "altro"
+          }
+        ]
+      },
+      {
+        "id": "m-finocchi-fruttasecca",
+        "nome": "Finocchi o carote + frutta secca",
+        "descrizione": "200 g finocchi o carote + 15 g frutta secca",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Finocchi o carote",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Frutta secca",
+            "q": 15,
+            "u": "g",
+            "reparto": "altro"
+          }
+        ]
+      },
+      {
+        "id": "m-finocchi-parmigiano",
+        "nome": "Finocchi o carote + parmigiano",
+        "descrizione": "200 g finocchi o carote + 30 g parmigiano",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Finocchi o carote",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Parmigiano",
+            "q": 30,
+            "u": "g",
+            "reparto": "frigo"
+          }
+        ]
+      },
+      {
+        "id": "m-parmigiano-fruttasecca",
+        "nome": "Parmigiano + frutta secca",
+        "descrizione": "30 g parmigiano + 15 g frutta secca",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Parmigiano",
+            "q": 30,
+            "u": "g",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Frutta secca",
+            "q": 15,
+            "u": "g",
+            "reparto": "altro"
+          }
+        ]
+      },
+      {
+        "id": "m-crackers",
+        "nome": "Crackers integrali / di riso / di legumi",
+        "descrizione": "30 g (es. triangoli di legumi Fiorentini)",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Crackers integrali / di riso / di legumi",
+            "q": 30,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "m-crackers-scotti",
+        "nome": "Crackers di riso Scotti",
+        "descrizione": "1 pacchetto",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Crackers di riso Scotti (pacchetto)",
+            "q": 1,
+            "u": "pz",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "m-galbusera",
+        "nome": "Fette Galbusera linea 5 colazioni",
+        "descrizione": "1 porzione",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Fette Galbusera 5 colazioni (porzione)",
+            "q": 1,
+            "u": "pz",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "m-snack-vai",
+        "nome": "Snack e Vai taralli e parmigiano",
+        "descrizione": "1 monoporzione",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Snack e Vai taralli e parmigiano",
+            "q": 1,
+            "u": "pz",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "m-barretta",
+        "nome": "Barretta + finocchi crudi",
+        "descrizione": "1 barretta (Enervit Balance, Special K Protein, Equilibra low sugar/protein) + finocchi crudi. MAX 1 VOLTA A SETTIMANA",
+        "tag": [
+          "barretta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Barretta (Enervit Balance / Special K Protein / Equilibra)",
+            "q": 1,
+            "u": "pz",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Finocchi",
+            "q": 200,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ]
+      },
+      {
+        "id": "m-gallette-avocado",
+        "nome": "Gallette + avocado",
+        "descrizione": "2 gallette di mais (o altre gallette o 2 fette Wasa integrali) + 30 g avocado (e pomodorini)",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Gallette di mais / Wasa integrali",
+            "q": 2,
+            "u": "pz",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Avocado",
+            "q": 30,
+            "u": "g",
+            "reparto": "ortofrutta"
+          }
+        ]
+      },
+      {
+        "id": "m-gallette-crema",
+        "nome": "Gallette + crema di frutta secca",
+        "descrizione": "2 gallette (o 2 Wasa integrali) + 1 cucchiaino crema 100% frutta secca (arachidi, anacardi, nocciole)",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Gallette di mais / Wasa integrali",
+            "q": 2,
+            "u": "pz",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Crema spalmabile 100% frutta secca",
+            "q": 15,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "m-crema-caffe",
+        "nome": "Crema caffè (ricetta)",
+        "descrizione": "125 g yogurt bianco + 1 tazzina di caffè + 1 cucchiaino miele + 5 g gocce cioccolato + 10 g noci",
+        "tag": [],
+        "ricetta": "crema-caffe",
+        "ingredienti": [
+          {
+            "nome": "Yogurt bianco (125 g) o greco",
+            "q": 1,
+            "u": "pz",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Miele",
+            "q": 5,
+            "u": "g",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Gocce di cioccolato fondente",
+            "q": 5,
+            "u": "g",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Frutta secca",
+            "q": 10,
+            "u": "g",
+            "reparto": "altro"
+          }
+        ]
+      },
+      {
+        "id": "m-frullato-gelato",
+        "nome": "Frullato gelato (ricetta)",
+        "descrizione": "150 g frutta surgelata frullata con 80 g yogurt greco intero",
+        "tag": [
+          "frutta"
+        ],
+        "ricetta": "frullato-gelato",
+        "ingredienti": [
+          {
+            "nome": "Frutta surgelata (fragole, frutti di bosco, kiwi)",
+            "q": 150,
+            "u": "g",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Yogurt greco intero",
+            "q": 80,
+            "u": "g",
+            "reparto": "frigo"
+          }
+        ]
+      },
+      {
+        "id": "m-barretta-yogurt-cocco",
+        "nome": "Barretta yogurt greco, cioccolato e cocco (ricetta, 1 di 2 porzioni)",
+        "descrizione": "Metà della ricetta: yogurt greco, cocco rapè, cioccolato fondente",
+        "tag": [],
+        "ricetta": "barretta-yogurt-cocco",
+        "ingredienti": [
+          {
+            "nome": "Yogurt greco bianco 2%",
+            "q": 85,
+            "u": "g",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Cocco rapè",
+            "q": 20,
+            "u": "g",
+            "reparto": "altro"
+          },
+          {
+            "nome": "Cioccolato fondente >70%",
+            "q": 25,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "m-pirottino-mela",
+        "nome": "Pirottino di mela (ricetta, 1 pirottino)",
+        "descrizione": "Un pirottino della ricetta con mele, uova e yogurt Trublend",
+        "tag": [
+          "frutta"
+        ],
+        "ricetta": "pirottini-mela",
+        "ingredienti": [
+          {
+            "nome": "Mele",
+            "q": 0.5,
+            "u": "pz",
+            "reparto": "ortofrutta"
+          },
+          {
+            "nome": "Uova",
+            "q": 0.5,
+            "u": "pz",
+            "reparto": "secondi"
+          },
+          {
+            "nome": "Yogurt Fage Trublend",
+            "q": 0.25,
+            "u": "pz",
+            "reparto": "frigo"
+          }
+        ]
+      }
+    ]
+  },
+  "cena": {
+    "verdura": "Verdura cotta e/o cruda a volontà",
+    "olio": {
+      "nome": "Olio extravergine d'oliva",
+      "q": 15,
+      "u": "g",
+      "reparto": "altro",
+      "descrizione": "1 cucchiaio e mezzo"
+    },
+    "regolaLegumi": "Quando il secondo è legumi, il carboidrato scende alla quantità ridotta indicata",
+    "carboidrati": [
+      {
+        "id": "pane",
+        "nome": "Pane (integrale, bianco o di segale)",
+        "q": 70,
+        "qConLegumi": 40,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "pane"
+        ],
+        "varianti": [
+          {
+            "id": "integrale",
+            "nome": "Pane integrale"
+          },
+          {
+            "id": "segale",
+            "nome": "Pane di segale"
+          },
+          {
+            "id": "bianco",
+            "nome": "Pane bianco"
+          }
+        ]
+      },
+      {
+        "id": "riso",
+        "nome": "Riso",
+        "q": 70,
+        "qConLegumi": 40,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "riso"
+        ]
+      },
+      {
+        "id": "pasta",
+        "nome": "Pasta",
+        "q": 70,
+        "qConLegumi": 40,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "pasta"
+        ]
+      },
+      {
+        "id": "farro",
+        "nome": "Farro",
+        "q": 70,
+        "qConLegumi": 40,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "cereale-chicco"
+        ]
+      },
+      {
+        "id": "orzo",
+        "nome": "Orzo",
+        "q": 70,
+        "qConLegumi": 40,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "cereale-chicco"
+        ]
+      },
+      {
+        "id": "patate",
+        "nome": "Patate (max 1-2 volte a settimana)",
+        "q": 250,
+        "qConLegumi": 140,
+        "u": "g",
+        "reparto": "ortofrutta",
+        "tag": [
+          "patate"
+        ]
+      }
+    ],
+    "secondi": [
+      {
+        "id": "ce-formaggio",
+        "nome": "Formaggio light",
+        "categoria": "formaggio",
+        "descrizione": "120 g ricotta o primo sale, oppure 170 g fiocchi di latte, oppure 150 g mozzarella light",
+        "ingredienti": [
+          {
+            "nome": "Ricotta / primo sale (o 170 g fiocchi di latte, o 150 g mozzarella light)",
+            "q": 120,
+            "u": "g",
+            "reparto": "frigo"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "ricotta",
+            "nome": "Ricotta",
+            "ingredienti": [
+              {
+                "nome": "Ricotta",
+                "q": 120,
+                "u": "g",
+                "reparto": "frigo"
+              }
+            ]
+          },
+          {
+            "id": "primo-sale",
+            "nome": "Primo sale",
+            "ingredienti": [
+              {
+                "nome": "Primo sale",
+                "q": 120,
+                "u": "g",
+                "reparto": "frigo"
+              }
+            ]
+          },
+          {
+            "id": "fiocchi",
+            "nome": "Fiocchi di latte",
+            "ingredienti": [
+              {
+                "nome": "Fiocchi di latte",
+                "q": 170,
+                "u": "g",
+                "reparto": "frigo"
+              }
+            ]
+          },
+          {
+            "id": "mozzarella-light",
+            "nome": "Mozzarella light",
+            "ingredienti": [
+              {
+                "nome": "Mozzarella light",
+                "q": 150,
+                "u": "g",
+                "reparto": "frigo"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-uova",
+        "nome": "Uova",
+        "categoria": "uova",
+        "descrizione": "2 uova biologiche (120 g)",
+        "ingredienti": [
+          {
+            "nome": "Uova",
+            "q": 2,
+            "u": "pz",
+            "reparto": "secondi"
+          }
+        ]
+      },
+      {
+        "id": "ce-pesce-bianco",
+        "nome": "Pesce bianco",
+        "categoria": "pesce_fresco",
+        "descrizione": "250 g pesce bianco pescato (spigola, orata, merluzzo). Fresco o surgelato, non precotto né panato",
+        "ingredienti": [
+          {
+            "nome": "Pesce bianco (spigola, orata, merluzzo)",
+            "q": 250,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "spigola",
+            "nome": "Spigola",
+            "ingredienti": [
+              {
+                "nome": "Spigola",
+                "q": 250,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "orata",
+            "nome": "Orata",
+            "ingredienti": [
+              {
+                "nome": "Orata",
+                "q": 250,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "merluzzo",
+            "nome": "Merluzzo",
+            "ingredienti": [
+              {
+                "nome": "Merluzzo",
+                "q": 250,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-pesce-azzurro",
+        "nome": "Pesce azzurro / salmone fresco",
+        "categoria": "pesce_fresco",
+        "descrizione": "Acciughe, aringhe, tonno o salmone fresco. Nel piano compaiono 100 g (martedì) e 200 g (giovedì): quantità da confermare con la nutrizionista",
+        "ingredienti": [
+          {
+            "nome": "Acciughe / aringhe / tonno / salmone fresco",
+            "q": 200,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "acciughe",
+            "nome": "Acciughe",
+            "ingredienti": [
+              {
+                "nome": "Acciughe",
+                "q": 200,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "aringhe",
+            "nome": "Aringhe",
+            "ingredienti": [
+              {
+                "nome": "Aringhe",
+                "q": 200,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "tonno-fresco",
+            "nome": "Tonno fresco",
+            "ingredienti": [
+              {
+                "nome": "Tonno fresco",
+                "q": 200,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "salmone-fresco",
+            "nome": "Salmone fresco",
+            "ingredienti": [
+              {
+                "nome": "Salmone fresco",
+                "q": 200,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "sgombro",
+            "nome": "Sgombro",
+            "ingredienti": [
+              {
+                "nome": "Sgombro",
+                "q": 200,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "sarde",
+            "nome": "Sarde",
+            "ingredienti": [
+              {
+                "nome": "Sarde",
+                "q": 200,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-molluschi",
+        "nome": "Calamaro, polpo o seppia",
+        "categoria": "pesce_fresco",
+        "descrizione": "300 g",
+        "ingredienti": [
+          {
+            "nome": "Calamaro / polpo / seppia",
+            "q": 300,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "calamaro",
+            "nome": "Calamaro",
+            "ingredienti": [
+              {
+                "nome": "Calamaro",
+                "q": 300,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "polpo",
+            "nome": "Polpo",
+            "ingredienti": [
+              {
+                "nome": "Polpo",
+                "q": 300,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "seppia",
+            "nome": "Seppia",
+            "ingredienti": [
+              {
+                "nome": "Seppia",
+                "q": 300,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-carne-bianca",
+        "nome": "Carne bianca",
+        "categoria": "carne_bianca",
+        "descrizione": "250 g pollo, tacchino o coniglio",
+        "ingredienti": [
+          {
+            "nome": "Pollo / tacchino / coniglio",
+            "q": 250,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "pollo",
+            "nome": "Pollo",
+            "ingredienti": [
+              {
+                "nome": "Pollo",
+                "q": 250,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "tacchino",
+            "nome": "Tacchino",
+            "ingredienti": [
+              {
+                "nome": "Tacchino",
+                "q": 250,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "coniglio",
+            "nome": "Coniglio",
+            "ingredienti": [
+              {
+                "nome": "Coniglio",
+                "q": 250,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-carne-rossa",
+        "nome": "Carne rossa",
+        "categoria": "carne_rossa",
+        "descrizione": "250 g vitella, vitellone o manzo (tagli magri). Max 1 volta a settimana",
+        "ingredienti": [
+          {
+            "nome": "Vitella / vitellone / manzo (taglio magro)",
+            "q": 250,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "vitella",
+            "nome": "Vitella",
+            "ingredienti": [
+              {
+                "nome": "Vitella (taglio magro)",
+                "q": 250,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "vitellone",
+            "nome": "Vitellone",
+            "ingredienti": [
+              {
+                "nome": "Vitellone (taglio magro)",
+                "q": 250,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "manzo",
+            "nome": "Manzo",
+            "ingredienti": [
+              {
+                "nome": "Manzo (taglio magro)",
+                "q": 250,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-legumi",
+        "nome": "Legumi",
+        "categoria": "legumi",
+        "descrizione": "60 g legumi secchi (fagioli, ceci, lenticchie, piselli, fave) oppure 180 g freschi/in barattolo",
+        "ingredienti": [
+          {
+            "nome": "Legumi secchi (o 180 g in barattolo)",
+            "q": 60,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "ceci",
+            "nome": "Ceci",
+            "ingredienti": [
+              {
+                "nome": "Ceci (secchi, oppure 180 g in barattolo)",
+                "q": 60,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "fagioli",
+            "nome": "Fagioli",
+            "ingredienti": [
+              {
+                "nome": "Fagioli (secchi, oppure 180 g in barattolo)",
+                "q": 60,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "lenticchie",
+            "nome": "Lenticchie",
+            "ingredienti": [
+              {
+                "nome": "Lenticchie (secchi, oppure 180 g in barattolo)",
+                "q": 60,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "piselli",
+            "nome": "Piselli",
+            "ingredienti": [
+              {
+                "nome": "Piselli (secchi, oppure 180 g in barattolo)",
+                "q": 60,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "fave",
+            "nome": "Fave",
+            "ingredienti": [
+              {
+                "nome": "Fave (secchi, oppure 180 g in barattolo)",
+                "q": 60,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-libero",
+        "nome": "Pasto libero",
+        "categoria": "libero",
+        "tag": [
+          "libero"
+        ],
+        "descrizione": "Concesso il sabato a cena oppure la domenica a pranzo (uno solo a settimana)",
+        "ingredienti": []
+      }
+    ]
+  },
+  "dopocena": {
+    "opzioni": [
+      {
+        "id": "dc-cioccolato",
+        "nome": "1 quadratino di cioccolato fondente (15 g)",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Cioccolato fondente >70%",
+            "q": 15,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "dc-biscotto",
+        "nome": "1 biscotto",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Biscotti concessi (Privolat, Megliocosì, Orosaiwa, Magretti…)",
+            "q": 1,
+            "u": "pz",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "dc-niente",
+        "nome": "Niente",
+        "tag": [],
+        "ingredienti": []
+      }
+    ]
+  },
+  "sostituzioniOlio": {
+    "descrizione": "10 g olio EVO (1 cucchiaio) equivalgono a:",
+    "voci": [
+      "15 g frutta secca (noci circa 3-4, mandorle circa 10, nocciole)",
+      "15 g burro d'arachidi",
+      "20 g semi misti",
+      "40 g avocado",
+      "10 g burro (max 1 volta a settimana)",
+      "20 g pesto",
+      "30 g olive"
+    ]
+  },
+  "schemaTipo": {
+    "descrizione": "Distribuzione dei secondi proposta nel piano. I giorni si possono invertire, l'importante è rispettare le frequenze settimanali.",
+    "pranzo": {
+      "lun": "pr-legumi",
+      "mar": "pr-uova",
+      "mer": "pr-formaggio",
+      "gio": "pr-legumi",
+      "ven": "pr-pesce-conservato",
+      "sab": "pr-carne-bianca",
+      "dom": "pr-libero"
+    },
+    "cena": {
+      "lun": "ce-formaggio",
+      "mar": "ce-pesce-bianco",
+      "mer": "ce-carne-bianca",
+      "gio": "ce-pesce-bianco",
+      "ven": "ce-legumi",
+      "sab": "ce-carne-rossa",
+      "dom": "ce-legumi"
+    }
+  },
+  "fattoriCottura": {
+    "descrizione": "Peso a cotto = peso a crudo × fattore",
+    "voci": [
+      {
+        "alimento": "Pasta corta",
+        "fattore": 2
+      },
+      {
+        "alimento": "Pasta lunga",
+        "fattore": 2.4
+      },
+      {
+        "alimento": "Riso",
+        "fattore": 2.5
+      },
+      {
+        "alimento": "Patate",
+        "fattore": 1
+      },
+      {
+        "alimento": "Pasta all'uovo secca",
+        "fattore": 3
+      },
+      {
+        "alimento": "Farro",
+        "fattore": 3
+      },
+      {
+        "alimento": "Pesce fresco/surgelato",
+        "fattore": 0.8
+      },
+      {
+        "alimento": "Petto di pollo",
+        "fattore": 0.9
+      },
+      {
+        "alimento": "Carne bovina",
+        "fattore": 0.7
+      },
+      {
+        "alimento": "Legumi secchi",
+        "fattore": 2.75
+      },
+      {
+        "alimento": "Legumi freschi",
+        "fattore": 0.85
+      }
+    ]
+  },
+  "consigli": [
+    "Bere almeno 2 litri d'acqua al giorno.",
+    "Pesare gli alimenti (tranne la verdura): peso a crudo e al netto degli scarti.",
+    "Mangiare lentamente e masticare bene.",
+    "Si possono invertire giorni e pasti, rispettando le frequenze settimanali dei secondi.",
+    "Legumi in barattolo di vetro: sciacquarli bene per togliere il sale.",
+    "Pesce fresco o surgelato, non precotto né panato; evitare il pesce di allevamento; preferire pesce azzurro.",
+    "Una volta a settimana la fonte di carboidrati si può sostituire con le patate.",
+    "Preferire carboidrati integrali.",
+    "Sale max 5 g al giorno; usare spezie ed erbe aromatiche.",
+    "Evitare dolci, caramelle, merendine e snack. Olio EVO preferibilmente a crudo.",
+    "Preferire vapore, bollitura o forno a fritture e soffritti.",
+    "Max 3 caffè al giorno, amari. Limitare l'alcol.",
+    "Fuori pasto: solo verdure crude (finocchi, sedano, carote).",
+    "Attività fisica: almeno 150 minuti a settimana di aerobica/camminata veloce + 2 sedute di rafforzamento muscolare."
+  ],
+  "noteVarianti": "Le 'varianti' di un'opzione sono le sotto-scelte (es. formaggio → ricotta / primo sale / fiocchi / mozzarella). Se una variante ha 'ingredienti', questi sostituiscono quelli dell'opzione nella lista della spesa; se non li ha, cambia solo il nome (es. tipo di pane)."
+}

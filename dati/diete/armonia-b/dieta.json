@@ -1,0 +1,1871 @@
+{
+  "versione": "1.0",
+  "note": "Trascrizione strutturata del piano 'Ritrova la tua Armonia'. Pesi a crudo. Il piano è uno schema fisso per giorno che si può spostare: pranzo e cena sono invertibili e i blocchi si possono spostare tra i giorni, rispettando le frequenze settimanali.",
+  "giorni": [
+    {
+      "id": "lun",
+      "nome": "Lunedì"
+    },
+    {
+      "id": "mar",
+      "nome": "Martedì"
+    },
+    {
+      "id": "mer",
+      "nome": "Mercoledì"
+    },
+    {
+      "id": "gio",
+      "nome": "Giovedì"
+    },
+    {
+      "id": "ven",
+      "nome": "Venerdì"
+    },
+    {
+      "id": "sab",
+      "nome": "Sabato"
+    },
+    {
+      "id": "dom",
+      "nome": "Domenica"
+    }
+  ],
+  "slot": [
+    {
+      "id": "colazione",
+      "nome": "Colazione (7.15)",
+      "tipo": "scelta-singola"
+    },
+    {
+      "id": "spuntino",
+      "nome": "Spuntino (10.30)",
+      "tipo": "scelta-singola"
+    },
+    {
+      "id": "pranzo",
+      "nome": "Pranzo (13.30)",
+      "tipo": "pasto-principale"
+    },
+    {
+      "id": "merenda",
+      "nome": "Spuntino (17.00)",
+      "tipo": "scelta-singola"
+    },
+    {
+      "id": "cena",
+      "nome": "Cena (20.30)",
+      "tipo": "pasto-principale"
+    }
+  ],
+  "reparti": [
+    {
+      "id": "cereali",
+      "nome": "Cereali e derivati"
+    },
+    {
+      "id": "confezionati",
+      "nome": "Prodotti confezionati"
+    },
+    {
+      "id": "frigo",
+      "nome": "Banco frigo"
+    },
+    {
+      "id": "secondi",
+      "nome": "Secondi (carne, pesce, uova)"
+    },
+    {
+      "id": "ortofrutta",
+      "nome": "Frutta e verdura"
+    },
+    {
+      "id": "altro",
+      "nome": "Altro"
+    }
+  ],
+  "limitiSettimanali": [
+    {
+      "id": "affettato",
+      "nome": "Affettato",
+      "tag": "affettato",
+      "max": 1,
+      "slot": [
+        "pranzo",
+        "cena"
+      ],
+      "descrizione": "Affettato al posto della carne max 1 volta a settimana"
+    },
+    {
+      "id": "cereali-70",
+      "nome": "Cereali 70 g",
+      "tag": "cereali-70",
+      "max": 1,
+      "slot": [
+        "pranzo",
+        "cena"
+      ],
+      "descrizione": "La porzione da 70 g di cereali è prevista solo una volta a settimana (domenica a pranzo)"
+    },
+    {
+      "id": "pasto-libero",
+      "nome": "Pasto libero",
+      "tag": "libero",
+      "max": 1,
+      "slot": [
+        "pranzo",
+        "cena"
+      ],
+      "descrizione": "Un solo pasto libero a settimana (sabato a cena)"
+    }
+  ],
+  "fruttaAlGiorno": {
+    "consigliata": 2,
+    "descrizione": "Il piano prevede un frutto da 150 g nello spuntino del mattino e uno in quello del pomeriggio."
+  },
+  "frequenzeSecondi": {
+    "descrizione": "Conteggiate su pranzo + cena dell'intera settimana (schema del piano). Il pasto libero non conta.",
+    "categorie": [
+      {
+        "id": "legumi",
+        "nome": "Legumi",
+        "min": 3,
+        "max": 3
+      },
+      {
+        "id": "pesce_conservato",
+        "nome": "Pesce conservato",
+        "min": 2,
+        "max": 2
+      },
+      {
+        "id": "uova",
+        "nome": "Uova",
+        "min": 1,
+        "max": 1
+      },
+      {
+        "id": "pesce",
+        "nome": "Pesce fresco",
+        "min": 2,
+        "max": 3,
+        "somma": [
+          "pesce_fresco"
+        ]
+      },
+      {
+        "id": "carne_bianca",
+        "nome": "Carne bianca",
+        "min": 2,
+        "max": 3
+      },
+      {
+        "id": "carne_rossa",
+        "nome": "Carne rossa",
+        "min": 0,
+        "max": 1
+      },
+      {
+        "id": "formaggio",
+        "nome": "Latticini",
+        "min": 1,
+        "max": 2
+      }
+    ]
+  },
+  "colazione": {
+    "opzioni": [
+      {
+        "id": "col-biscotti",
+        "nome": "Caffè con latte + biscotti integrali",
+        "descrizione": "Caffè con latte macchiato (100 ml) + 3-4 biscotti Galbusera Più Integrali",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Latte parzialmente scremato",
+            "q": 100,
+            "u": "ml",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Biscotti Galbusera Più Integrali",
+            "q": 4,
+            "u": "pz",
+            "reparto": "confezionati"
+          }
+        ]
+      },
+      {
+        "id": "col-pancake",
+        "nome": "Caffè latte + pancake + marmellata",
+        "descrizione": "Caffè latte + 1 pancake (Milk Pro) + un velo di marmellata ai mirtilli (Rigoni di Asiago)",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Latte parzialmente scremato",
+            "q": 100,
+            "u": "ml",
+            "reparto": "frigo"
+          },
+          {
+            "nome": "Pancake Milk Pro",
+            "q": 1,
+            "u": "pz",
+            "reparto": "confezionati"
+          },
+          {
+            "nome": "Marmellata di mirtilli (Rigoni di Asiago)",
+            "q": 10,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ]
+      }
+    ],
+    "note": [
+      "Prima di colazione: 2 bicchieri d'acqua tiepida a stomaco vuoto con mezzo limone spremuto (per 15 giorni, poi solo acqua); aspettare 15 minuti."
+    ]
+  },
+  "spuntino": {
+    "opzioni": [
+      {
+        "id": "spu-frutto-fruttasecca",
+        "nome": "Frutto + frutta secca",
+        "descrizione": "1 frutto (150 g) + 5-10 g di frutta secca (mandorle o noci)",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Frutta di stagione",
+            "q": 150,
+            "u": "g",
+            "reparto": "ortofrutta",
+            "tipo": "frutta"
+          },
+          {
+            "nome": "Frutta secca (mandorle o noci)",
+            "q": 10,
+            "u": "g",
+            "reparto": "altro"
+          }
+        ]
+      },
+      {
+        "id": "spu-wasa",
+        "nome": "2 Wasa",
+        "descrizione": "2 Wasa Original",
+        "tag": [],
+        "ingredienti": [
+          {
+            "nome": "Wasa Original",
+            "q": 2,
+            "u": "pz",
+            "reparto": "confezionati"
+          }
+        ]
+      }
+    ]
+  },
+  "merenda": {
+    "opzioni": [
+      {
+        "id": "m-frutto-fruttasecca",
+        "nome": "Frutto + frutta secca",
+        "descrizione": "1 frutto (150 g) + 10 g di frutta secca",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Frutta di stagione",
+            "q": 150,
+            "u": "g",
+            "reparto": "ortofrutta",
+            "tipo": "frutta"
+          },
+          {
+            "nome": "Frutta secca (mandorle o noci)",
+            "q": 10,
+            "u": "g",
+            "reparto": "altro"
+          }
+        ]
+      },
+      {
+        "id": "m-frutto-yogurt",
+        "nome": "Frutto + yogurt greco 0%",
+        "descrizione": "1 frutto (150 g) + yogurt greco Fage Total 0% (170 g)",
+        "tag": [
+          "frutta"
+        ],
+        "ingredienti": [
+          {
+            "nome": "Frutta di stagione",
+            "q": 150,
+            "u": "g",
+            "reparto": "ortofrutta",
+            "tipo": "frutta"
+          },
+          {
+            "nome": "Yogurt greco Fage Total 0%",
+            "q": 170,
+            "u": "g",
+            "reparto": "frigo"
+          }
+        ]
+      }
+    ]
+  },
+  "pranzo": {
+    "verdura": "Verdure fresche o cotte, almeno 200 g a crudo (mangiarle per prime, con la maggior parte dell'olio)",
+    "olio": {
+      "nome": "Olio extravergine d'oliva",
+      "q": 12,
+      "u": "g",
+      "reparto": "altro",
+      "descrizione": "circa 2 cucchiaini e mezzo: il piano prevede 5-6 cucchiaini al giorno in totale"
+    },
+    "carboidrati": [
+      {
+        "id": "cereali-50",
+        "nome": "Cereali integrali 50 g",
+        "q": 50,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "cereali"
+        ],
+        "varianti": [
+          {
+            "id": "pasta-integrale",
+            "nome": "Pasta integrale",
+            "ingredienti": [
+              {
+                "nome": "Pasta integrale",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "riso",
+            "nome": "Riso (parboiled o basmati)",
+            "ingredienti": [
+              {
+                "nome": "Riso (parboiled o basmati)",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "farro",
+            "nome": "Farro",
+            "ingredienti": [
+              {
+                "nome": "Farro",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "orzo",
+            "nome": "Orzo",
+            "ingredienti": [
+              {
+                "nome": "Orzo",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "kamut",
+            "nome": "Kamut",
+            "ingredienti": [
+              {
+                "nome": "Kamut",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "segale",
+            "nome": "Pane di segale integrale (fette)",
+            "ingredienti": [
+              {
+                "nome": "Segale",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "avena",
+            "nome": "Avena",
+            "ingredienti": [
+              {
+                "nome": "Avena",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "couscous",
+            "nome": "Cous cous",
+            "ingredienti": [
+              {
+                "nome": "Cous cous",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "mais",
+            "nome": "Mais",
+            "ingredienti": [
+              {
+                "nome": "Mais",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "sorgo",
+            "nome": "Sorgo",
+            "ingredienti": [
+              {
+                "nome": "Sorgo",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "quinoa",
+            "nome": "Quinoa",
+            "ingredienti": [
+              {
+                "nome": "Quinoa",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "amaranto",
+            "nome": "Amaranto",
+            "ingredienti": [
+              {
+                "nome": "Amaranto",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "grano-saraceno",
+            "nome": "Grano saraceno",
+            "ingredienti": [
+              {
+                "nome": "Grano saraceno",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "wasa",
+        "nome": "Wasa integrali (2)",
+        "q": 2,
+        "u": "pz",
+        "reparto": "confezionati",
+        "tag": [
+          "wasa"
+        ],
+        "varianti": [
+          {
+            "id": "wasa-2",
+            "nome": "Wasa integrali",
+            "ingredienti": [
+              {
+                "nome": "Wasa integrali",
+                "q": 2,
+                "u": "pz",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "segale",
+            "nome": "Pane di segale integrale (fette)",
+            "ingredienti": [
+              {
+                "nome": "Pane di segale integrale",
+                "q": 2,
+                "u": "pz",
+                "reparto": "cereali"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "wasa-1",
+        "nome": "1 Wasa integrale (versione ridotta)",
+        "q": 1,
+        "u": "pz",
+        "reparto": "confezionati",
+        "tag": [
+          "wasa"
+        ]
+      },
+      {
+        "id": "cereali-70",
+        "nome": "Cereali integrali 70 g (domenica)",
+        "q": 70,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "cereali",
+          "cereali-70"
+        ],
+        "varianti": [
+          {
+            "id": "pasta-integrale",
+            "nome": "Pasta integrale",
+            "ingredienti": [
+              {
+                "nome": "Pasta integrale",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "riso",
+            "nome": "Riso (parboiled o basmati)",
+            "ingredienti": [
+              {
+                "nome": "Riso (parboiled o basmati)",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "farro",
+            "nome": "Farro",
+            "ingredienti": [
+              {
+                "nome": "Farro",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "orzo",
+            "nome": "Orzo",
+            "ingredienti": [
+              {
+                "nome": "Orzo",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "kamut",
+            "nome": "Kamut",
+            "ingredienti": [
+              {
+                "nome": "Kamut",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "segale",
+            "nome": "Pane di segale integrale (fette)",
+            "ingredienti": [
+              {
+                "nome": "Segale",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "avena",
+            "nome": "Avena",
+            "ingredienti": [
+              {
+                "nome": "Avena",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "couscous",
+            "nome": "Cous cous",
+            "ingredienti": [
+              {
+                "nome": "Cous cous",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "mais",
+            "nome": "Mais",
+            "ingredienti": [
+              {
+                "nome": "Mais",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "sorgo",
+            "nome": "Sorgo",
+            "ingredienti": [
+              {
+                "nome": "Sorgo",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "quinoa",
+            "nome": "Quinoa",
+            "ingredienti": [
+              {
+                "nome": "Quinoa",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "amaranto",
+            "nome": "Amaranto",
+            "ingredienti": [
+              {
+                "nome": "Amaranto",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "grano-saraceno",
+            "nome": "Grano saraceno",
+            "ingredienti": [
+              {
+                "nome": "Grano saraceno",
+                "q": 70,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "secondi": [
+      {
+        "id": "pr-legumi",
+        "nome": "Legumi",
+        "categoria": "legumi",
+        "descrizione": "150 g di legumi (cotti: in barattolo o lessati)",
+        "ingredienti": [
+          {
+            "nome": "Legumi cotti (in barattolo o lessati)",
+            "q": 150,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "ceci",
+            "nome": "Ceci",
+            "ingredienti": [
+              {
+                "nome": "Ceci cotti (in barattolo o lessati)",
+                "q": 150,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "fagioli",
+            "nome": "Fagioli",
+            "ingredienti": [
+              {
+                "nome": "Fagioli cotti (in barattolo o lessati)",
+                "q": 150,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "lenticchie",
+            "nome": "Lenticchie",
+            "ingredienti": [
+              {
+                "nome": "Lenticchie cotti (in barattolo o lessati)",
+                "q": 150,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "piselli",
+            "nome": "Piselli",
+            "ingredienti": [
+              {
+                "nome": "Piselli cotti (in barattolo o lessati)",
+                "q": 150,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "fave",
+            "nome": "Fave",
+            "ingredienti": [
+              {
+                "nome": "Fave cotti (in barattolo o lessati)",
+                "q": 150,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pr-pesce-conservato",
+        "nome": "Pesce conservato",
+        "categoria": "pesce_conservato",
+        "descrizione": "70-100 g di tonno, salmone o sgombro al naturale",
+        "ingredienti": [
+          {
+            "nome": "Tonno / salmone / sgombro al naturale",
+            "q": 100,
+            "u": "g",
+            "reparto": "confezionati"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "tonno",
+            "nome": "Tonno al naturale",
+            "ingredienti": [
+              {
+                "nome": "Tonno al naturale",
+                "q": 100,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "salmone",
+            "nome": "Salmone al naturale",
+            "ingredienti": [
+              {
+                "nome": "Salmone al naturale",
+                "q": 100,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "sgombro",
+            "nome": "Sgombro al naturale",
+            "ingredienti": [
+              {
+                "nome": "Sgombro al naturale",
+                "q": 100,
+                "u": "g",
+                "reparto": "confezionati"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pr-uova",
+        "nome": "Uova",
+        "categoria": "uova",
+        "descrizione": "2 uova",
+        "ingredienti": [
+          {
+            "nome": "Uova",
+            "q": 2,
+            "u": "pz",
+            "reparto": "secondi"
+          }
+        ]
+      },
+      {
+        "id": "pr-parmigiano",
+        "nome": "Parmigiano (con 70 g di cereali)",
+        "categoria": "formaggio",
+        "descrizione": "20 g di parmigiano con i cereali",
+        "ingredienti": [
+          {
+            "nome": "Parmigiano",
+            "q": 20,
+            "u": "g",
+            "reparto": "frigo"
+          }
+        ]
+      },
+      {
+        "id": "pr-pesce",
+        "nome": "Pesce (con 70 g di cereali)",
+        "categoria": "pesce_fresco",
+        "descrizione": "100 g di pesce con i cereali",
+        "ingredienti": [
+          {
+            "nome": "Pesce",
+            "q": 100,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "sogliola",
+            "nome": "Sogliola",
+            "ingredienti": [
+              {
+                "nome": "Sogliola",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "merluzzo",
+            "nome": "Merluzzo",
+            "ingredienti": [
+              {
+                "nome": "Merluzzo",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "nasello",
+            "nome": "Nasello",
+            "ingredienti": [
+              {
+                "nome": "Nasello",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "spigola",
+            "nome": "Spigola",
+            "ingredienti": [
+              {
+                "nome": "Spigola",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "orata",
+            "nome": "Orata",
+            "ingredienti": [
+              {
+                "nome": "Orata",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "trota",
+            "nome": "Trota",
+            "ingredienti": [
+              {
+                "nome": "Trota",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "alici",
+            "nome": "Alici",
+            "ingredienti": [
+              {
+                "nome": "Alici",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "sarde",
+            "nome": "Sarde",
+            "ingredienti": [
+              {
+                "nome": "Sarde",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "sgombro",
+            "nome": "Sgombro",
+            "ingredienti": [
+              {
+                "nome": "Sgombro",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "sugarello",
+            "nome": "Sugarello",
+            "ingredienti": [
+              {
+                "nome": "Sugarello",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pr-carne",
+        "nome": "Carne bianca (con 70 g di cereali)",
+        "categoria": "carne_bianca",
+        "descrizione": "100 g di carne con i cereali",
+        "ingredienti": [
+          {
+            "nome": "Carne bianca",
+            "q": 100,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "pollo",
+            "nome": "Pollo",
+            "ingredienti": [
+              {
+                "nome": "Pollo",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "tacchino",
+            "nome": "Tacchino",
+            "ingredienti": [
+              {
+                "nome": "Tacchino",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "coniglio",
+            "nome": "Coniglio",
+            "ingredienti": [
+              {
+                "nome": "Coniglio",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "faraona",
+            "nome": "Faraona",
+            "ingredienti": [
+              {
+                "nome": "Faraona",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "pr-libero",
+        "nome": "Pasto libero",
+        "categoria": "libero",
+        "tag": [
+          "libero"
+        ],
+        "descrizione": "Il piano lo prevede il sabato a cena: se lo sposti qui, la cena del sabato non è più libera",
+        "ingredienti": []
+      }
+    ]
+  },
+  "cena": {
+    "verdura": "Verdure fresche o cotte, almeno 200 g a crudo (mangiarle per prime, con la maggior parte dell'olio)",
+    "olio": {
+      "nome": "Olio extravergine d'oliva",
+      "q": 12,
+      "u": "g",
+      "reparto": "altro",
+      "descrizione": "circa 2 cucchiaini e mezzo: il piano prevede 5-6 cucchiaini al giorno in totale"
+    },
+    "carboidrati": [
+      {
+        "id": "wasa",
+        "nome": "Wasa integrali (2)",
+        "q": 2,
+        "u": "pz",
+        "reparto": "confezionati",
+        "tag": [
+          "wasa"
+        ],
+        "varianti": [
+          {
+            "id": "wasa-2",
+            "nome": "Wasa integrali",
+            "ingredienti": [
+              {
+                "nome": "Wasa integrali",
+                "q": 2,
+                "u": "pz",
+                "reparto": "confezionati"
+              }
+            ]
+          },
+          {
+            "id": "segale",
+            "nome": "Pane di segale integrale (fette)",
+            "ingredienti": [
+              {
+                "nome": "Pane di segale integrale",
+                "q": 2,
+                "u": "pz",
+                "reparto": "cereali"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "wasa-1",
+        "nome": "1 Wasa integrale (versione ridotta)",
+        "q": 1,
+        "u": "pz",
+        "reparto": "confezionati",
+        "tag": [
+          "wasa"
+        ]
+      },
+      {
+        "id": "cereali-50",
+        "nome": "Cereali integrali 50 g (se inverti con il pranzo)",
+        "q": 50,
+        "u": "g",
+        "reparto": "cereali",
+        "tag": [
+          "cereali"
+        ],
+        "varianti": [
+          {
+            "id": "pasta-integrale",
+            "nome": "Pasta integrale",
+            "ingredienti": [
+              {
+                "nome": "Pasta integrale",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "riso",
+            "nome": "Riso (parboiled o basmati)",
+            "ingredienti": [
+              {
+                "nome": "Riso (parboiled o basmati)",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "farro",
+            "nome": "Farro",
+            "ingredienti": [
+              {
+                "nome": "Farro",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "orzo",
+            "nome": "Orzo",
+            "ingredienti": [
+              {
+                "nome": "Orzo",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "kamut",
+            "nome": "Kamut",
+            "ingredienti": [
+              {
+                "nome": "Kamut",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "segale",
+            "nome": "Pane di segale integrale (fette)",
+            "ingredienti": [
+              {
+                "nome": "Segale",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "avena",
+            "nome": "Avena",
+            "ingredienti": [
+              {
+                "nome": "Avena",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "couscous",
+            "nome": "Cous cous",
+            "ingredienti": [
+              {
+                "nome": "Cous cous",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "mais",
+            "nome": "Mais",
+            "ingredienti": [
+              {
+                "nome": "Mais",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "sorgo",
+            "nome": "Sorgo",
+            "ingredienti": [
+              {
+                "nome": "Sorgo",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "quinoa",
+            "nome": "Quinoa",
+            "ingredienti": [
+              {
+                "nome": "Quinoa",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "amaranto",
+            "nome": "Amaranto",
+            "ingredienti": [
+              {
+                "nome": "Amaranto",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          },
+          {
+            "id": "grano-saraceno",
+            "nome": "Grano saraceno",
+            "ingredienti": [
+              {
+                "nome": "Grano saraceno",
+                "q": 50,
+                "u": "g",
+                "reparto": "cereali"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "secondi": [
+      {
+        "id": "ce-carne-bianca",
+        "nome": "Carne bianca",
+        "categoria": "carne_bianca",
+        "descrizione": "130 g di pollo, tacchino, coniglio o faraona",
+        "ingredienti": [
+          {
+            "nome": "Carne bianca",
+            "q": 130,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "pollo",
+            "nome": "Pollo",
+            "ingredienti": [
+              {
+                "nome": "Pollo",
+                "q": 130,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "tacchino",
+            "nome": "Tacchino",
+            "ingredienti": [
+              {
+                "nome": "Tacchino",
+                "q": 130,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "coniglio",
+            "nome": "Coniglio",
+            "ingredienti": [
+              {
+                "nome": "Coniglio",
+                "q": 130,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "faraona",
+            "nome": "Faraona",
+            "ingredienti": [
+              {
+                "nome": "Faraona",
+                "q": 130,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-affettato-100",
+        "nome": "Affettato (al posto della carne bianca)",
+        "categoria": "carne_bianca",
+        "tag": [
+          "affettato"
+        ],
+        "descrizione": "100 g di affettato magro. Max 1 volta a settimana",
+        "ingredienti": [
+          {
+            "nome": "Affettato magro",
+            "q": 100,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "crudo",
+            "nome": "Prosciutto crudo magro",
+            "ingredienti": [
+              {
+                "nome": "Prosciutto crudo magro",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "bresaola",
+            "nome": "Bresaola",
+            "ingredienti": [
+              {
+                "nome": "Bresaola",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "fesa",
+            "nome": "Fesa di tacchino",
+            "ingredienti": [
+              {
+                "nome": "Fesa di tacchino",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "pollo-arrosto",
+            "nome": "Petto di pollo arrosto",
+            "ingredienti": [
+              {
+                "nome": "Petto di pollo arrosto",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "cotto",
+            "nome": "Prosciutto cotto",
+            "ingredienti": [
+              {
+                "nome": "Prosciutto cotto",
+                "q": 100,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-carne-rossa",
+        "nome": "Carne rossa",
+        "categoria": "carne_rossa",
+        "descrizione": "130 g di manzo, vitello, maiale magro…",
+        "ingredienti": [
+          {
+            "nome": "Carne rossa",
+            "q": 130,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "manzo",
+            "nome": "Manzo",
+            "ingredienti": [
+              {
+                "nome": "Manzo",
+                "q": 130,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "vitello",
+            "nome": "Vitello",
+            "ingredienti": [
+              {
+                "nome": "Vitello",
+                "q": 130,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "maiale",
+            "nome": "Maiale (magro)",
+            "ingredienti": [
+              {
+                "nome": "Maiale (magro)",
+                "q": 130,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "agnello",
+            "nome": "Agnello",
+            "ingredienti": [
+              {
+                "nome": "Agnello",
+                "q": 130,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "selvaggina",
+            "nome": "Selvaggina",
+            "ingredienti": [
+              {
+                "nome": "Selvaggina",
+                "q": 130,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-affettato-70",
+        "nome": "Affettato (al posto della carne rossa)",
+        "categoria": "carne_rossa",
+        "tag": [
+          "affettato"
+        ],
+        "descrizione": "70 g di affettato magro. Max 1 volta a settimana",
+        "ingredienti": [
+          {
+            "nome": "Affettato magro",
+            "q": 70,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "crudo",
+            "nome": "Prosciutto crudo magro",
+            "ingredienti": [
+              {
+                "nome": "Prosciutto crudo magro",
+                "q": 70,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "bresaola",
+            "nome": "Bresaola",
+            "ingredienti": [
+              {
+                "nome": "Bresaola",
+                "q": 70,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "fesa",
+            "nome": "Fesa di tacchino",
+            "ingredienti": [
+              {
+                "nome": "Fesa di tacchino",
+                "q": 70,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "pollo-arrosto",
+            "nome": "Petto di pollo arrosto",
+            "ingredienti": [
+              {
+                "nome": "Petto di pollo arrosto",
+                "q": 70,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "cotto",
+            "nome": "Prosciutto cotto",
+            "ingredienti": [
+              {
+                "nome": "Prosciutto cotto",
+                "q": 70,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-pesce",
+        "nome": "Pesce",
+        "categoria": "pesce_fresco",
+        "descrizione": "180 g di pesce (sogliola, merluzzo, nasello, spigola, orata, trota, pesce azzurro). Con cautela molluschi, crostacei, salmone, tonno e spada",
+        "ingredienti": [
+          {
+            "nome": "Pesce",
+            "q": 180,
+            "u": "g",
+            "reparto": "secondi"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "sogliola",
+            "nome": "Sogliola",
+            "ingredienti": [
+              {
+                "nome": "Sogliola",
+                "q": 180,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "merluzzo",
+            "nome": "Merluzzo",
+            "ingredienti": [
+              {
+                "nome": "Merluzzo",
+                "q": 180,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "nasello",
+            "nome": "Nasello",
+            "ingredienti": [
+              {
+                "nome": "Nasello",
+                "q": 180,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "spigola",
+            "nome": "Spigola",
+            "ingredienti": [
+              {
+                "nome": "Spigola",
+                "q": 180,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "orata",
+            "nome": "Orata",
+            "ingredienti": [
+              {
+                "nome": "Orata",
+                "q": 180,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "trota",
+            "nome": "Trota",
+            "ingredienti": [
+              {
+                "nome": "Trota",
+                "q": 180,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "alici",
+            "nome": "Alici",
+            "ingredienti": [
+              {
+                "nome": "Alici",
+                "q": 180,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "sarde",
+            "nome": "Sarde",
+            "ingredienti": [
+              {
+                "nome": "Sarde",
+                "q": 180,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "sgombro",
+            "nome": "Sgombro",
+            "ingredienti": [
+              {
+                "nome": "Sgombro",
+                "q": 180,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          },
+          {
+            "id": "sugarello",
+            "nome": "Sugarello",
+            "ingredienti": [
+              {
+                "nome": "Sugarello",
+                "q": 180,
+                "u": "g",
+                "reparto": "secondi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-latticino",
+        "nome": "Latticino",
+        "categoria": "formaggio",
+        "descrizione": "100-120 g di mozzarella, primo sale, fiocchi di latte o ricotta di mucca",
+        "ingredienti": [
+          {
+            "nome": "Latticino (mozzarella / primo sale / fiocchi di latte / ricotta)",
+            "q": 120,
+            "u": "g",
+            "reparto": "frigo"
+          }
+        ],
+        "varianti": [
+          {
+            "id": "mozzarella",
+            "nome": "Mozzarella",
+            "ingredienti": [
+              {
+                "nome": "Mozzarella",
+                "q": 120,
+                "u": "g",
+                "reparto": "frigo"
+              }
+            ]
+          },
+          {
+            "id": "primo-sale",
+            "nome": "Primo sale",
+            "ingredienti": [
+              {
+                "nome": "Primo sale",
+                "q": 120,
+                "u": "g",
+                "reparto": "frigo"
+              }
+            ]
+          },
+          {
+            "id": "fiocchi",
+            "nome": "Fiocchi di latte",
+            "ingredienti": [
+              {
+                "nome": "Fiocchi di latte",
+                "q": 120,
+                "u": "g",
+                "reparto": "frigo"
+              }
+            ]
+          },
+          {
+            "id": "ricotta",
+            "nome": "Ricotta di mucca",
+            "ingredienti": [
+              {
+                "nome": "Ricotta di mucca",
+                "q": 120,
+                "u": "g",
+                "reparto": "frigo"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ce-libero",
+        "nome": "Pasto libero",
+        "categoria": "libero",
+        "tag": [
+          "libero"
+        ],
+        "descrizione": "Previsto il sabato a cena (uno solo a settimana)",
+        "ingredienti": []
+      }
+    ]
+  },
+  "schemaTipo": {
+    "descrizione": "Schema del piano. Pranzo e cena si possono invertire e i blocchi spostare tra i giorni.",
+    "pranzo": {
+      "lun": "pr-legumi",
+      "mar": "pr-pesce-conservato",
+      "mer": "pr-legumi",
+      "gio": "pr-pesce-conservato",
+      "ven": "pr-legumi",
+      "sab": "pr-uova",
+      "dom": "pr-parmigiano"
+    },
+    "cena": {
+      "lun": "ce-carne-bianca",
+      "mar": "ce-carne-rossa",
+      "mer": "ce-pesce",
+      "gio": "ce-carne-bianca",
+      "ven": "ce-pesce",
+      "sab": "ce-libero",
+      "dom": "ce-latticino"
+    },
+    "carboidrati": {
+      "pranzo": {
+        "lun": "cereali-50",
+        "mar": "wasa",
+        "mer": "cereali-50",
+        "gio": "wasa",
+        "ven": "cereali-50",
+        "sab": "wasa",
+        "dom": "cereali-70"
+      },
+      "cena": {
+        "lun": "wasa",
+        "mar": "wasa",
+        "mer": "wasa",
+        "gio": "wasa",
+        "ven": "wasa",
+        "sab": null,
+        "dom": "wasa"
+      }
+    }
+  },
+  "consigli": [
+    "2 bicchieri d'acqua 15 minuti prima di ogni pasto, spuntini compresi. Bere di più.",
+    "Per 15 giorni: 2 bicchieri d'acqua tiepida con mezzo limone a stomaco vuoto, poi solo acqua.",
+    "Digiuno 16:8 (16 ore senza mangiare).",
+    "Sale con attenzione. Condimenti: olio EVO 5-6 cucchiaini al giorno, spezie (curcuma, zenzero, cannella, pepe, peperoncino), erbe aromatiche, aceto di mele o balsamico oppure 1 cucchiaino di glassa.",
+    "Verdure: almeno 200 g a crudo per pasto, mangiate per prime con la maggior parte dell'olio. Ordine: prima verdure, poi secondo, poi pane.",
+    "Lavare il riso prima di cuocerlo (meglio parboiled o basmati). Riso o pasta cotti e raffreddati (anche il giorno dopo) abbassano l'indice glicemico. Pasta corta al dente.",
+    "Mangiare lentamente: un alimento alla volta, masticare almeno 20 volte ogni boccone, 10 respiri profondi prima di mangiare.",
+    "Tisana curcuma e zenzero.",
+    "Puoi invertire pranzo con cena e spostare i blocchi tra i giorni."
+  ]
+}

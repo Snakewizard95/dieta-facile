@@ -38,9 +38,10 @@ In alternativa, sempre dall'ingranaggio, si può esportare un backup su file e i
 
 ## Struttura
 
-- `dati/dieta.json` — il piano nutrizionale in forma strutturata (alimenti, grammature, limiti).
+- `dati/diete.json` — registro delle diete disponibili; `dati/diete/<id>/dieta.json` — ogni piano nutrizionale in forma strutturata.
 - `dati/ricette.json` — il ricettario.
-- `docs/VERIFICA_DATI.md` — la stessa dieta in tabelle leggibili, per controllarla.
+- `docs/diete/<id>.md` — ogni dieta in tabelle leggibili, per controllarla contro il PDF.
+- `docs/NUOVA_DIETA.md` — come aggiungere la dieta di un'altra famiglia.
 - `index.html`, `css/`, `js/` — l'applicazione.
 
 ## Privacy

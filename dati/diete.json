@@ -1,0 +1,15 @@
+{
+  "note": "Registro delle diete disponibili. Ogni dieta è un file con lo stesso formato; 'ricette' è facoltativo (se manca si usa il ricettario comune dati/ricette.json). L'id compare nel link ?dieta=<id> e nel nome della chiave di salvataggio: non cambiarlo dopo l'uso.",
+  "diete": [
+    {
+      "id": "mediterranea-a",
+      "nome": "Dieta mediterranea — famiglia 1",
+      "file": "dati/diete/mediterranea-a/dieta.json"
+    },
+    {
+      "id": "armonia-b",
+      "nome": "Dieta Armonia — famiglia 2",
+      "file": "dati/diete/armonia-b/dieta.json"
+    }
+  ]
+}

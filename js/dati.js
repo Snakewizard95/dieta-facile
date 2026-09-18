@@ -1,25 +1,50 @@
 // ==========================================================================
-// dati.js — caricamento dei file JSON: dieta, ricettario, stagionalità
+// dati.js — caricamento dei file JSON: registro delle diete, dieta scelta,
+// ricettario, stagionalità, emoji, calorie
 // ==========================================================================
-
-let cache = null;
 
 // Versione dei dati: deve coincidere con ?v= in index.html e con VERSIONE in sw.js.
 // Serve a scavalcare le cache (GitHub Pages, browser) quando si pubblica un aggiornamento.
-export const VERSIONE_DATI = '8';
+export const VERSIONE_DATI = '9';
 
-/** Carica i tre JSON (una sola volta). In caso di errore lancia un messaggio in italiano. */
-export async function caricaDati() {
-  if (cache) return cache;
+const RICETTE_COMUNI = 'dati/ricette.json';
+let registro = null;
+const cache = {};
+
+/** Elenco delle diete disponibili: [{ id, nome, file, ricette? }]. */
+export async function caricaRegistro() {
+  if (!registro) {
+    const r = await caricaJson('dati/diete.json');
+    registro = Array.isArray(r.diete) ? r.diete : [];
+    if (!registro.length) throw new Error('Il registro dati/diete.json non contiene nessuna dieta.');
+  }
+  return registro;
+}
+
+/** La voce del registro per un id, oppure null. */
+export async function trovaDieta(dietaId) {
+  const lista = await caricaRegistro();
+  return lista.find(d => d.id === dietaId) || null;
+}
+
+/**
+ * Carica tutti i dati necessari per una dieta (una sola volta per id).
+ * Restituisce { dietaInfo, dieta, ricette, stagioni, emoji, calorie }.
+ */
+export async function caricaDati(dietaId) {
+  if (cache[dietaId]) return cache[dietaId];
+  const info = await trovaDieta(dietaId);
+  if (!info) throw new Error(`Dieta "${dietaId}" non trovata nel registro.`);
+
   const [dieta, ricette, stagioni, emoji, calorie] = await Promise.all([
-    caricaJson('dati/dieta.json'),
-    caricaJson('dati/ricette.json'),
+    caricaJson(info.file),
+    caricaJson(info.ricette || RICETTE_COMUNI),
     caricaJson('dati/stagioni.json'),
     caricaJson('dati/emoji.json'),
     caricaJson('dati/calorie.json')
   ]);
-  cache = { dieta, ricette, stagioni, emoji, calorie };
-  return cache;
+  cache[dietaId] = { dietaInfo: info, dieta, ricette, stagioni, emoji, calorie };
+  return cache[dietaId];
 }
 
 async function caricaJson(percorso) {

@@ -33,8 +33,14 @@ per **una o più persone** che seguono la stessa dieta:
   (token fine-grained con solo "Contents: read and write" su quel repository).
 - Hosting: GitHub Pages (repository pubblico, solo codice). Deve funzionare anche
   aprendo i file con `python3 -m http.server` in locale.
-- La dieta vive SOLO in `dati/dieta.json`, `dati/ricette.json` e `dati/stagioni.json`.
-  La logica in `js/` non deve contenere grammature o nomi di alimenti "cablati".
+- Le diete vivono SOLO in `dati/diete/<id>/dieta.json` (registro in `dati/diete.json`);
+  ricettario, stagioni, emoji e calorie sono in comune. La logica in `js/` non deve contenere
+  grammature o nomi di alimenti "cablati".
+- **Più famiglie, più diete**: ogni dispositivo ha una dieta scelta (preferenza `dieta` in
+  localStorage, impostabile con il link `?dieta=<id>`), una chiave di salvataggio per dieta e
+  il proprio repository di sincronizzazione. Lo stato porta `dietaId`: stati di diete diverse
+  non si fondono mai (il repository vince e l'app si ricarica con quella dieta). Aggiungere
+  una dieta non deve mai cambiare il comportamento delle altre.
 - Deve funzionare bene su iPhone (schermo stretto, touch) e offline dopo la prima apertura.
 - Fusione tra dispositivi: per ogni persona vince il piano con `aggiornatoIl` più recente;
   le spunte della spesa seguono `spuntateIl`. Mai perdere silenziosamente dati.
@@ -53,7 +59,8 @@ per **una o più persone** che seguono la stessa dieta:
 index.html            pagina unica con 3 schede + pannello a comparsa
 manifest.webmanifest  installazione su iPhone (Fase 4)
 sw.js                 service worker per l'offline (Fase 4)
-css/stile.css
+css/stile.css         restyling "Organic" (crema, terracotta #c67139, salvia #7a8a5e), da Claude Design
+fonts/                Caprasimo e Figtree (woff2, licenza OFL), inclusi per l'uso offline
 js/app.js             avvio, navigazione, collegamento sincronizzazione
 js/dati.js            caricamento JSON e ricerca opzioni
 js/stato.js           stato v2 (persone, piani, extra), localStorage, fusione, backup
@@ -67,12 +74,14 @@ js/spesa.js           scheda Spesa
 js/ricette.js         scheda Ricette: suggerimenti per pasto + ricettario con ricerca
 js/emoji.js           emoji per alimenti e piatti (da dati/emoji.json)
 js/calorie.js         stima indicativa delle calorie (da dati/calorie.json), disattivabile
-dati/dieta.json       piano nutrizionale strutturato
+dati/diete.json       registro delle diete { id, nome, file, ricette? }
+dati/diete/<id>/dieta.json  un piano nutrizionale per dieta (stesso formato)
 dati/ricette.json     ricettario
 dati/stagioni.json    frutta e verdura di stagione per mese
 dati/emoji.json       parole chiave → emoji (l'ordine conta: specifiche prima)
 dati/calorie.json     parole chiave → kcal per 100 g o per pezzo (stime, specifiche prima)
-docs/VERIFICA_DATI.md tabella leggibile dei dati, per controllo contro il PDF
+docs/diete/<id>.md    tabella leggibile di ogni dieta, per controllo contro il PDF
+docs/NUOVA_DIETA.md   procedura per aggiungere la dieta di un'altra famiglia
 docs/SINCRONIZZAZIONE.md guida per repository privato e token
 icone/                icone PNG per la PWA
 ```
@@ -82,7 +91,7 @@ icone/                icone PNG per la PWA
 | Fase | Contenuto | Verifica di Davide |
 |---|---|---|
 | 0 | Setup cartelle, CLAUDE.md, README, git | — |
-| 1 | dieta.json + ricette.json + VERIFICA_DATI.md | Conferma grammature e limiti contro il PDF |
+| 1 | dieta.json + ricette.json + docs/diete/<id>.md | Conferma grammature e limiti contro il PDF |
 | 2 | Scheda Settimana + vincoli | Prova a superare un limite in Safari |
 | 3 | Scheda Spesa | Controllo manuale di 2-3 ingredienti |
 | 3b | Più persone, sincronizzazione GitHub, stagionalità | Due dispositivi vedono lo stesso piano; frutto scelto compare in spesa |
@@ -92,16 +101,17 @@ icone/                icone PNG per la PWA
 
 Non passare alla fase successiva senza la conferma dell'utente.
 
-Stato al 18/09/2026: Fasi 1-5 completate. L'app è pubblicata su GitHub Pages e installata
+Stato al 18/09/2026: Fasi 1-5 completate; multi-dieta attivo con due diete registrate
+(`mediterranea-a` famiglia 1, `armonia-b` famiglia 2), verifica in docs/diete/. L'app è pubblicata su GitHub Pages e installata
 sull'iPhone; la sincronizzazione GitHub è attiva. Ad ogni pubblicazione aumentare `VERSIONE`
 in `sw.js` e ricaricare i file cambiati su GitHub (guida in `docs/PUBBLICAZIONE.md`).
 
 ## 7. Regole operative
 
-1. Ogni modifica ai JSON della dieta va riportata anche in `docs/VERIFICA_DATI.md`.
+1. Ogni modifica ai JSON di una dieta va riportata anche in `docs/diete/<id>.md`.
 2. Ogni consegna include: cosa è cambiato, come provarlo, quale fase si sta chiudendo.
 3. Le regole della dieta si trascrivono dal PDF, non si interpretano: in caso di dubbio
-   si segnala il punto in VERIFICA_DATI.md nella sezione "Punti da chiarire".
+   si segnala il punto in docs/diete/<id>.md nella sezione "Punti da chiarire".
 4. Questo strumento aiuta a organizzare un piano prescritto da una professionista; non
    dà consigli nutrizionali propri e non modifica le grammature di sua iniziativa.
 5. Le calorie sono una stima dichiarata come tale, per curiosità: mai presentarle come

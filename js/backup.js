@@ -14,7 +14,7 @@ export function scaricaBackup(stato) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = `dieta-facile-${stato.settimanaDel}.json`;
+  a.download = `dieta-facile-${stato.dietaId || 'piano'}-${stato.settimanaDel}.json`;
   document.body.appendChild(a);
   a.click();
   a.remove();
@@ -25,7 +25,7 @@ export function scaricaBackup(stato) {
  * Apre il selettore di file e, se il file è valido, chiama `alRisultato(nuovoStato)`.
  * In caso di errore mostra un messaggio.
  */
-export function scegliFileBackup(alRisultato) {
+export function scegliFileBackup(alRisultato, dietaId) {
   const input = document.createElement('input');
   input.type = 'file';
   input.accept = 'application/json,.json';
@@ -34,7 +34,7 @@ export function scegliFileBackup(alRisultato) {
     if (!file) return;
     try {
       const testo = await file.text();
-      const nuovo = importa(testo);
+      const nuovo = importa(testo, dietaId);
       alRisultato(nuovo);
     } catch (e) {
       alert(`Non riesco a leggere il backup: ${e.message}`);

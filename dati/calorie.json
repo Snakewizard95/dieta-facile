@@ -3,6 +3,203 @@
   "voci": [
     {
       "parole": [
+        "wasa original",
+        "wasa integrali"
+      ],
+      "kcalPz": 30,
+      "kcal100": 380
+    },
+    {
+      "parole": [
+        "gallette",
+        "wasa"
+      ],
+      "kcalPz": 30,
+      "kcal100": 380
+    },
+    {
+      "parole": [
+        "pane di segale integrale"
+      ],
+      "kcalPz": 60,
+      "kcal100": 240
+    },
+    {
+      "parole": [
+        "vitello"
+      ],
+      "kcal100": 110
+    },
+    {
+      "parole": [
+        "legumi cotti"
+      ],
+      "kcal100": 110
+    },
+    {
+      "parole": [
+        "ceci cotti"
+      ],
+      "kcal100": 120
+    },
+    {
+      "parole": [
+        "fagioli cotti"
+      ],
+      "kcal100": 100
+    },
+    {
+      "parole": [
+        "lenticchie cotti",
+        "lenticchie cotte"
+      ],
+      "kcal100": 110
+    },
+    {
+      "parole": [
+        "piselli cotti"
+      ],
+      "kcal100": 80
+    },
+    {
+      "parole": [
+        "fave cotti",
+        "fave cotte"
+      ],
+      "kcal100": 90
+    },
+    {
+      "parole": [
+        "pancake"
+      ],
+      "kcalPz": 90,
+      "kcal100": 230
+    },
+    {
+      "parole": [
+        "cereali integrali"
+      ],
+      "kcal100": 340
+    },
+    {
+      "parole": [
+        "total 0%",
+        "greco fage total"
+      ],
+      "kcal100": 57
+    },
+    {
+      "parole": [
+        "marmellata di mirtilli"
+      ],
+      "kcal100": 220
+    },
+    {
+      "parole": [
+        "tonno / salmone / sgombro al naturale",
+        "tonno al naturale"
+      ],
+      "kcal100": 100
+    },
+    {
+      "parole": [
+        "salmone al naturale"
+      ],
+      "kcal100": 150
+    },
+    {
+      "parole": [
+        "sgombro al naturale"
+      ],
+      "kcal100": 170
+    },
+    {
+      "parole": [
+        "affettato magro"
+      ],
+      "kcal100": 130
+    },
+    {
+      "parole": [
+        "prosciutto crudo"
+      ],
+      "kcal100": 160
+    },
+    {
+      "parole": [
+        "petto di pollo arrosto"
+      ],
+      "kcal100": 110
+    },
+    {
+      "parole": [
+        "carne bianca",
+        "faraona"
+      ],
+      "kcal100": 110
+    },
+    {
+      "parole": [
+        "carne rossa"
+      ],
+      "kcal100": 130
+    },
+    {
+      "parole": [
+        "maiale"
+      ],
+      "kcal100": 140
+    },
+    {
+      "parole": [
+        "agnello"
+      ],
+      "kcal100": 160
+    },
+    {
+      "parole": [
+        "selvaggina"
+      ],
+      "kcal100": 110
+    },
+    {
+      "parole": [
+        "latticino"
+      ],
+      "kcal100": 170
+    },
+    {
+      "parole": [
+        "trota"
+      ],
+      "kcal100": 100
+    },
+    {
+      "parole": [
+        "nasello"
+      ],
+      "kcal100": 75
+    },
+    {
+      "parole": [
+        "sogliola"
+      ],
+      "kcal100": 85
+    },
+    {
+      "parole": [
+        "sugarello"
+      ],
+      "kcal100": 110
+    },
+    {
+      "parole": [
+        "alici"
+      ],
+      "kcal100": 100
+    },
+    {
+      "parole": [
         "crackers di riso scotti"
       ],
       "kcalPz": 120
@@ -26,14 +223,6 @@
         "fette galbusera"
       ],
       "kcalPz": 130
-    },
-    {
-      "parole": [
-        "gallette",
-        "wasa"
-      ],
-      "kcalPz": 30,
-      "kcal100": 380
     },
     {
       "parole": [
@@ -727,6 +916,24 @@
         "carote"
       ],
       "kcal100": 35
+    },
+    {
+      "parole": [
+        "kamut",
+        "segale",
+        "avena",
+        "sorgo",
+        "mais",
+        "amaranto",
+        "grano saraceno"
+      ],
+      "kcal100": 340
+    },
+    {
+      "parole": [
+        "pesce"
+      ],
+      "kcal100": 100
     }
   ]
 }

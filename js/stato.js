@@ -21,9 +21,18 @@
 //   aggiornatoIl: "..."                            // ultima modifica a settimana o persone
 // }
 
-const CHIAVE = 'dietaFacile.piano.v2';
+// Ogni dieta ha la propria chiave di salvataggio, così su un dispositivo condiviso
+// due famiglie con diete diverse non si sovrascrivono.
+const CHIAVE_BASE = 'dietaFacile.piano.v2';
 const CHIAVE_V1 = 'dietaFacile.piano.v1';
 const CHIAVE_UI = 'dietaFacile.ui.v1';
+
+/** Id della prima dieta del progetto: i salvataggi fatti prima del multi-dieta sono suoi. */
+export const DIETA_STORICA = 'mediterranea-a';
+
+function chiavePer(dietaId) {
+  return `${CHIAVE_BASE}.${dietaId}`;
+}
 
 export const GIORNI = ['lun', 'mar', 'mer', 'gio', 'ven', 'sab', 'dom'];
 export const SLOT_PRINCIPALI = ['pranzo', 'cena'];
@@ -74,9 +83,10 @@ export function pianoVuoto() {
   return { scelte, extra: {}, aggiornatoIl: null };
 }
 
-export function statoVuoto(lunedi = lunediDi()) {
+export function statoVuoto(lunedi = lunediDi(), dietaId = DIETA_STORICA) {
   return {
     versione: 2,
+    dietaId,
     settimanaDel: lunedi,
     persone: [{ id: 'p1', nome: 'Persona 1' }, { id: 'p2', nome: 'Persona 2' }],
     piani: { p1: pianoVuoto(), p2: pianoVuoto() },
@@ -88,33 +98,42 @@ export function statoVuoto(lunedi = lunediDi()) {
 
 // --- Caricamento e salvataggio locale ---------------------------------------
 
-export function carica() {
+/** Carica lo stato della dieta indicata; se manca o è corrotto, ne crea uno vuoto. */
+export function carica(dietaId = DIETA_STORICA) {
   try {
-    const testo = localStorage.getItem(CHIAVE);
+    const testo = localStorage.getItem(chiavePer(dietaId));
     if (testo) {
       const s = JSON.parse(testo);
-      if (valido(s)) return normalizza(s);
+      if (valido(s)) return normalizza(s, dietaId);
     }
-    // Migrazione dalla versione 1 (una sola persona)
-    const vecchio = localStorage.getItem(CHIAVE_V1);
-    if (vecchio) {
-      const s1 = JSON.parse(vecchio);
-      if (s1 && s1.scelte) {
-        const s = statoVuoto(s1.settimanaDel || lunediDi());
-        s.piani.p1 = normalizzaPiano({ scelte: s1.scelte, extra: {}, aggiornatoIl: adesso() });
-        s.spuntate = s1.spuntate || {};
-        return s;
+    if (dietaId === DIETA_STORICA) {
+      // Salvataggi fatti prima del multi-dieta (chiave senza suffisso)
+      const senzaSuffisso = localStorage.getItem(CHIAVE_BASE);
+      if (senzaSuffisso) {
+        const s = JSON.parse(senzaSuffisso);
+        if (valido(s)) return normalizza(s, dietaId);
+      }
+      // Migrazione dalla versione 1 (una sola persona)
+      const vecchio = localStorage.getItem(CHIAVE_V1);
+      if (vecchio) {
+        const s1 = JSON.parse(vecchio);
+        if (s1 && s1.scelte) {
+          const s = statoVuoto(s1.settimanaDel || lunediDi(), dietaId);
+          s.piani.p1 = normalizzaPiano({ scelte: s1.scelte, extra: {}, aggiornatoIl: adesso() });
+          s.spuntate = s1.spuntate || {};
+          return s;
+        }
       }
     }
   } catch (e) {
     console.warn('Stato non leggibile, riparto da zero:', e);
   }
-  return statoVuoto();
+  return statoVuoto(lunediDi(), dietaId);
 }
 
 export function salva(stato) {
   try {
-    localStorage.setItem(CHIAVE, JSON.stringify(stato));
+    localStorage.setItem(chiavePer(stato.dietaId || DIETA_STORICA), JSON.stringify(stato));
     return true;
   } catch (e) {
     console.warn('Impossibile salvare:', e);
@@ -230,17 +249,27 @@ export function esporta(stato) {
   return JSON.stringify(stato, null, 2);
 }
 
-export function importa(testo) {
+export function importa(testo, dietaId = DIETA_STORICA) {
   const s = JSON.parse(testo);
   if (s && s.scelte && !s.piani) {
     // backup della versione 1
-    const nuovo = statoVuoto(s.settimanaDel || lunediDi());
+    const nuovo = statoVuoto(s.settimanaDel || lunediDi(), dietaId);
     nuovo.piani.p1 = normalizzaPiano({ scelte: s.scelte, extra: {}, aggiornatoIl: adesso() });
     nuovo.spuntate = s.spuntate || {};
     return nuovo;
   }
   if (!valido(s)) throw new Error('Il file non contiene un piano settimanale valido.');
-  return normalizza(s);
+  if (s.dietaId && s.dietaId !== dietaId) {
+    throw new Error(`Il backup appartiene a un'altra dieta ("${s.dietaId}"): non può essere importato qui.`);
+  }
+  return normalizza(s, dietaId);
+}
+
+/** Vero se i due stati appartengono a diete diverse (e quindi non vanno fusi). */
+export function dieteDiverse(a, b) {
+  const ida = (a && a.dietaId) || DIETA_STORICA;
+  const idb = (b && b.dietaId) || DIETA_STORICA;
+  return ida !== idb;
 }
 
 // --- Fusione tra dispositivi -----------------------------------------------
@@ -251,11 +280,14 @@ export function importa(testo) {
  * il più recente. A parità vince il remoto.
  */
 export function unisci(locale, remoto) {
-  const L = normalizza(locale);
-  const R = normalizza(remoto);
+  // Diete diverse: non si fonde nulla, vince il remoto (è il repository della famiglia)
+  if (dieteDiverse(locale, remoto)) return normalizza(remoto, remoto.dietaId);
+  const L = normalizza(locale, locale.dietaId);
+  const R = normalizza(remoto, locale.dietaId);
   const base = (R.aggiornatoIl || '') >= (L.aggiornatoIl || '') ? R : L;
   const risultato = {
     versione: 2,
+    dietaId: L.dietaId,
     settimanaDel: base.settimanaDel,
     persone: base.persone.map(p => ({ ...p })),
     piani: {},
@@ -279,7 +311,7 @@ export function unisci(locale, remoto) {
 }
 
 export function uguali(a, b) {
-  return JSON.stringify(normalizza(a)) === JSON.stringify(normalizza(b));
+  return JSON.stringify(normalizza(a, a.dietaId)) === JSON.stringify(normalizza(b, b.dietaId));
 }
 
 function clona(x) {
@@ -315,8 +347,8 @@ function normalizzaPiano(p) {
   return base;
 }
 
-export function normalizza(s) {
-  const base = statoVuoto(s.settimanaDel || lunediDi());
+export function normalizza(s, dietaId = null) {
+  const base = statoVuoto(s.settimanaDel || lunediDi(), dietaId || s.dietaId || DIETA_STORICA);
   base.persone = Array.isArray(s.persone) && s.persone.length > 0
     ? s.persone.map(p => ({ id: String(p.id), nome: String(p.nome || 'Senza nome') }))
     : base.persone;

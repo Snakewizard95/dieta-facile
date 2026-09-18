@@ -1,68 +1,559 @@
 {
   "note": "Emoji da mostrare accanto ad alimenti e piatti. Si cerca la prima voce le cui parole compaiono nel nome (senza distinguere maiuscole). L'ordine conta: le voci più specifiche stanno prima.",
   "voci": [
-    { "parole": ["pancake"], "emoji": "🥞" },
-    { "parole": ["farinata", "hummus"], "emoji": "🫘" },
-    { "parole": ["polpett", "burger", "bocconcini"], "emoji": "🧆" },
-    { "parole": ["insalatona", "insalata di"], "emoji": "🥗" },
-    { "parole": ["vellutata", "minestrone", "zuppa", "ragù"], "emoji": "🍲" },
-    { "parole": ["frullato", "gelato"], "emoji": "🍧" },
-    { "parole": ["crema caffè", "caffè"], "emoji": "☕" },
-    { "parole": ["chia pudding", "porridge", "fettamisù", "weetabix"], "emoji": "🥣" },
-    { "parole": ["tortino", "tortini", "torta", "mugcake", "banana bread", "pirottin"], "emoji": "🧁" },
-    { "parole": ["biscott", "cookies", "oro saiwa"], "emoji": "🍪" },
-    { "parole": ["curry"], "emoji": "🍛" },
-    { "parole": ["risotto", "riso"], "emoji": "🍚" },
-    { "parole": ["pasta", "mezzemaniche", "spaghetti", "pastina"], "emoji": "🍝" },
-    { "parole": ["gnocchi"], "emoji": "🥟" },
-    { "parole": ["polenta"], "emoji": "🌽" },
-    { "parole": ["patat"], "emoji": "🥔" },
-    { "parole": ["cous cous", "couscous", "farro", "orzo", "quinoa", "cereali", "avena", "fiocchi di mais", "cornflakes", "farina"], "emoji": "🌾" },
-    { "parole": ["pane", "panino", "piadina", "croston", "fette biscottate", "gallette", "crackers", "wasa", "taralli", "snack e vai"], "emoji": "🍞" },
-    { "parole": ["farinata", "hummus", "ceci", "fagiol", "lenticchie", "piselli", "fave", "legumi", "tofu"], "emoji": "🫘" },
-    { "parole": ["frittata", "uova", "uovo", "albume"], "emoji": "🥚" },
-    { "parole": ["calamar", "polpo", "seppi"], "emoji": "🦑" },
-    { "parole": ["gamber"], "emoji": "🦐" },
-    { "parole": ["pesce", "merluzzo", "orata", "spigola", "rombo", "salmone", "tonno", "acciugh", "alici", "aringh", "sgombro", "sarde"], "emoji": "🐟" },
-    { "parole": ["pollo", "tacchino", "coniglio", "carne bianca"], "emoji": "🍗" },
-    { "parole": ["vitell", "manzo", "bovino", "carne rossa", "pizzaiola"], "emoji": "🥩" },
-    { "parole": ["bresaola", "prosciutto", "affettat"], "emoji": "🥓" },
-    { "parole": ["ricotta", "formaggi", "mozzarella", "primo sale", "fiocchi di latte", "parmigiano", "feta"], "emoji": "🧀" },
-    { "parole": ["yogurt"], "emoji": "🥛" },
-    { "parole": ["latte", "kefir"], "emoji": "🥛" },
-    { "parole": ["uva"], "emoji": "🍇" },
-    { "parole": ["mela", "mele"], "emoji": "🍎" },
-    { "parole": ["pera", "pere"], "emoji": "🍐" },
-    { "parole": ["banan"], "emoji": "🍌" },
-    { "parole": ["aranc", "mandarin", "clementin", "cachi", "pompelm"], "emoji": "🍊" },
-    { "parole": ["limon"], "emoji": "🍋" },
-    { "parole": ["kiwi"], "emoji": "🥝" },
-    { "parole": ["fragol"], "emoji": "🍓" },
-    { "parole": ["ciliegi"], "emoji": "🍒" },
-    { "parole": ["pesch", "albicocc", "susin", "nespol"], "emoji": "🍑" },
-    { "parole": ["melon", "fichi"], "emoji": "🍈" },
-    { "parole": ["anguri"], "emoji": "🍉" },
-    { "parole": ["mirtill", "more", "lampon", "frutti di bosco", "melogran"], "emoji": "🫐" },
-    { "parole": ["castagn"], "emoji": "🌰" },
-    { "parole": ["avocado"], "emoji": "🥑" },
-    { "parole": ["cocco"], "emoji": "🥥" },
-    { "parole": ["frutta di stagione", "frutto", "frutta fresca", "frutta surgelata"], "emoji": "🍎" },
-    { "parole": ["frutta secca", "noci", "mandorle", "nocciole", "anacardi", "arachidi", "crema spalmabile"], "emoji": "🥜" },
-    { "parole": ["semi di", "semi misti"], "emoji": "🌱" },
-    { "parole": ["cioccolat", "cacao", "barretta"], "emoji": "🍫" },
-    { "parole": ["marmellata", "miele"], "emoji": "🍯" },
-    { "parole": ["olio", "olive"], "emoji": "🫒" },
-    { "parole": ["zucchin", "cetriol"], "emoji": "🥒" },
-    { "parole": ["pomodor"], "emoji": "🍅" },
-    { "parole": ["melanzan"], "emoji": "🍆" },
-    { "parole": ["peperon"], "emoji": "🫑" },
-    { "parole": ["carot"], "emoji": "🥕" },
-    { "parole": ["zucca"], "emoji": "🎃" },
-    { "parole": ["fungh"], "emoji": "🍄" },
-    { "parole": ["cavolfior", "broccol", "cavol", "verza", "cime di rapa"], "emoji": "🥦" },
-    { "parole": ["cipoll", "scalogno", "porr", "rape", "ravanell", "finocch", "sedano"], "emoji": "🧅" },
-    { "parole": ["asparag", "carciof", "agretti", "fagiolini"], "emoji": "🌿" },
-    { "parole": ["verdur", "insalata", "lattuga", "rucola", "spinac", "biet", "cicoria", "radicchio"], "emoji": "🥬" },
-    { "parole": ["pasto libero"], "emoji": "🎉" }
+    {
+      "parole": [
+        "agnello",
+        "maiale",
+        "selvaggina"
+      ],
+      "emoji": "🥩"
+    },
+    {
+      "parole": [
+        "pane di segale"
+      ],
+      "emoji": "🍞"
+    },
+    {
+      "parole": [
+        "kamut",
+        "sorgo",
+        "amaranto",
+        "grano saraceno",
+        "segale"
+      ],
+      "emoji": "🌾"
+    },
+    {
+      "parole": [
+        "latticino"
+      ],
+      "emoji": "🧀"
+    },
+    {
+      "parole": [
+        "trota",
+        "nasello",
+        "sogliola",
+        "sugarello",
+        "alici"
+      ],
+      "emoji": "🐟"
+    },
+    {
+      "parole": [
+        "faraona"
+      ],
+      "emoji": "🍗"
+    },
+    {
+      "parole": [
+        "pancake"
+      ],
+      "emoji": "🥞"
+    },
+    {
+      "parole": [
+        "farinata",
+        "hummus"
+      ],
+      "emoji": "🫘"
+    },
+    {
+      "parole": [
+        "polpett",
+        "burger",
+        "bocconcini"
+      ],
+      "emoji": "🧆"
+    },
+    {
+      "parole": [
+        "insalatona",
+        "insalata di"
+      ],
+      "emoji": "🥗"
+    },
+    {
+      "parole": [
+        "vellutata",
+        "minestrone",
+        "zuppa",
+        "ragù"
+      ],
+      "emoji": "🍲"
+    },
+    {
+      "parole": [
+        "frullato",
+        "gelato"
+      ],
+      "emoji": "🍧"
+    },
+    {
+      "parole": [
+        "crema caffè",
+        "caffè"
+      ],
+      "emoji": "☕"
+    },
+    {
+      "parole": [
+        "chia pudding",
+        "porridge",
+        "fettamisù",
+        "weetabix"
+      ],
+      "emoji": "🥣"
+    },
+    {
+      "parole": [
+        "tortino",
+        "tortini",
+        "torta",
+        "mugcake",
+        "banana bread",
+        "pirottin"
+      ],
+      "emoji": "🧁"
+    },
+    {
+      "parole": [
+        "biscott",
+        "cookies",
+        "oro saiwa"
+      ],
+      "emoji": "🍪"
+    },
+    {
+      "parole": [
+        "curry"
+      ],
+      "emoji": "🍛"
+    },
+    {
+      "parole": [
+        "risotto",
+        "riso"
+      ],
+      "emoji": "🍚"
+    },
+    {
+      "parole": [
+        "pasta",
+        "mezzemaniche",
+        "spaghetti",
+        "pastina"
+      ],
+      "emoji": "🍝"
+    },
+    {
+      "parole": [
+        "gnocchi"
+      ],
+      "emoji": "🥟"
+    },
+    {
+      "parole": [
+        "polenta"
+      ],
+      "emoji": "🌽"
+    },
+    {
+      "parole": [
+        "patat"
+      ],
+      "emoji": "🥔"
+    },
+    {
+      "parole": [
+        "cous cous",
+        "couscous",
+        "farro",
+        "orzo",
+        "quinoa",
+        "cereali",
+        "avena",
+        "fiocchi di mais",
+        "cornflakes",
+        "farina"
+      ],
+      "emoji": "🌾"
+    },
+    {
+      "parole": [
+        "pane",
+        "panino",
+        "piadina",
+        "croston",
+        "fette biscottate",
+        "gallette",
+        "crackers",
+        "wasa",
+        "taralli",
+        "snack e vai"
+      ],
+      "emoji": "🍞"
+    },
+    {
+      "parole": [
+        "farinata",
+        "hummus",
+        "ceci",
+        "fagiol",
+        "lenticchie",
+        "piselli",
+        "fave",
+        "legumi",
+        "tofu"
+      ],
+      "emoji": "🫘"
+    },
+    {
+      "parole": [
+        "frittata",
+        "uova",
+        "uovo",
+        "albume"
+      ],
+      "emoji": "🥚"
+    },
+    {
+      "parole": [
+        "calamar",
+        "polpo",
+        "seppi"
+      ],
+      "emoji": "🦑"
+    },
+    {
+      "parole": [
+        "gamber"
+      ],
+      "emoji": "🦐"
+    },
+    {
+      "parole": [
+        "pesce",
+        "merluzzo",
+        "orata",
+        "spigola",
+        "rombo",
+        "salmone",
+        "tonno",
+        "acciugh",
+        "alici",
+        "aringh",
+        "sgombro",
+        "sarde"
+      ],
+      "emoji": "🐟"
+    },
+    {
+      "parole": [
+        "pollo",
+        "tacchino",
+        "coniglio",
+        "carne bianca"
+      ],
+      "emoji": "🍗"
+    },
+    {
+      "parole": [
+        "vitell",
+        "manzo",
+        "bovino",
+        "carne rossa",
+        "pizzaiola"
+      ],
+      "emoji": "🥩"
+    },
+    {
+      "parole": [
+        "bresaola",
+        "prosciutto",
+        "affettat"
+      ],
+      "emoji": "🥓"
+    },
+    {
+      "parole": [
+        "ricotta",
+        "formaggi",
+        "mozzarella",
+        "primo sale",
+        "fiocchi di latte",
+        "parmigiano",
+        "feta"
+      ],
+      "emoji": "🧀"
+    },
+    {
+      "parole": [
+        "yogurt"
+      ],
+      "emoji": "🥛"
+    },
+    {
+      "parole": [
+        "latte",
+        "kefir"
+      ],
+      "emoji": "🥛"
+    },
+    {
+      "parole": [
+        "uva"
+      ],
+      "emoji": "🍇"
+    },
+    {
+      "parole": [
+        "mela",
+        "mele"
+      ],
+      "emoji": "🍎"
+    },
+    {
+      "parole": [
+        "pera",
+        "pere"
+      ],
+      "emoji": "🍐"
+    },
+    {
+      "parole": [
+        "banan"
+      ],
+      "emoji": "🍌"
+    },
+    {
+      "parole": [
+        "aranc",
+        "mandarin",
+        "clementin",
+        "cachi",
+        "pompelm"
+      ],
+      "emoji": "🍊"
+    },
+    {
+      "parole": [
+        "limon"
+      ],
+      "emoji": "🍋"
+    },
+    {
+      "parole": [
+        "kiwi"
+      ],
+      "emoji": "🥝"
+    },
+    {
+      "parole": [
+        "fragol"
+      ],
+      "emoji": "🍓"
+    },
+    {
+      "parole": [
+        "ciliegi"
+      ],
+      "emoji": "🍒"
+    },
+    {
+      "parole": [
+        "pesch",
+        "albicocc",
+        "susin",
+        "nespol"
+      ],
+      "emoji": "🍑"
+    },
+    {
+      "parole": [
+        "melon",
+        "fichi"
+      ],
+      "emoji": "🍈"
+    },
+    {
+      "parole": [
+        "anguri"
+      ],
+      "emoji": "🍉"
+    },
+    {
+      "parole": [
+        "mirtill",
+        "more",
+        "lampon",
+        "frutti di bosco",
+        "melogran"
+      ],
+      "emoji": "🫐"
+    },
+    {
+      "parole": [
+        "castagn"
+      ],
+      "emoji": "🌰"
+    },
+    {
+      "parole": [
+        "avocado"
+      ],
+      "emoji": "🥑"
+    },
+    {
+      "parole": [
+        "cocco"
+      ],
+      "emoji": "🥥"
+    },
+    {
+      "parole": [
+        "frutta di stagione",
+        "frutto",
+        "frutta fresca",
+        "frutta surgelata"
+      ],
+      "emoji": "🍎"
+    },
+    {
+      "parole": [
+        "frutta secca",
+        "noci",
+        "mandorle",
+        "nocciole",
+        "anacardi",
+        "arachidi",
+        "crema spalmabile"
+      ],
+      "emoji": "🥜"
+    },
+    {
+      "parole": [
+        "semi di",
+        "semi misti"
+      ],
+      "emoji": "🌱"
+    },
+    {
+      "parole": [
+        "cioccolat",
+        "cacao",
+        "barretta"
+      ],
+      "emoji": "🍫"
+    },
+    {
+      "parole": [
+        "marmellata",
+        "miele"
+      ],
+      "emoji": "🍯"
+    },
+    {
+      "parole": [
+        "olio",
+        "olive"
+      ],
+      "emoji": "🫒"
+    },
+    {
+      "parole": [
+        "zucchin",
+        "cetriol"
+      ],
+      "emoji": "🥒"
+    },
+    {
+      "parole": [
+        "pomodor"
+      ],
+      "emoji": "🍅"
+    },
+    {
+      "parole": [
+        "melanzan"
+      ],
+      "emoji": "🍆"
+    },
+    {
+      "parole": [
+        "peperon"
+      ],
+      "emoji": "🫑"
+    },
+    {
+      "parole": [
+        "carot"
+      ],
+      "emoji": "🥕"
+    },
+    {
+      "parole": [
+        "zucca"
+      ],
+      "emoji": "🎃"
+    },
+    {
+      "parole": [
+        "fungh"
+      ],
+      "emoji": "🍄"
+    },
+    {
+      "parole": [
+        "cavolfior",
+        "broccol",
+        "cavol",
+        "verza",
+        "cime di rapa"
+      ],
+      "emoji": "🥦"
+    },
+    {
+      "parole": [
+        "cipoll",
+        "scalogno",
+        "porr",
+        "rape",
+        "ravanell",
+        "finocch",
+        "sedano"
+      ],
+      "emoji": "🧅"
+    },
+    {
+      "parole": [
+        "asparag",
+        "carciof",
+        "agretti",
+        "fagiolini"
+      ],
+      "emoji": "🌿"
+    },
+    {
+      "parole": [
+        "verdur",
+        "insalata",
+        "lattuga",
+        "rucola",
+        "spinac",
+        "biet",
+        "cicoria",
+        "radicchio"
+      ],
+      "emoji": "🥬"
+    },
+    {
+      "parole": [
+        "pasto libero"
+      ],
+      "emoji": "🎉"
+    }
   ]
 }

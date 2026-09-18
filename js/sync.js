@@ -11,7 +11,7 @@
 //    dispositivo ha scritto nel frattempo, la scrittura fallisce e si riprova
 //    rileggendo prima.
 
-import { unisci, normalizza, uguali } from './stato.js';
+import { unisci, normalizza, uguali, dieteDiverse } from './stato.js';
 
 const CHIAVE_CFG = 'dietaFacile.sync.v1';
 const API = 'https://api.github.com';
@@ -179,11 +179,19 @@ export class Sincronizzatore {
         const remoto = await leggiRemoto(cfg);
         this.sha = remoto.sha;
 
+        // Il repository contiene i dati di un'altra dieta: l'app deve ricaricarsi con quella.
+        // Non si fonde nulla, per non mescolare due famiglie.
+        if (remoto.stato && dieteDiverse(this.ctx.stato, remoto.stato)) {
+          this.notifica('errore', `Il repository contiene la dieta "${remoto.stato.dietaId}": ricarico l'app con quella.`);
+          if (this.ctx.suDietaDiversa) this.ctx.suDietaDiversa(remoto.stato.dietaId);
+          return;
+        }
+
         let unito;
         if (remoto.stato) {
           unito = unisci(this.ctx.stato, remoto.stato);
         } else {
-          unito = normalizza(this.ctx.stato);
+          unito = normalizza(this.ctx.stato, this.ctx.stato.dietaId);
         }
 
         if (!uguali(unito, this.ctx.stato)) {
@@ -194,7 +202,7 @@ export class Sincronizzatore {
         const remotoAggiornato = remoto.stato && uguali(unito, remoto.stato);
         if (!remotoAggiornato) {
           try {
-            this.sha = await scriviRemoto(cfg, normalizza(this.ctx.stato), this.sha);
+            this.sha = await scriviRemoto(cfg, normalizza(this.ctx.stato, this.ctx.stato.dietaId), this.sha);
           } catch (e) {
             if (e instanceof Conflitto) continue; // rileggi e riprova
             throw e;

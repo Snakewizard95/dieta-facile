@@ -1,8 +1,8 @@
 // ==========================================================================
-// app.js — avvio dell'applicazione, navigazione, sincronizzazione
+// app.js — avvio dell'applicazione, scelta della dieta, navigazione, sincronizzazione
 // ==========================================================================
 
-import { caricaDati } from './dati.js';
+import { caricaDati, caricaRegistro } from './dati.js';
 import * as Stato from './stato.js';
 import { montaSettimana } from './settimana.js';
 import { montaSpesa } from './spesa.js';
@@ -11,16 +11,66 @@ import { impostaTabellaEmoji } from './emoji.js';
 import { impostaTabellaCalorie } from './calorie.js';
 import { Sincronizzatore } from './sync.js';
 import { apriImpostazioni } from './impostazioni.js';
-import { foglioAperto } from './foglio.js';
+import { apriFoglio, chiudiFoglio, foglioAperto } from './foglio.js';
 
 const SCHEDE = ['settimana', 'spesa', 'ricette'];
+
+/**
+ * Decide quale dieta caricare, in quest'ordine:
+ *  1. ?dieta=<id> nell'indirizzo (link dato a una famiglia): viene salvato come preferenza;
+ *  2. la preferenza già salvata sul dispositivo;
+ *  3. se il registro ha una sola dieta, quella;
+ *  4. altrimenti chiede all'utente.
+ */
+async function scegliDieta(registro) {
+  const daLink = new URLSearchParams(location.search).get('dieta');
+  if (daLink && registro.some(d => d.id === daLink)) {
+    Stato.salvaUi({ ...Stato.caricaUi(), dieta: daLink });
+    // toglie il parametro dall'indirizzo, così l'app installata non lo tiene per sempre
+    history.replaceState(null, '', location.pathname);
+    return daLink;
+  }
+  const salvata = Stato.caricaUi().dieta;
+  if (salvata && registro.some(d => d.id === salvata)) return salvata;
+  if (registro.length === 1) return registro[0].id;
+
+  return new Promise(risolvi => {
+    const corpo = document.createElement('div');
+    const nota = document.createElement('p');
+    nota.className = 'nota';
+    nota.textContent = 'Questa app contiene più diete. Scegli quella che segue la tua famiglia: la scelta resta su questo dispositivo e si può cambiare dalle Impostazioni.';
+    corpo.appendChild(nota);
+    for (const d of registro) {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'opzione';
+      b.innerHTML = '<span class="nome"></span>';
+      b.querySelector('.nome').textContent = d.nome;
+      b.addEventListener('click', () => {
+        Stato.salvaUi({ ...Stato.caricaUi(), dieta: d.id });
+        chiudiFoglio();
+        risolvi(d.id);
+      });
+      corpo.appendChild(b);
+    }
+    apriFoglio('Quale dieta?', corpo);
+  });
+}
+
+/** Ricarica l'app impostando un'altra dieta come preferenza del dispositivo. */
+export function cambiaDieta(dietaId) {
+  Stato.salvaUi({ ...Stato.caricaUi(), dieta: dietaId, persona: null });
+  location.replace(location.pathname);
+}
 
 async function avvia() {
   const erroreBox = document.getElementById('errore');
 
-  let dati;
+  let dati, dietaId;
   try {
-    dati = await caricaDati();
+    const registro = await caricaRegistro();
+    dietaId = await scegliDieta(registro);
+    dati = await caricaDati(dietaId);
   } catch (e) {
     erroreBox.hidden = false;
     erroreBox.textContent = `Non riesco a caricare la dieta: ${e.message}. ` +
@@ -30,11 +80,14 @@ async function avvia() {
 
   impostaTabellaEmoji(dati.emoji);
   impostaTabellaCalorie(dati.calorie);
-  const stato = Stato.carica();
+  const stato = Stato.carica(dietaId);
+  stato.dietaId = dietaId;
   let schedaAttiva = 'settimana';
   const viste = {};
 
   const ctx = {
+    dietaId,
+    dietaInfo: dati.dietaInfo,
     dieta: dati.dieta,
     ricette: dati.ricette,
     stagioni: dati.stagioni,
@@ -48,14 +101,18 @@ async function avvia() {
     applicaStato(nuovo) {
       for (const k of Object.keys(stato)) delete stato[k];
       Object.assign(stato, nuovo);
+      stato.dietaId = dietaId;
     },
     aggiornaIntestazione() {
       document.getElementById('settimana-corrente').textContent = Stato.descriviSettimana(stato.settimanaDel);
+      const h1 = document.querySelector('.intestazione h1');
+      if (h1) h1.title = dati.dietaInfo.nome;
     },
     ridisegna() {
       ctx.aggiornaIntestazione();
       if (viste[schedaAttiva] && viste[schedaAttiva].disegna) viste[schedaAttiva].disegna();
-    }
+    },
+    cambiaDieta
   };
 
   // Sincronizzazione con GitHub (se configurata)
@@ -64,8 +121,12 @@ async function avvia() {
     salvaLocale: () => Stato.salva(stato),
     applicaStato: nuovo => {
       ctx.applicaStato(nuovo);
-      // Non ridisegnare sotto le dita dell'utente mentre sta scegliendo
       if (!foglioAperto()) ctx.ridisegna();
+    },
+    // Il repository privato contiene un'altra dieta: si passa a quella
+    suDietaDiversa: altraDieta => {
+      alert(`Il repository di sincronizzazione contiene la dieta "${altraDieta}". L'app si ricarica con quella dieta.`);
+      cambiaDieta(altraDieta);
     }
   });
   ctx.sync = sync;
