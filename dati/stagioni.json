@@ -1,0 +1,65 @@
+{
+  "note": "Frutta e verdura di stagione in Italia, mese per mese. Elenchi indicativi: la disponibilità cambia un po' da regione a regione.",
+  "mesi": {
+    "1": {
+      "nome": "gennaio",
+      "frutta": ["arance", "mandarini", "clementine", "kiwi", "mele", "pere", "pompelmi", "limoni"],
+      "verdura": ["cavolfiore", "broccoli", "cavolo nero", "verza", "finocchi", "carciofi", "radicchio", "spinaci", "bieta", "porri", "carote", "zucca", "cicoria"]
+    },
+    "2": {
+      "nome": "febbraio",
+      "frutta": ["arance", "mandarini", "kiwi", "mele", "pere", "pompelmi", "limoni"],
+      "verdura": ["cavolfiore", "broccoli", "cavolo nero", "verza", "finocchi", "carciofi", "radicchio", "spinaci", "bieta", "porri", "carote", "cicoria", "cime di rapa"]
+    },
+    "3": {
+      "nome": "marzo",
+      "frutta": ["arance", "kiwi", "mele", "pere", "limoni"],
+      "verdura": ["carciofi", "asparagi", "spinaci", "bieta", "finocchi", "broccoli", "cavolfiore", "cime di rapa", "radicchio", "carote", "cipollotti", "agretti"]
+    },
+    "4": {
+      "nome": "aprile",
+      "frutta": ["fragole", "kiwi", "mele", "arance", "nespole"],
+      "verdura": ["asparagi", "carciofi", "fave", "piselli", "spinaci", "bieta", "agretti", "lattuga", "rucola", "ravanelli", "cipollotti", "carote"]
+    },
+    "5": {
+      "nome": "maggio",
+      "frutta": ["fragole", "ciliegie", "nespole", "albicocche", "mele"],
+      "verdura": ["asparagi", "fave", "piselli", "zucchine", "fagiolini", "lattuga", "rucola", "ravanelli", "bieta", "carote", "cipollotti", "carciofi"]
+    },
+    "6": {
+      "nome": "giugno",
+      "frutta": ["ciliegie", "albicocche", "pesche", "fragole", "susine", "meloni", "angurie", "lamponi"],
+      "verdura": ["zucchine", "fagiolini", "pomodori", "melanzane", "peperoni", "cetrioli", "lattuga", "rucola", "bieta", "fave", "piselli", "carote"]
+    },
+    "7": {
+      "nome": "luglio",
+      "frutta": ["pesche", "albicocche", "susine", "meloni", "angurie", "fichi", "more", "lamponi", "mirtilli"],
+      "verdura": ["pomodori", "zucchine", "melanzane", "peperoni", "cetrioli", "fagiolini", "lattuga", "bieta", "sedano", "carote", "cipolle"]
+    },
+    "8": {
+      "nome": "agosto",
+      "frutta": ["pesche", "susine", "meloni", "angurie", "fichi", "uva", "more", "mirtilli", "pere"],
+      "verdura": ["pomodori", "zucchine", "melanzane", "peperoni", "cetrioli", "fagiolini", "bieta", "sedano", "carote", "cipolle", "lattuga"]
+    },
+    "9": {
+      "nome": "settembre",
+      "frutta": ["uva", "fichi", "pere", "mele", "susine", "pesche", "melograni", "lamponi"],
+      "verdura": ["zucca", "melanzane", "peperoni", "pomodori", "zucchine", "fagiolini", "bieta", "spinaci", "radicchio", "funghi", "carote", "sedano", "porri"]
+    },
+    "10": {
+      "nome": "ottobre",
+      "frutta": ["uva", "mele", "pere", "melograni", "cachi", "castagne", "kiwi", "fichi"],
+      "verdura": ["zucca", "funghi", "cavolfiore", "broccoli", "verza", "cavolo nero", "spinaci", "bieta", "radicchio", "finocchi", "porri", "carote", "sedano", "rape"]
+    },
+    "11": {
+      "nome": "novembre",
+      "frutta": ["mele", "pere", "cachi", "melograni", "kiwi", "castagne", "arance", "mandarini", "clementine"],
+      "verdura": ["zucca", "cavolfiore", "broccoli", "verza", "cavolo nero", "cavoletti di Bruxelles", "spinaci", "bieta", "radicchio", "finocchi", "porri", "carote", "cicoria", "rape", "carciofi"]
+    },
+    "12": {
+      "nome": "dicembre",
+      "frutta": ["arance", "mandarini", "clementine", "kiwi", "mele", "pere", "cachi", "pompelmi", "limoni"],
+      "verdura": ["cavolfiore", "broccoli", "verza", "cavolo nero", "cavoletti di Bruxelles", "spinaci", "bieta", "radicchio", "finocchi", "porri", "carote", "cicoria", "carciofi", "zucca"]
+    }
+  }
+}

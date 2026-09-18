@@ -1,0 +1,246 @@
+{
+  "versione": "1.0",
+  "note": "Ricettario del piano. 'slot' indica in quali pasti è usabile; 'tag' indica gli alimenti principali per abbinarla alle scelte della settimana; 'difficolta' 1 = facile, 2 = media (valutazione nostra, non della nutrizionista).",
+
+  "categorie": [
+    { "id": "colazione", "nome": "Colazioni" },
+    { "id": "dolce", "nome": "Dolci e spuntini" },
+    { "id": "primo", "nome": "Primi piatti" },
+    { "id": "secondo", "nome": "Secondi piatti" },
+    { "id": "unico", "nome": "Piatti unici" },
+    { "id": "idea", "nome": "Idee di pasti unici (senza procedimento)" }
+  ],
+
+  "ricette": [
+    {
+      "id": "fettamisu", "nome": "Fettamisù", "categoria": "colazione", "slot": ["colazione"], "tag": ["fette-biscottate", "yogurt"], "difficolta": 1,
+      "ingredienti": ["3 fette biscottate integrali", "caffè o orzo", "1 vasetto yogurt bianco (125 g)", "1 cucchiaino di miele", "cacao amaro o granella di frutta secca"],
+      "procedimento": "Bagnare le fette biscottate nel caffè e disporle una sopra l'altra alternandole con lo yogurt. Finire con una spolverata di cacao amaro, granella di frutta secca o una colata di crema 100% frutta secca."
+    },
+    {
+      "id": "porridge", "nome": "Porridge", "categoria": "colazione", "slot": ["colazione"], "tag": ["avena", "latte"], "difficolta": 1,
+      "ingredienti": ["30 g fiocchi d'avena", "150 ml latte p.s. o bevanda vegetale", "15 g frutta secca (o 1 cucchiaino crema frutta secca o 1 quadratino cioccolato fondente)", "1 piccolo frutto di stagione"],
+      "procedimento": "Far bollire i fiocchi d'avena nel latte mescolando di continuo, da 3 a 10 minuti secondo la cremosità desiderata. Aggiungere frutta secca e frutto a pezzi. Variante fredda: mescolare avena e latte (o yogurt) la sera e lasciare in frigo tutta la notte. Variante con yogurt: cuocere l'avena in 150-200 ml d'acqua e a fine cottura aggiungere 1 vasetto di yogurt greco."
+    },
+    {
+      "id": "chia-pudding", "nome": "Chia pudding", "categoria": "colazione", "slot": ["colazione"], "tag": ["chia", "kefir"], "difficolta": 1,
+      "ingredienti": ["2 cucchiai (15 g) semi di chia", "150-200 ml kefir, latte o bevanda vegetale", "dolcificante a piacere", "frutta fresca"],
+      "procedimento": "Mescolare chia e liquido in un bicchiere. Lasciare in frigo almeno 4 ore (anche tutta la notte). Aggiungere la frutta fresca prima di mangiare."
+    },
+    {
+      "id": "banana-pancakes", "nome": "Banana pancakes", "categoria": "colazione", "slot": ["colazione"], "tag": ["banana", "uova"], "difficolta": 1, "porzioni": 2,
+      "ingredienti": ["1 banana", "1 uovo", "3 cucchiai farina d'avena o integrale", "1 goccio di latte (o acqua o bevanda vegetale)", "1/2 cucchiaino di lievito"],
+      "procedimento": "Schiacciare la banana, aggiungere l'uovo e mescolare. Unire la farina, poi il latte fino alla consistenza giusta, infine il lievito. Cuocere in padella antiaderente. Guarnire con 1 cucchiaino di marmellata Hero light + 15 g frutta secca o 1 cucchiaino di crema di frutta secca. Ricetta per 2 colazioni."
+    },
+    {
+      "id": "pancake-cacao", "nome": "Pancake al cacao", "categoria": "colazione", "slot": ["colazione"], "tag": ["uova", "cacao"], "difficolta": 1,
+      "ingredienti": ["1 uovo", "10 g farina di cocco", "cacao amaro q.b.", "cannella q.b.", "1 cucchiaino di miele o 1 frutto per guarnire"],
+      "procedimento": "Mescolare tutti gli ingredienti. Cuocere da entrambi i lati in padella antiaderente unta con poco olio. Guarnire con il miele o il frutto a pezzi."
+    },
+    {
+      "id": "pancakes-cocco", "nome": "Pancakes al cocco", "categoria": "colazione", "slot": ["colazione"], "tag": ["albume", "yogurt", "cocco"], "difficolta": 1, "porzioni": 2,
+      "ingredienti": ["100 g albume", "100 g yogurt greco bianco", "30 g cocco rapè", "30 g farina d'avena o integrale", "1 pizzico di lievito", "un goccio di latte"],
+      "procedimento": "Mescolare tutto e cuocere in un padellino antiaderente leggermente unto, a fuoco medio. Condire con frutta di stagione. Variante senza cocco: togliere il cocco e aggiungere frutta secca o crema 100% frutta secca al condimento. Ricetta per 2 colazioni."
+    },
+    {
+      "id": "pancakes-classici", "nome": "Pancakes classici", "categoria": "colazione", "slot": ["colazione"], "tag": ["uova", "farina"], "difficolta": 2, "porzioni": 2,
+      "ingredienti": ["2 uova", "90 g farina integrale o 0", "70 ml latte vaccino o vegetale", "1/2 cucchiaino lievito per dolci"],
+      "procedimento": "Separare albumi e tuorli e montare gli albumi a neve. Ai tuorli aggiungere il latte a filo, poi farina e lievito setacciati: impasto denso. Incorporare gli albumi con movimenti dal basso verso l'alto. Cuocere in padella antiaderente leggermente unta circa 3 minuti per lato (girare quando si formano le bollicine). Guarnire con frutta o miele o sciroppo d'acero e/o frutta secca. Ricetta per 2 porzioni."
+    },
+    {
+      "id": "mini-banana-bread", "nome": "Mini banana bread", "categoria": "colazione", "slot": ["colazione"], "tag": ["banana", "uova"], "difficolta": 1,
+      "ingredienti": ["1 banana matura + mezza per decorare", "3 cucchiai di farina (integrale)", "1 uovo", "30 ml latte", "1/2 cucchiaino lievito", "cannella q.b.", "facoltative 15 g noci"],
+      "procedimento": "Schiacciare la banana con una forchetta, aggiungere uovo e gli altri ingredienti e mescolare con una frusta. Versare in uno stampo monoporzione con carta forno, mettere sopra la mezza banana. Forno preriscaldato a 200 °C per 20 minuti. Ricetta per 1 o 2 colazioni."
+    },
+    {
+      "id": "mugcake", "nome": "Mugcake", "categoria": "colazione", "slot": ["colazione"], "tag": ["avena", "cacao"], "difficolta": 1,
+      "ingredienti": ["Opzione 1: 30 g farina d'avena, 50 ml latte p.s., 10 g cacao amaro, 5 g zucchero di canna o miele, 2 g lievito, 10 g cioccolato fondente", "Opzione 2: 30 g farina d'avena, 50 ml bevanda di soia o latte, mezza mela, 2 g lievito, 10 ml miele"],
+      "procedimento": "Opzione 1: unire farina, latte, cacao, zucchero e lievito, mescolare con una frusta e versare in una tazza. Mettere al centro il quadratino di cioccolato e cuocere al microonde alla massima potenza per 2 minuti (o forno 180 °C 15 minuti, o friggitrice ad aria 200 °C 12 minuti). Opzione 2: mescolare tutto, versare in tazza e microonde 2 minuti a 700-800 W (o forno 180 °C 10 minuti). Max 1 volta a settimana."
+    },
+    {
+      "id": "tortino-yogurt", "nome": "Tortino allo yogurt", "categoria": "colazione", "slot": ["colazione"], "tag": ["yogurt", "uova"], "difficolta": 1,
+      "ingredienti": ["80 g yogurt greco bianco", "1 uovo", "10 g cocco rapè", "10 g miele"],
+      "procedimento": "Mescolare tutto. Friggitrice ad aria 160 °C per 20 minuti, oppure forno ventilato, oppure microonde 2 minuti alla massima potenza."
+    },
+    {
+      "id": "tortino-banana-cacao", "nome": "Tortino alla banana e cacao", "categoria": "colazione", "slot": ["colazione"], "tag": ["banana", "uova", "cacao"], "difficolta": 1,
+      "ingredienti": ["1 banana", "1 uovo", "20 g farina integrale", "15 g cacao amaro", "1/2 cucchiaino lievito per dolci"],
+      "procedimento": "Frullare tutti gli ingredienti, versare in uno stampo. Friggitrice ad aria 180 °C per 10 minuti o forno 15 minuti."
+    },
+    {
+      "id": "torta-ricotta", "nome": "Torta veloce con ricotta", "categoria": "colazione", "slot": ["colazione"], "tag": ["ricotta"], "difficolta": 1, "porzioni": 4,
+      "ingredienti": ["400 g ricotta", "40 g farina di riso (4 cucchiai)", "110 ml latte o bevanda vegetale", "gocce di cioccolato fondente q.b."],
+      "procedimento": "Mescolare tutto senza grumi. Forno o friggitrice ad aria a 160 °C per 30-35 minuti. Da fredda, decorare con una cremina di cacao amaro, acqua e dolcificante, più una banana a rondelle. Un quarto di torta a colazione, eventualmente con un frutto. Si conserva per più giorni."
+    },
+
+    {
+      "id": "crema-caffe", "nome": "Crema caffè", "categoria": "dolce", "slot": ["merenda"], "tag": ["yogurt", "caffè"], "difficolta": 1,
+      "ingredienti": ["125 g yogurt bianco", "1 tazzina di caffè", "1 cucchiaino di miele", "5 g gocce di cioccolato", "10 g noci sbriciolate"],
+      "procedimento": "Mescolare in un bicchiere lo yogurt freddo con caffè e miele. Guarnire con gocce di cioccolato e noci, eventualmente una spolverata di cacao amaro."
+    },
+    {
+      "id": "frullato-gelato", "nome": "Frullato gelato", "categoria": "dolce", "slot": ["merenda"], "tag": ["frutta", "yogurt"], "difficolta": 1,
+      "ingredienti": ["150 g frutta surgelata (fragole, frutti di bosco, kiwi)", "80 g yogurt greco intero"],
+      "procedimento": "Frullare la frutta surgelata con lo yogurt fino a ottenere una crema."
+    },
+    {
+      "id": "barretta-yogurt-cocco", "nome": "Barrette yogurt greco, cioccolato e cocco", "categoria": "dolce", "slot": ["merenda"], "tag": ["yogurt", "cocco", "cioccolato"], "difficolta": 2, "porzioni": 2,
+      "ingredienti": ["1 vasetto yogurt greco bianco", "40 g cocco rapè", "50 g cioccolato fondente"],
+      "procedimento": "Unire il cocco allo yogurt, lasciare 10 minuti in frigo. Formare dei tozzetti e immergerli da un solo lato nel cioccolato fuso. Frigo 20 minuti. Vale per 2 spuntini."
+    },
+    {
+      "id": "cookies", "nome": "Cookies", "categoria": "dolce", "slot": ["merenda"], "tag": ["avena", "banana"], "difficolta": 1,
+      "ingredienti": ["Opzione 1: 100 g fiocchi d'avena, 2 banane schiacciate, 30 g gocce di cioccolato fondente", "Opzione 2: 100 g fiocchi d'avena, 80 g polpa di mela, 1 uovo, 30 g miele, 15 g gocce di cioccolato, 15 g frutta secca (o cacao)"],
+      "procedimento": "Unire gli ingredienti, formare delle palline e appiattirle. Forno 180 °C per 15 minuti."
+    },
+    {
+      "id": "biscotti-proteici", "nome": "Biscotti proteici 3 ingredienti", "categoria": "dolce", "slot": ["merenda", "dopocena"], "tag": ["albume", "cacao"], "difficolta": 1,
+      "ingredienti": ["120 ml albume", "70 g cacao amaro in polvere", "50 g eritritolo"],
+      "procedimento": "Amalgamare, formare palline e appiattirle. Forno 180 °C per 15 minuti su carta forno."
+    },
+    {
+      "id": "biscotti-avena-mela", "nome": "Biscotti avena, mela e gocce di cioccolato", "categoria": "dolce", "slot": ["merenda", "dopocena"], "tag": ["avena", "mela"], "difficolta": 2, "porzioni": 30,
+      "ingredienti": ["250 g fiocchi d'avena", "40 g gocce di cioccolato", "40 g noci a pezzetti", "2 mele", "1 cucchiaio di succo di limone", "cannella q.b."],
+      "procedimento": "Tritare i fiocchi d'avena fino a farina; ridurre in polpa le mele con la buccia. Unire tutto e mescolare. Distribuire l'impasto a cucchiaiate su carta forno e schiacciare leggermente. Forno 200 °C per 20-25 minuti. Circa 30-35 biscotti."
+    },
+    {
+      "id": "pirottini-mela", "nome": "Pirottini di mela", "categoria": "dolce", "slot": ["merenda"], "tag": ["mela", "uova", "yogurt"], "difficolta": 1, "porzioni": 4,
+      "ingredienti": ["2 mele sbucciate a cubetti", "2 uova", "mezzo vasetto (80 g) yogurt greco alla vaniglia Trublend"],
+      "procedimento": "Frullare tutto, versare nei pirottini. Friggitrice ad aria 160 °C per 20 minuti o forno 170 °C per 20 minuti. 1 pirottino per merenda."
+    },
+    {
+      "id": "tortini-ricotta-cioccolato", "nome": "Tortini ricotta e cioccolato", "categoria": "dolce", "slot": ["merenda"], "tag": ["ricotta", "cioccolato"], "difficolta": 1, "porzioni": 4,
+      "ingredienti": ["250 g ricotta", "1 uovo", "1 cucchiaio gocce di cioccolato", "2 cucchiaini amido di mais", "1 cucchiaino miele o sciroppo d'acero (facoltativo)"],
+      "procedimento": "Mescolare tutto, versare in 4 pirottini e cuocere a 180 °C per 45 minuti."
+    },
+    {
+      "id": "biscotto-gelato", "nome": "Biscotto gelato con Oro Saiwa e yogurt", "categoria": "dolce", "slot": ["merenda", "dopocena"], "tag": ["biscotti", "yogurt"], "difficolta": 1,
+      "ingredienti": ["mezzo vasetto yogurt greco bianco", "1 cucchiaino miele", "2 Oro Saiwa", "cioccolato fondente"],
+      "procedimento": "Mescolare yogurt e miele, chiudere tra 2 biscotti a panino. Inzuppare metà nel cioccolato fuso a bagnomaria e mettere in freezer almeno 3 ore."
+    },
+
+    {
+      "id": "mezzemaniche-melanzane", "nome": "Mezzemaniche integrali con melanzane a dadini", "categoria": "primo", "slot": ["pranzo", "cena"], "tag": ["pasta"], "difficolta": 1,
+      "ingredienti": ["pasta integrale (porzione da dieta)", "mezza melanzana", "1/4 spicchio d'aglio", "rosmarino", "80 g passata di pomodoro", "olio EVO, sale"],
+      "procedimento": "Rosolare aglio e rosmarino nell'olio con un po' d'acqua per 2-3 minuti. Aggiungere la melanzana a pezzi e cuocere 5-6 minuti. Unire la passata e cuocere 10-15 minuti. Scolare la pasta al dente e saltarla nel sugo."
+    },
+    {
+      "id": "funghi-couscous", "nome": "Funghi ripieni di cous cous", "categoria": "primo", "slot": ["pranzo", "cena"], "tag": ["couscous"], "difficolta": 2,
+      "ingredienti": ["4 funghi champignon grandi (Portobello)", "cous cous (porzione da dieta)", "1 scalogno", "sale, pepe, prezzemolo", "un filo di olio EVO", "un pezzetto di formaggio"],
+      "procedimento": "Preparare il cous cous. Pulire i funghi; tagliare a cubetti i gambi di 3 funghi e il quarto intero. Passare i 3 cappelli in forno 10 minuti a 180 °C con olio e sale. Rosolare scalogno e prezzemolo, aggiungere i funghi a cubetti e cuocere 10 minuti. Farcire i cappelli con il preparato e il cous cous, mettere sopra un pezzetto di formaggio e gratinare 5-7 minuti a 180 °C."
+    },
+    {
+      "id": "pasta-cavolfiore", "nome": "Pasta con crema di cavolfiore e pomodori secchi", "categoria": "primo", "slot": ["pranzo", "cena"], "tag": ["pasta"], "difficolta": 2, "porzioni": 2,
+      "ingredienti": ["pasta (porzione da dieta, 160 g per 2)", "1 cavolfiore piccolo", "pomodori secchi", "2 spicchi d'aglio", "3 cucchiai olio EVO", "sale"],
+      "procedimento": "Lessare il cavolfiore, ripassarlo in padella con olio, aglio e parte dei pomodori secchi. Frullare 3/4 del condimento (con un mestolo d'acqua di cottura) e rimetterlo in padella. Cuocere la pasta nell'acqua del cavolfiore, scolarla al dente e finire la cottura in padella. Decorare con pomodori secchi a pezzi."
+    },
+    {
+      "id": "vellutata-zucchine-patate", "nome": "Vellutata di zucchine e patate", "categoria": "primo", "slot": ["pranzo", "cena"], "tag": ["patate", "pane"], "difficolta": 1,
+      "ingredienti": ["150 g zucchine", "100 g patate", "40 g pane integrale (metà del pane da dieta + metà delle patate da dieta)", "cipolla", "1 cucchiaio olio EVO", "150 ml acqua", "sale, pepe, rosmarino"],
+      "procedimento": "Rosolare la cipolla nell'olio, aggiungere zucchine e patate a tocchetti e insaporire. Coprire d'acqua e cuocere 30 minuti con coperchio. Regolare di sale e pepe, frullare. Servire con cubetti di pane tostato e rosmarino."
+    },
+
+    {
+      "id": "polpette-ricotta", "nome": "Polpette di ricotta al pomodoro", "categoria": "secondo", "slot": ["pranzo", "cena"], "tag": ["formaggio", "ricotta"], "difficolta": 2, "porzioni": 2,
+      "ingredienti": ["200 g ricotta", "1 uovo", "prezzemolo", "20 g parmigiano", "50 g pangrattato", "300 ml passata di pomodoro", "carota, cipolla, olio EVO, sale"],
+      "procedimento": "Mescolare ricotta, uovo, parmigiano, prezzemolo e sale; aggiungere il pangrattato un cucchiaio alla volta e formare le polpette. Preparare il sugo con cipolla e carota tritate e la passata. Cuocere le polpette nel sugo 10 minuti con coperchio, girandole. 12 polpette per 2 persone."
+    },
+    {
+      "id": "calamari-ripieni", "nome": "Calamari ripieni di rucola e pomodorini", "categoria": "secondo", "slot": ["cena"], "tag": ["pesce_fresco", "molluschi"], "difficolta": 2,
+      "ingredienti": ["1 porzione di calamari", "100 g rucola", "1 spicchio d'aglio", "olio, sale, pomodorini", "vino bianco"],
+      "procedimento": "Separare teste e tentacoli. Tritare la rucola e i tentacoli, salare. Rosolare l'aglio, aggiungere i pomodorini a metà, sfumare con vino e coprire 5 minuti. Riempire le teste (non troppo) e chiudere con uno stuzzicadenti. Cuocere 2 minuti per lato a fiamma media. Servire su rucola con il sugo."
+    },
+    {
+      "id": "farinata-ceci", "nome": "Farinata di ceci", "categoria": "secondo", "slot": ["pranzo", "cena"], "tag": ["legumi"], "difficolta": 1, "porzioni": 3,
+      "ingredienti": ["150 g farina di ceci", "450 ml acqua a temperatura ambiente", "circa 15 g olio EVO", "rosmarino, sale"],
+      "procedimento": "Setacciare la farina, aggiungere l'acqua a filo mescolando 5 minuti senza grumi. Unire olio, sale e rosmarino. Versare su teglia antiaderente oliata, spessore 0,5 cm. Forno preriscaldato 250 °C statico (230 ventilato) per 15-20 minuti, finché dorata. La farina di ceci vale come legumi."
+    },
+    {
+      "id": "ragu-lenticchie", "nome": "Ragù di lenticchie", "categoria": "secondo", "slot": ["pranzo", "cena"], "tag": ["legumi", "pasta"], "difficolta": 1, "porzioni": 2,
+      "ingredienti": ["120 g lenticchie secche", "300 g passata di pomodoro", "cipolla, sedano e carota", "olio e sale"],
+      "procedimento": "Soffriggere cipolla, sedano e carota, aggiungere lenticchie e passata e cuocere 20 minuti aggiungendo acqua se serve."
+    },
+    {
+      "id": "burger-ceci-carote", "nome": "Burger di ceci e carote", "categoria": "secondo", "slot": ["pranzo", "cena"], "tag": ["legumi"], "difficolta": 2, "porzioni": 4,
+      "ingredienti": ["480 g ceci in barattolo", "200 g carote", "40 g olio EVO", "50 g pangrattato", "2 uova", "sale"],
+      "procedimento": "Frullare ceci e carote. Aggiungere uova, pangrattato, olio e sale. Formare i burger (piccoli, più compatti) aiutandosi con pangrattato. Friggitrice ad aria 5 minuti a 185 °C + 4 minuti a 200 °C, oppure forno 180 °C 20 minuti girandoli a metà. Per 2 persone dimezzare le dosi."
+    },
+    {
+      "id": "pollo-cornflakes", "nome": "Bocconcini di pollo croccanti con cornflakes", "categoria": "secondo", "slot": ["pranzo", "cena"], "tag": ["carne_bianca"], "difficolta": 1,
+      "ingredienti": ["petto di pollo (grammatura da dieta)", "30 g cornflakes senza zuccheri", "1 albume", "sale, pepe, un filo d'olio", "Salsa: 1 vasetto yogurt bianco, 1 cucchiaio olio EVO, limone, sale, paprika"],
+      "procedimento": "Tagliare il pollo a bocconcini, passarli nell'albume sbattuto e poi nei cornflakes sbriciolati. Spruzzare olio; friggitrice ad aria 13-15 minuti a 200 °C o forno ventilato 200 °C 20-25 minuti. Servire con la salsa allo yogurt."
+    },
+
+    {
+      "id": "pasta-rosa", "nome": "Pasta rosa", "categoria": "unico", "slot": ["pranzo", "cena"], "tag": ["pasta", "legumi"], "difficolta": 1,
+      "ingredienti": ["pasta (porzione da dieta)", "ceci cotti (porzione da dieta)", "80 g barbabietola cotta", "una manciata di frutta secca", "succo di mezzo limone", "3 cucchiaini olio EVO", "un mestolo di acqua di cottura", "sale e pepe"],
+      "procedimento": "Cuocere la pasta. Frullare tutti gli altri ingredienti con un frullatore a immersione. Scolare la pasta e unirla alla crema."
+    },
+    {
+      "id": "pollo-curry-basmati", "nome": "Pollo al curry su letto di riso basmati", "categoria": "unico", "slot": ["pranzo", "cena"], "tag": ["carne_bianca", "riso"], "difficolta": 2,
+      "ingredienti": ["petto di pollo (porzione da dieta)", "riso basmati (porzione da dieta)", "30 g latte o yogurt o bevanda al cocco", "5 g curry", "5 g farina integrale", "sale, olio EVO, peperoncino, cipolla"],
+      "procedimento": "Sciogliere il curry nel latte. Unire pollo a cubetti, farina, sale e la salsa; marinare 15 minuti. Cuocere il riso. Rosolare cipolla, aglio e peperoncino nell'olio, aggiungere il pollo e cuocere mescolando. Servire il riso con il pollo al centro e un contorno di verdure."
+    },
+    {
+      "id": "pancakes-spinaci", "nome": "Pancakes salati agli spinaci", "categoria": "unico", "slot": ["pranzo", "cena"], "tag": ["uova", "formaggio"], "difficolta": 1,
+      "ingredienti": ["150 g albumi (o 2 uova)", "200 g spinaci", "30 g parmigiano", "50 g farina di grano saraceno (o 25 g + 25 g fiocchi d'avena)", "1/2 cucchiaino bicarbonato + gocce di limone"],
+      "procedimento": "Cuocere e strizzare gli spinaci, tagliuzzarli. Mescolare con gli altri ingredienti fino a impasto omogeneo. Cuocere un mestolo per pancake in padellino unto, da entrambi i lati. 50 g di farina equivalgono a 50 g di pasta: regolare il pane di conseguenza."
+    },
+    {
+      "id": "polpette-merluzzo", "nome": "Polpette di merluzzo e patate", "categoria": "unico", "slot": ["cena"], "tag": ["pesce_fresco", "patate"], "difficolta": 2,
+      "ingredienti": ["200 g filetti di merluzzo", "200 g patate", "2 uova (1 impasto, 1 impanatura)", "60 g fiocchi di mais senza zuccheri", "sale e prezzemolo"],
+      "procedimento": "Lessare le patate e bollire il merluzzo 8-10 minuti in poca acqua. Schiacciare le patate, sminuzzare il merluzzo, unire uovo, sale e prezzemolo; formare le polpette. Passarle nell'uovo e nei fiocchi di mais tritati. Spruzzare olio; forno o friggitrice ad aria 20 minuti a 180 °C girando a metà."
+    },
+    {
+      "id": "polpette-quinoa-lenticchie", "nome": "Polpette di quinoa e lenticchie", "categoria": "unico", "slot": ["pranzo", "cena"], "tag": ["legumi", "cereale-chicco"], "difficolta": 2, "porzioni": 2,
+      "ingredienti": ["120 g quinoa", "100 g lenticchie", "1 cipolla", "2 cucchiai olio EVO", "50 g pangrattato", "sale e pepe"],
+      "procedimento": "Sciacquare e cuocere separatamente: lenticchie 25 minuti in acqua, quinoa 15 minuti in 250 ml d'acqua fino ad assorbimento. Unire a pangrattato, olio, cipolla, sale e pepe. Formare polpette o burger e cuocere in forno 180 °C per 20 minuti."
+    },
+    {
+      "id": "insalatona-gamberi", "nome": "Insalatona con gamberi e pane tostato", "categoria": "unico", "slot": ["pranzo", "cena"], "tag": ["pesce_fresco", "pane"], "difficolta": 1,
+      "ingredienti": ["insalata mista (circa 100 g)", "pomodorini datterini", "gamberi (porzione da dieta)", "pane (porzione da dieta)", "olio EVO (quantità da dieta)"],
+      "procedimento": "Cuocere i gamberi in padella o al vapore. Unirli a insalata e pomodorini, condire con olio, spezie ed erbe. Accompagnare con pane tostato (o mix di cereali o riso venere)."
+    },
+    {
+      "id": "insalata-cannellini-noci", "nome": "Insalata di fagioli cannellini con noci", "categoria": "unico", "slot": ["pranzo", "cena"], "tag": ["legumi"], "difficolta": 1,
+      "ingredienti": ["30 g noci", "20 g parmigiano", "1 cucchiaino olio EVO", "fagioli cannellini (porzione da dieta)", "fagiolini e pomodori", "sale"],
+      "procedimento": "Frullare noci, parmigiano, olio e 60 ml d'acqua calda in una salsina. Unire fagioli, pomodori e fagiolini cotti, un pizzico di sale. Completare con pane."
+    },
+
+    { "id": "idea-zuppa-fagioli", "nome": "Zuppa di fagioli e bietole + pane di segale tostato", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["legumi", "pane"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-pasta-piselli", "nome": "Pasta integrale in crema di piselli + insalata di finocchi e arancia", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["legumi", "pasta"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-quinoa-lenticchie", "nome": "Quinoa o farro con lenticchie e zucchine", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["legumi", "cereale-chicco"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-insalatona-ceci", "nome": "Insalatona con ceci, rucola, pomodorini, carote + patate lesse", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["legumi", "patate"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-hummus", "nome": "Pane ai cereali tostato con hummus di ceci e verdura di stagione", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["legumi", "pane"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-riso-venere-primosale", "nome": "Riso venere con cubetti di primo sale, pomodorini, spinacino e semi di lino", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["formaggio", "riso"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-insalatona-feta", "nome": "Insalatona mix con feta greca e crostoni di pane ai cereali", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["formaggio", "pane"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-pasta-ricotta-radicchio", "nome": "Pasta con ricotta, radicchio e noci", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["formaggio", "pasta"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-tofu", "nome": "Insalatona di rucola e pomodorini con olive e tofu croccante impanato + wasa, gallette o pane", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["legumi", "pane"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-pasta-salmone", "nome": "Pasta integrale con salmone selvaggio, zucchine e olive taggiasche", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["pesce_fresco", "pesce_conservato", "pasta"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-spigola-patate", "nome": "Spigola o rombo in crosta di patate con chips di cavolo nero", "categoria": "idea", "slot": ["cena"], "tag": ["pesce_fresco", "patate"], "difficolta": 2, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-orata-cartoccio", "nome": "Filetti di orata al cartoccio con verdure al forno e patate", "categoria": "idea", "slot": ["cena"], "tag": ["pesce_fresco", "patate"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-riso-rosso-tonno", "nome": "Riso rosso con filetti di tonno al naturale e zucca al forno", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["pesce_conservato", "riso"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-couscous-pollo", "nome": "Cous cous con verdure di stagione e bocconcini di pollo o tacchino al curry", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["carne_bianca", "couscous"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-minestrone-hamburger", "nome": "Minestrone con riso o farro + hamburger di pollo o tacchino con cicoria", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["carne_bianca", "riso", "cereale-chicco"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-basmati-pollo", "nome": "Riso basmati in bianco con dadini di pollo al curry + verdure fresche", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["carne_bianca", "riso"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-frittata-zucchine", "nome": "Frittata di zucchine con broccoletti + pane integrale", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["uova", "pane"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-vellutata-uova", "nome": "Vellutata di patate, carote e porri con semi di lino + 2 uova sode con insalata", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["uova", "patate"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-crostoni-avocado-uova", "nome": "Crostoni di pane integrale con avocado, uova strapazzate e pomodorini gialli", "categoria": "idea", "slot": ["pranzo", "cena"], "tag": ["uova", "pane"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-riso-venere-piselli", "nome": "Riso venere con piselli e pomodorini gialli", "categoria": "idea", "slot": ["pranzo"], "tag": ["legumi", "riso"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-uova-purgatorio", "nome": "Pasta al pomodoro + uova al purgatorio", "categoria": "idea", "slot": ["pranzo"], "tag": ["uova", "pasta"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-avocado-toast-uovo", "nome": "Avocado toast con uovo + contorno di verdure", "categoria": "idea", "slot": ["pranzo"], "tag": ["uova", "pane"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-pasta-fiocchi", "nome": "Pasta con verdura + 1 vasetto di fiocchi di latte", "categoria": "idea", "slot": ["pranzo"], "tag": ["formaggio", "pasta"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-farro-ceci", "nome": "Farro o cous cous con pomodorini e ceci", "categoria": "idea", "slot": ["pranzo"], "tag": ["legumi", "cereale-chicco", "couscous"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-pasta-tonno", "nome": "Riso venere o pasta con tonno e zucchine (o pane con tonno, pomodori e cetrioli)", "categoria": "idea", "slot": ["pranzo"], "tag": ["pesce_conservato", "pasta", "riso", "pane"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-insalata-pollo-riso", "nome": "Insalata con petto di pollo e riso (o pasta con verdura e macinato di pollo)", "categoria": "idea", "slot": ["pranzo"], "tag": ["carne_bianca", "riso", "pasta"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-pasta-mozzarella", "nome": "Pasta con mozzarella e salsa al pomodoro + verza al vapore", "categoria": "idea", "slot": ["cena"], "tag": ["formaggio", "pasta"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-frittata-spinaci", "nome": "Frittata di spinaci con 2 uova, insalata di finocchi e olive + pane integrale", "categoria": "idea", "slot": ["cena"], "tag": ["uova", "pane"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-salmone-cartoccio", "nome": "Salmone al cartoccio con pomodorini e cipolla (15 minuti in forno) + verdura cotta e cruda", "categoria": "idea", "slot": ["cena"], "tag": ["pesce_fresco"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-merluzzo-vapore", "nome": "Merluzzo al vapore con julienne di zucchine e pane", "categoria": "idea", "slot": ["cena"], "tag": ["pesce_fresco", "pane"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-pollo-curry-bieta", "nome": "Pane + bocconcini di pollo o tacchino al curry + bieta all'agro", "categoria": "idea", "slot": ["cena"], "tag": ["carne_bianca", "pane"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-alici-gratinate", "nome": "Alici gratinate al forno + doppio contorno di verdure", "categoria": "idea", "slot": ["cena"], "tag": ["pesce_fresco"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-minestrone-lenticchie", "nome": "Minestrone con lenticchie e farro + verdura cruda", "categoria": "idea", "slot": ["cena"], "tag": ["legumi", "cereale-chicco"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-vitella-pizzaiola", "nome": "Carne di vitella alla pizzaiola + pane + verdura", "categoria": "idea", "slot": ["cena"], "tag": ["carne_rossa", "pane"], "difficolta": 1, "ingredienti": [], "procedimento": "" },
+    { "id": "idea-risotto-funghi-piselli", "nome": "Risotto con funghi e piselli (o minestrone con fagioli e pastina)", "categoria": "idea", "slot": ["cena"], "tag": ["legumi", "riso", "pasta"], "difficolta": 1, "ingredienti": [], "procedimento": "" }
+  ]
+}
