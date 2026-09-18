@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#c67139">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Dieta Facile">
+  <title>Dieta Facile</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icone/icona-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icone/icona-180.png">
+  <link rel="stylesheet" href="css/stile.css">
+</head>
+<body>
+
+  <header class="intestazione">
+    <div class="intestazione-testo">
+      <h1>Dieta Facile</h1>
+      <span id="settimana-corrente" class="sottotitolo"></span>
+    </div>
+    <div class="intestazione-azioni">
+      <button type="button" id="stato-sync" class="stato-sync off" title="Sincronizzazione" aria-label="Sincronizza ora"></button>
+      <button type="button" id="apri-impostazioni" class="pulsante-icona" aria-label="Impostazioni">⚙︎</button>
+    </div>
+  </header>
+
+  <main id="contenuto">
+    <!-- Scheda Settimana: costruita da js/settimana.js -->
+    <section id="scheda-settimana" class="scheda attiva"></section>
+
+    <!-- Scheda Spesa: costruita da js/spesa.js -->
+    <section id="scheda-spesa" class="scheda"></section>
+
+    <!-- Scheda Ricette: costruita da js/ricette.js -->
+    <section id="scheda-ricette" class="scheda"></section>
+
+    <p id="errore" class="errore" hidden></p>
+  </main>
+
+  <nav class="nav-basso" aria-label="Sezioni">
+    <button type="button" class="nav-voce attiva" data-scheda="settimana">
+      <span class="nav-icona">📅</span>Settimana
+    </button>
+    <button type="button" class="nav-voce" data-scheda="spesa">
+      <span class="nav-icona">🛒</span>Spesa
+    </button>
+    <button type="button" class="nav-voce" data-scheda="ricette">
+      <span class="nav-icona">🍳</span>Ricette
+    </button>
+  </nav>
+
+  <!-- Foglio a comparsa dal basso, usato per scegliere le opzioni e per le impostazioni -->
+  <div id="sfondo-foglio" class="sfondo-foglio" hidden></div>
+  <div id="foglio" class="foglio" role="dialog" aria-modal="true" hidden>
+    <div class="foglio-testa">
+      <h2 id="foglio-titolo"></h2>
+      <button type="button" id="foglio-chiudi" class="pulsante-chiudi" aria-label="Chiudi">✕</button>
+    </div>
+    <div id="foglio-corpo" class="foglio-corpo"></div>
+  </div>
+
+  <script type="module" src="js/app.js?v=7"></script>
+</body>
+</html>
