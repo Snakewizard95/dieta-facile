@@ -46,6 +46,14 @@ Il modo più semplice, senza Terminale:
 5. Prova in modalità aereo: l'app deve aprirsi lo stesso (le modifiche partono
    quando torna la rete).
 
+## Passo 4b — Installare su Android
+
+1. Aprire l'indirizzo dell'app in **Chrome**.
+2. Toccare i tre puntini in alto a destra e scegliere **Installa app** (oppure **Aggiungi a
+   schermata Home**). Spesso Chrome lo propone da solo con un avviso in basso.
+3. Aprire l'app dall'icona, toccare ⚙︎ e inserire i dati di sincronizzazione.
+Su Android l'icona si aggiorna da sola nelle versioni successive.
+
 ## Come si aggiorna l'app dopo una modifica
 
 1. Su GitHub apri il repository `dieta-facile` → **Add file** → **Upload files**.

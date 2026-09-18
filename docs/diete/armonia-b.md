@@ -39,7 +39,7 @@ Sempre verdure (almeno 200 g a crudo per pasto). Affettato max 1 volta a settima
 
 ## Varianti disponibili nell'app
 
-- Cereali: pasta integrale, riso (parboiled o basmati), farro, orzo, kamut, segale, avena, cous cous, mais, sorgo, quinoa, amaranto, grano saraceno.
+- Cereali: pasta, pasta integrale, riso (parboiled o basmati), farro, orzo, kamut, segale, avena, cous cous, mais, sorgo, quinoa, amaranto, grano saraceno.
 - Wasa: 2 Wasa integrali oppure 2 fette di pane di segale integrale (citato nel PDF come extra).
 - Legumi: ceci, fagioli, lenticchie, piselli, fave.
 - Pesce: sogliola, merluzzo, nasello, spigola, orata, trota, alici, sarde, sgombro, sugarello.
